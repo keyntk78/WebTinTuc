@@ -52,14 +52,14 @@
                                 <span class="icon-holder">
                                     <i class="anticon anticon-appstore"></i>
                                 </span>
-                                <span class="title">Quản lý người dùng</span>
+                                <span class="title">Quản lý thể loại</span>
                                 <span class="arrow">
                                     <i class="arrow-icon"></i>
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="app-chat.html">Danh sách</a>
+                                    <a href="{{route('theloai.index')}}">Danh sách</a>
                                 </li>
                                 <li>
                                     <a href="app-file-manager.html">Thêm</a>
