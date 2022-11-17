@@ -52,13 +52,15 @@ class UserController extends Controller
 
     public function index(){
         
-        return view('admin.users.danhsach');
+        $user =  $this->users->DanhSachUser();
+        
+        return view('admin.users.danhsach', compact('user'));
     }
 
 
     public function getThemUser(){
         
-        return view('admin.users.them');
+        return view('admin.users.them'); 
     }
 
      public function postThemUser(Request $request){

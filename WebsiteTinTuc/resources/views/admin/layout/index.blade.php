@@ -36,7 +36,7 @@
                 <!-- Content Wrapper END -->
 
                 <!-- Footer START -->
-               @include('admin.layout.footer');
+               @include('admin.layout.footer')
                 <!-- Footer END -->
 
             </div>
