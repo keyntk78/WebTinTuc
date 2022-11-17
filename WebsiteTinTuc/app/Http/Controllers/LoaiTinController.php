@@ -2,13 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LoaiTin;
+use App\Models\TheLoai;
+
+
+
 use Illuminate\Http\Request;
 
 class LoaiTinController extends Controller
 {
-       public function index(){
-        
-        return view('admin.loaitin.danhsach');
+    private $loaitin;
+    private $theloai;
+
+    public function __construct()
+    {
+        $this->loaitin = new LoaiTin();
+        $this->theloai = new TheLoai();
+
+    }
+
+
+    public function index(){
+
+        $loaitin =$this->loaitin->DanhSachLoaiTin();
+        $loaitin =$this->loaitin->DanhSachLoaiTin();
+
+        return view('admin.loaitin.danhsach',compact('loaitin'));
     }
 
 
