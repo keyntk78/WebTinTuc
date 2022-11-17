@@ -49,4 +49,11 @@ class User extends Authenticatable
     {
         return DB::table('users')->insert($data);
     }
+
+    public function DanhSachUser()
+    {
+        $list = DB::table('users')->get();
+
+        return $list;
+    }
 }
