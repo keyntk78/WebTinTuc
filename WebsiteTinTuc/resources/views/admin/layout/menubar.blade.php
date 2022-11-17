@@ -78,7 +78,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="app-chat.html">Danh sách</a>
+                                    <a href="{{ route('users.index') }}">Danh sách</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('users.them') }}">Thêm</a>
