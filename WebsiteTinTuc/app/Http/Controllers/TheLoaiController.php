@@ -27,11 +27,30 @@ class TheLoaiController extends Controller
 
      public function postThemTheLoai(Request $request){
 
-      return "thêm thành công";
+        $request->validate([
+            'tentheloai' => 'required',
+            'tenkhongdau' => 'required',
+            
+
+        ],[
+            'tentheloai.required' => 'Tên thể loại không được để trống',
+            'tenkhongdau.required' => 'Tên không dấu không được để trống',
+        ]);
+
+        $dataIsert = [
+            'tentheloai' => $request->tentheloai,
+            'tenkhongdau' => $request->tenkhongdau,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' =>date('Y-m-d H:i:s'),
+        ];
+        $theloai = $this->theloai->ThemTheloai($dataIsert);
+
+        return back()->with('thongbao', 'Thêm thành công');
     }
 
     public function getSuaTheLoai(){
         
+
         return view('admin.theloai.sua');
     }
 

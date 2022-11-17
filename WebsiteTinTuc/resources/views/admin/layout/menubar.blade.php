@@ -62,7 +62,7 @@
                                     <a href="{{route('theloai.index')}}">Danh sách</a>
                                 </li>
                                 <li>
-                                    <a href="app-file-manager.html">Thêm</a>
+                                    <a href="{{route('theloai.them')}}">Thêm</a>
                                 </li>
                             </ul>
                         </li>
