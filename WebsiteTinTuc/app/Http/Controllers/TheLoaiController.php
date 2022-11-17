@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TheLoai;
 
 class TheLoaiController extends Controller
 {
+     private $theloai;
+
+     public function __construct()
+     {
+        $this->theloai = new TheLoai();
+     }
      public function index(){
-        
-        return view('admin.theloai.danhsach');
+
+        $theloai = $this->theloai->DanhsachTheloai();
+        return view('admin.theloai.danhsach', compact('theloai'));
     }
 
 
