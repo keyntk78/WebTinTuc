@@ -63,10 +63,10 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
         Route::get('them', [LoaiTinController::class, 'getThemLoaiTin'])->name('them');
         Route::post('them', [LoaiTinController::class, 'postThemLoaiTin'])->name('them');;
 
-        Route::get('sua/{id}', [LoaiTinController::class, 'getSuaLoaiTin'])->name('edit');
+        Route::get('sua/{id}', [LoaiTinController::class, 'getSuaLoaiTin'])->name('sua');
         Route::post('sua/{id}', [LoaiTinController::class, 'postSuaLoaiTin'])->name('post-edit');
 
-        Route::get('xoa/{id}', [LoaiTinController::class, 'deleteLoaiTin'])->name('delete');
+        Route::get('xoa/{id}', [LoaiTinController::class, 'deleteLoaiTin'])->name('xoa');
     });
 
     //quyền-trực

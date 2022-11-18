@@ -21,4 +21,23 @@ class LoaiTin extends Model
     public function ThemLoaiTin($data){
         return DB::table('loaitin')->insert($data);  
      }
+
+    public function ChiTietLoaitin($id)
+    {
+        $chittiet = DB::table('loaitin')->select('*')->where('id', '=', $id)->get();
+
+        return $chittiet;
+    }
+
+    public function CapNhatloaitin($id,$data)
+    {
+    
+        return  DB::table('loaitin')->where('id', '=', $id)->update($data);
+    }
+
+    public function Xoaloaitin($id)
+    {
+        return  DB::table('loaitin')->where('id', '=', $id)->delete();
+    }
+
 }
