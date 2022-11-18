@@ -2,6 +2,7 @@
 
 @section('content')
       < class="main-content">
+      
           <div class="page-header">
              <div class="header-sub-title">
                  <nav class="breadcrumb breadcrumb-dash">
@@ -11,6 +12,11 @@
                  </nav>
              </div>
             </div>
+               @if(session('thongbao'))
+                           <div class="alert alert-success">
+                                {{ session('thongbao') }}
+                            </div>
+                        @endif    
             <div class="card">
                 <div class="card-body">
                         <h4>Danh sách người dùng</h4>                         
@@ -28,27 +34,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                      
                                         @foreach ($user as $key => $item)
                                         <tr>
                                             <th scope="row">{{ $key+1 }}</th>
                                             <td>{{ $item->hoten }}</td>
                                             <td>{{ $item->email }}</td>
-                                            <td>{{ $item->quyen }}</td>
-                                            <td><a class="btn btn-primary" href="">Sửa</a></td>
-                                            <td><a class="btn btn-danger" href="">Xóa</a></td>
+                                            <td>  
+                                            @if ($item->quyen == 1)
+                                                Quản trị
+                                            @else
+                                                Khách hàng
+                                            @endif
+                                            </td>
+                                            <td><a class="btn btn-primary" href="{{ route('users.edit', ['id'=>$item->id]) }}">Sửa</a></td>
+                                            <td><a class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" href="{{ route('users.delete', ['id'=>$item->id]) }}">Xóa</a></td>
                                         </tr>
                                         @endforeach
-
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    
-    
                 </div>
             </div>
       </div>
-
-
-
 @endsection
