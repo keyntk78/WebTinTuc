@@ -56,4 +56,25 @@ class User extends Authenticatable
 
         return $list;
     }
+
+    public function ChiTietUser($id)
+    {
+        $chittiet = DB::table('users')->select('*')->where('id', '=', $id)->get();
+
+        return $chittiet;
+    }
+
+    
+    public function CapNhatUser($id,$data)
+    {
+    
+        return  DB::table('users')->where('id', '=', $id)->update($data);
+    }
+
+     public function XoaUser($id)
+    {
+        return  DB::table('users')->where('id', '=', $id)->delete();
+    }
+
+    
 }

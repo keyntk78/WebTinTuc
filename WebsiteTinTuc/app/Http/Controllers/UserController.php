@@ -97,19 +97,56 @@ class UserController extends Controller
         return back()->with('thongbao', 'Đăng ký thành công');
     }
 
-    public function getSuaUser(){
+    public function getSuaUser($id = 0){
         
-        return view('admin.users.sua');
+        if(!empty($id)){
+            $chitietUser = $this->users->ChiTietUser($id);
+            if(!empty($chitietUser[0])){
+                $chitietUser = $chitietUser[0];
+                 return view('admin.users.sua', compact('chitietUser'));
+            } else {
+                return redirect()->route('users.index')->with('thongbao', 'Người dùng không tồn tại');
+            }
+        } else {
+            return redirect()->route('users.index')->with('thongbao', 'Liên kết không tồn tại');
+        }
+        
     }
 
-    public function postSuaUser(){
+    public function postSuaUser(Request $request,$id){
         
-        return 'sua thanh công';
+        $request->validate([
+             'hoten' => 'required',
+        ],[
+            'hoten.required' => 'Họ tên bắt buộc phải nhập',
+        ]);
+
+        $dataupdate = [
+            'hoten' => $request->hoten,
+            'quyen' => $request->quyen,
+            'updated_at' =>date('Y-m-d H:i:s'),
+        ];
+
+        $this->users->CapNhatUser($id, $dataupdate);
+        
+        return back()->with('thongbao','Cập nhật người dùng thành công');
     }
 
-     public function deleteUser(){
-        
-        return 'xoa thanh công';
+     public function deleteUser($id){
+
+        if(!empty($id)){
+            $chitietUser = $this->users->ChiTietUser($id);
+            if(!empty($chitietUser[0])){
+                
+                $this->users->XoaUser($id);
+                
+                 return redirect()->route('users.index')->with('thongbao', 'Xóa người dùng thành công');
+            } else {
+                return redirect()->route('users.index')->with('thongbao', 'Người dùng không tồn tại');
+            }
+        } else {
+            return redirect()->route('users.index')->with('thongbao', 'Liên kết không tồn tại');
+        }
     }
 
   
