@@ -18,4 +18,17 @@ class TheLoai extends Model
     public function ThemTheloai($data){
        return DB::table('theloai')->insert($data);  
     }
+
+    public function ChiTietTheLoai($id)
+    {
+        $chittiet = DB::table('theloai')->select('*')->where('id', '=', $id)->get();
+
+        return $chittiet;
+    }
+
+    public function CapNhattheloai($id,$data)
+    {
+    
+        return  DB::table('theloai')->where('id', '=', $id)->update($data);
+    }
 }

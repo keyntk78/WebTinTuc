@@ -50,10 +50,10 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
         Route::get('them', [TheLoaiController::class, 'getThemTheLoai'])->name('them');
         Route::post('them', [TheLoaiController::class, 'postThemTheLoai'])->name('them');;
 
-        Route::get('sua/{id}', [TheLoaiController::class, 'getSuaTheLoai'])->name('edit');
+        Route::get('sua/{id}', [TheLoaiController::class, 'getSuaTheLoai'])->name('sua');
         Route::post('sua/{id}', [TheLoaiController::class, 'postSuaTheLoai'])->name('post-edit');
 
-        Route::get('xoa/{id}', [TheLoaiController::class, 'deleteTheLoai'])->name('delete');
+        Route::get('xoa/{id}', [TheLoaiController::class, 'deleteTheLoai'])->name('xoa');
     });
 
     // bình - tuấn

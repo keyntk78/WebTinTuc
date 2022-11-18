@@ -32,7 +32,7 @@
                                 <th scope="row">{{$key+1}}</th>
                                 <td>{{$item->tentheloai}}</td>
                                 <td>{{$item->tenkhongdau}}</td>
-                                <td><a class="btn btn-primary" href="">Sửa</a></td>
+                                <td><a class="btn btn-primary" href="{{route('theloai.sua', ['id'=>$item->id])}}">Sửa</a></td>
                                 <td><a class="btn btn-danger" href="">Xóa</a></td>
                             </tr>
                             @endforeach
