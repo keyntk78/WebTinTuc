@@ -40,7 +40,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="app-chat.html">Danh sách</a>
+                                    <a href="{{route('loaitin.index')}}">Danh sách</a>
                                 </li>
                                 <li>
                                     <a href="app-file-manager.html">Thêm</a>

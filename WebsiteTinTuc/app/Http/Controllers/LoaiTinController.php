@@ -3,12 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\LoaiTin;
 
 class LoaiTinController extends Controller
 {
+
+    private $loaitin;
+    public function __construct()
+    {
+        $this->loaitin = new LoaiTin();
+
+    }
        public function index(){
         
-        return view('admin.loaitin.danhsach');
+        $loaitin =$this->loaitin->DanhSachLoaiTin();
+        $loaitin =$this->loaitin->DanhSachLoaiTin();
+
+        return view('admin.loaitin.danhsach',compact('loaitin'));
     }
 
 
