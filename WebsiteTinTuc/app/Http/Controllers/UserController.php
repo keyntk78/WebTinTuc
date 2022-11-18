@@ -12,6 +12,7 @@ class UserController extends Controller
 {
 
     private $users;
+    const _PER_PAGE = 2;
     
     public function __construct()
     {
@@ -52,7 +53,7 @@ class UserController extends Controller
 
     public function index(){
         
-        $user =  $this->users->DanhSachUser();
+        $user =  $this->users->DanhSachUser(self:: _PER_PAGE);
         
         return view('admin.users.danhsach', compact('user'));
     }

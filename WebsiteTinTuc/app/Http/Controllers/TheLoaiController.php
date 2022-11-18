@@ -29,17 +29,13 @@ class TheLoaiController extends Controller
 
         $request->validate([
             'tentheloai' => 'required',
-            'tenkhongdau' => 'required',
-            
-
         ],[
             'tentheloai.required' => 'Tên thể loại không được để trống',
-            'tenkhongdau.required' => 'Tên không dấu không được để trống',
         ]);
 
         $dataIsert = [
             'tentheloai' => $request->tentheloai,
-            'tenkhongdau' => $request->tenkhongdau,
+            'tenkhongdau' => convert_Unsigned($request->tentheloai),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' =>date('Y-m-d H:i:s'),
         ];

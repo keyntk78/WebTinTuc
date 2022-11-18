@@ -50,10 +50,15 @@ class User extends Authenticatable
         return DB::table('users')->insert($data);
     }
 
-    public function DanhSachUser()
+    public function DanhSachUser($per_page = null)
     {
-        $list = DB::table('users')->get();
+        $list = DB::table('users');
 
+        if (!empty($per_page)) {
+            $list = $list->paginate($per_page);
+        } else {
+            $list = $list->get();
+        }
         return $list;
     }
 
