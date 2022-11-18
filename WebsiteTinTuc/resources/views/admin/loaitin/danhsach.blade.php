@@ -32,12 +32,12 @@
                         <tbody>
                             @foreach ($loaitin as $key =>$item)
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row" >{{$key+1}}</th>
                                 <td>{{$item->tentheloai}}</td>
                                 <td>{{$item->tenloaitin}}</td>
                                 <td>{{$item->tenkhongdau}}</td>
-                                <td><a class ="btn btn-primary"href="">Sửa</a></td>
-                                <td><a class ="btn btn-danger"href="">Xóa</a></td>
+                                <td><a class ="btn btn-primary"href="{{route('loaitin.sua', ['id'=>$item->id])}}">Sửa</a></td>
+                                <td><a class ="btn btn-danger"href="{{route('loaitin.xoa', ['id'=>$item->id])}}" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a></td>
                             </tr>
                             @endforeach
                             
