@@ -28,7 +28,8 @@ Route::get('/admin-dangxuat', [UserController::class, 'getDangXuatAdmin'])->name
 
 Route::prefix('admin')->middleware('adminLogin')->group(function(){
     Route::get('/', [HomeController::class, 'index'])->name('admin');
-    
+    Route::get('/doimatkhau', [HomeController::class, 'DoiMatKhau'])->name('doimatkhau');
+    Route::post('/doimatkhau', [HomeController::class, 'postDoiMatKhau'])->name('doimatkhau');
 
     // kiệt 
     Route::prefix('user')->name('users.')->group(function(){
