@@ -53,6 +53,11 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                 <div class="col-lg-12"> 
+                                    <div class="apagination">
+                                        {{ $user->withQueryString()->links() }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                 </div>

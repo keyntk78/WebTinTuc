@@ -31,15 +31,6 @@
                                             @enderror
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Tên không dấu</label>
-                                        <input type="text" class="form-control" value="{{ old('tenkhongdau') }}" name="tenkhongdau" placeholder="Nhập tên không dấu">
-                                        @error('tenkhongdau')
-                                                <span style="color: red">{{ $message }}</span>
-                                            @enderror
-                                    </div>
-                                </div>
                                 <button type="submit" class="btn btn-primary">Thêm</button>
                             </form>
                         </div>
