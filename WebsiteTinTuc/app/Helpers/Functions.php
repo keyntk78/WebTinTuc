@@ -1,4 +1,6 @@
 <?php 
+	use App\Models\TheLoai;
+
 
 
     function dinhDangNgayThang($date){
@@ -38,5 +40,11 @@
         
 		return $str;
 	}
+
+	function getAllTheLoai() {
+		$theloai = new TheLoai();
+
+		return $theloai->DanhsachTheloai();
+    }
     
 ?>

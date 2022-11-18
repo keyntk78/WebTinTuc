@@ -16,7 +16,9 @@ class LoaiTin extends Model
         ->select('loaitin.*', 'theloai.tentheloai as tentheloai')
         ->join('theloai', 'loaitin.id_theloai', '=', 'theloai.id')
         ->get();
-
         return $list;
     }
+    public function ThemLoaiTin($data){
+        return DB::table('loaitin')->insert($data);  
+     }
 }

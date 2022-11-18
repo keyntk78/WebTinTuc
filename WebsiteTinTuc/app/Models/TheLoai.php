@@ -16,7 +16,6 @@ class TheLoai extends Model
     }
 
     public function ThemTheloai($data){
-       return DB::table('theloai')->insert($data);
-        
+       return DB::table('theloai')->insert($data);  
     }
 }
