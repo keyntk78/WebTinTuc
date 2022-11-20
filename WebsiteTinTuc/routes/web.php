@@ -31,7 +31,6 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
     Route::get('/doimatkhau', [HomeController::class, 'DoiMatKhau'])->name('doimatkhau');
     Route::post('/doimatkhau', [HomeController::class, 'postDoiMatKhau'])->name('doimatkhau');
 
-    // kiệt 
     Route::prefix('user')->name('users.')->group(function(){
         Route::get('/', [UserController::class, 'index'])->name('index');
 
@@ -44,7 +43,7 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
         Route::get('xoa/{id}', [UserController::class, 'deleteUser'])->name('delete');
     });
 
-    // hải - bình
+   
     Route::prefix('theloai')->name('theloai.')->group(function(){
         Route::get('/', [TheLoaiController::class, 'index'])->name('index');
 
@@ -57,7 +56,7 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
         Route::get('xoa/{id}', [TheLoaiController::class, 'deleteTheLoai'])->name('xoa');
     });
 
-    // bình - tuấn
+
      Route::prefix('loaitin')->name('loaitin.')->group(function(){
         Route::get('/', [LoaiTinController::class, 'index'])->name('index');
 
@@ -70,7 +69,7 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
         Route::get('xoa/{id}', [LoaiTinController::class, 'deleteLoaiTin'])->name('xoa');
     });
 
-    //quyền-trực
+
      Route::prefix('tintuc')->name('tintuc.')->group(function(){
         Route::get('/', [TinTucController::class, 'index'])->name('index');
 
@@ -83,7 +82,7 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
         Route::get('xoa/{id}', [TinTucController::class, 'deleteTinTuc'])->name('delete');
     });
     
-    // tâm
+ 
       Route::prefix('binhluan')->name('binhluan.')->group(function(){
         Route::get('/', [BinhLuanController::class, 'index'])->name('index');
 
