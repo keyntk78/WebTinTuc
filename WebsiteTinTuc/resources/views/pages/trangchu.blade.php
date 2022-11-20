@@ -1,7 +1,11 @@
 @extends('pages.layouts.index')
 
 @section('content')
-
+@if(session('thongbao'))
+<div class="alert alert-success">
+        {{ session('thongbao') }}
+    </div>
+@endif
 
     <!-- Main News Slider Start -->
     <div class="container-fluid py-3">
@@ -69,7 +73,7 @@
     <!-- Main News Slider End -->
 
 
-   
+
 
 
     <!-- Category News Slider Start -->
@@ -341,9 +345,9 @@
                     </div>
 
                 </div>
-                
+
                 <div class="col-lg-4 pt-3 pt-lg-0">
-                   
+
 
                     <!-- Ads Start -->
                     <div class="mb-3 pb-3">

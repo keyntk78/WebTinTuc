@@ -90,3 +90,16 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
     });
 
 });
+
+
+Route::get('/dangnhap', [PageControllers::class, 'dangnhap'])->name('dangnhap');
+
+Route::get('/dangxuat', [PageControllers::class, 'dangxuat'])->name('dangxuat');
+
+Route::post('/dangnhap', [PageControllers::class, 'postDangNhap'])->name('dangnhap');
+
+Route::get('/dangky', [PageControllers::class, 'getDangKy'])->name('dangky');
+
+Route::post('/dangky', [PageControllers::class, 'postDangKy'])->name('dangky');
+
+

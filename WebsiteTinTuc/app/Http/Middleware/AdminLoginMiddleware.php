@@ -17,7 +17,7 @@ class AdminLoginMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()) 
+        if(Auth::check())
         {
             $user = Auth::user();
             if($user->quyen==1)
@@ -27,6 +27,6 @@ class AdminLoginMiddleware
         } else {
             return redirect(route('dangxuatadmin'));
         }
-        
+
     }
 }
