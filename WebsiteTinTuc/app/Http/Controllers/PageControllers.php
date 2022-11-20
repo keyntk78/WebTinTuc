@@ -6,19 +6,48 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use  App\Models\User;
+use  App\Models\TheLoai;
+use  App\Models\TinTuc;
+
 
 class PageControllers extends Controller
 {
     private $users;
+    private $theloai;
+    private $tintuc;
+
+
 
     public function __construct()
     {
         $this->users = new User();
+        $this->theloai = new TheLoai();
+        $this->tintuc = new TinTuc();
+
     }
 
     public function index()
     {
-        return view('pages.trangchu');
+        $list_4 =$this->theloai->Top_4_Theloai();
+        $noibat = $this->tintuc->TinNoiBat();
+        $moinhat = $this->tintuc->MoiNhat();
+
+        return view('pages.trangchu', compact('list_4', 'noibat', 'moinhat'));
+    }
+
+    public function ChiTietTinTuc ($id, $tieudekhongdau){
+
+         if(!empty($id)){
+            $chitiettintuc = $this->tintuc->ChietTietTinTucPage($id);
+            if(!empty($chitiettintuc[0])){
+                $chitiettintuc = $chitiettintuc[0];
+                 return view('pages.chitiettintuc', compact('chitiettintuc'));
+            } else {
+                return redirect()->route('trangchu')->with('thongbao', 'Tin tức không tồn tại');
+            }
+        } else {
+            return redirect()->route('trangchu')->with('thongbao', 'Liên kết không tồn tại');
+        }
     }
 
     public function dangnhap()

@@ -11,11 +11,7 @@ use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\PageControllers;
 
 
-    Route::get('/', [PageControllers::class, 'index'])->name('trangchu');
-    Route::get('/trangchu', [PageControllers::class, 'index'])->name('trangchu');
-
-
-
+// Phần admin
 
 Route::get('/admin-dangnhap', [UserController::class, 'getDangNhapAdmin'])->name('dangnhapadmin');
 Route::post('/admin-dangnhap', [UserController::class, 'postDangNhapAdmin'])->name('dangnhapadmin');;
@@ -91,15 +87,14 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
 
 });
 
+// phần page
+Route::get('/', [PageControllers::class, 'index'])->name('trangchu');
+Route::get('/trangchu', [PageControllers::class, 'index'])->name('trangchu');
+Route::get('/tintuc/{id}/{tieudekhongdau}', [PageControllers::class, 'ChiTietTinTuc'])->name('chitiettintuc');
+
 
 Route::get('/dangnhap', [PageControllers::class, 'dangnhap'])->name('dangnhap');
-
 Route::get('/dangxuat', [PageControllers::class, 'dangxuat'])->name('dangxuat');
-
 Route::post('/dangnhap', [PageControllers::class, 'postDangNhap'])->name('dangnhap');
-
 Route::get('/dangky', [PageControllers::class, 'getDangKy'])->name('dangky');
-
 Route::post('/dangky', [PageControllers::class, 'postDangKy'])->name('dangky');
-
-
