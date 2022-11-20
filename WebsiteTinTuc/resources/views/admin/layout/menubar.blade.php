@@ -21,10 +21,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="app-chat.html">Danh sách</a>
+                                    <a href="{{ route('tintuc.index') }}">Danh sách</a>
                                 </li>
                                 <li>
-                                    <a href="app-file-manager.html">Thêm</a>
+                                    <a href="{{ route('tintuc.them') }}">Thêm</a>
                                 </li>
                             </ul>
                         </li>

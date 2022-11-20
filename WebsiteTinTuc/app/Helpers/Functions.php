@@ -1,5 +1,6 @@
 <?php 
 	use App\Models\TheLoai;
+	use App\Models\LoaiTin;
 
 
 
@@ -46,5 +47,12 @@
 
 		return $theloai->DanhsachTheloai();
     }
+
+	function getAllLoaiTin() {
+		$loaitin = new LoaiTin();
+
+		return $loaitin->DanhSachLoaiTin();
+    }
+
     
 ?>

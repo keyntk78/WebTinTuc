@@ -14,6 +14,9 @@
     <!-- Core css -->
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet">
 
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('ckfinder/ckfinder.js') }}"></script>
+
 </head>
 
 <body>
@@ -44,6 +47,8 @@
 
         </div>
     </div>
+
+    
 
     
     <!-- Core Vendors JS -->
