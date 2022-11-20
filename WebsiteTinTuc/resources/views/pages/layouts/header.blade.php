@@ -7,8 +7,14 @@
                 </a>
             </div>
             <div class="col-lg-8 text-center text-lg-right">
-                <a href="#" >Đăng nhập</a>
-                <a href="#">Đăng ký</a>
+                @if(Auth::check())
+                    <a href="{{route("dangnhap")}}" class="login" >{{ Auth::user()->hoten }}</a>
+                    <a href="{{route("dangxuat")}}" class="register">Đăng xuất</a>
+                @else
+                    <a href="{{route("dangnhap")}}" class="login" >Đăng nhập</a>
+                    <a href="{{route('dangky')}}" class="login" >Đăng ký</a>
+                @endif
+
             </div>
         </div>
     </div>
