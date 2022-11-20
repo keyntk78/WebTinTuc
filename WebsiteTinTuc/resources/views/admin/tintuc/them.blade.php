@@ -67,7 +67,7 @@
                                     </div>
                                 </div>
                                 
-                                  <div class="form-row">
+                                <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Hình ảnh</label>
                                         <input type="file" class="form-control" name="hinh" value="{{ old('hinh') }}" placeholder="Nhập tiêu đề ...">

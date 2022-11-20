@@ -31,4 +31,13 @@ class TheLoai extends Model
     
         return  DB::table('theloai')->where('id', '=', $id)->update($data);
     }
+
+    // danh sách 4 thể loại đầu tiên
+     public function Top_4_Theloai(){
+        $list = DB::table('theloai')
+        ->orderBy('created_at', 'asc')
+        ->take(4)
+        ->get();
+        return $list;
+    }
 }

@@ -20,13 +20,22 @@
                     <div class="card">
                         <div class="card-body">
                             <h4>Thêm thể loại</h4>
-                            <form action="" method="POST">
+                            <form action="" method="POST"  enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Tên thể loại</label>
                                         <input type="text" class="form-control" name="tentheloai" value="{{ old('tentheloai') }}" placeholder="Nhập tên thể loại">
                                            @error('tentheloai')
+                                                <span style="color: red">{{ $message }}</span>
+                                            @enderror
+                                    </div>
+                                </div>
+                                  <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Hình ảnh</label>
+                                        <input type="file" class="form-control" name="hinh" value="{{ old('hinh') }}">
+                                           @error('hinh')
                                                 <span style="color: red">{{ $message }}</span>
                                             @enderror
                                     </div>

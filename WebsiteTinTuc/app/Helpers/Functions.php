@@ -1,10 +1,12 @@
 <?php 
 	use App\Models\TheLoai;
 	use App\Models\LoaiTin;
+	use App\Models\TinTuc;
 
 
 
-    function dinhDangNgayThang($date){
+
+    function format_date($date){
         $date = date("d-m-Y", strtotime($date));
         return $date;
     }
@@ -12,12 +14,6 @@
     function PathImages($hinh_anh){
         $hinh_anh = 'uploads/images/' . $hinh_anh;
         return $hinh_anh;
-    }
-
-    function currency_format($number) {
-        if (!empty($number)) {
-            return number_format($number, 0, ',', '.') . "đ";
-        }
     }
 
     function convert_Unsigned($str) {
@@ -52,6 +48,12 @@
 		$loaitin = new LoaiTin();
 
 		return $loaitin->DanhSachLoaiTin();
+    }
+
+	function danhSachTinTheoTheLoai_4($id) {
+		$tintuc = new TinTuc();
+
+		return $tintuc->DanhSachTinTheoTheLoai_4($id);
     }
 
     

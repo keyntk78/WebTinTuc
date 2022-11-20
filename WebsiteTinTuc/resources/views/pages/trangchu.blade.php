@@ -39,33 +39,16 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
-                        <h3 class="m-0">Categories</h3>
-                        <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
+                        <h3 class="m-0">Thể loại</h3>
                     </div>
-                    <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
-                        <img class="img-fluid w-100 h-100" src="img/cat-500x80-1.jpg" style="object-fit: cover;">
-                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
-                            Business
-                        </a>
-                    </div>
-                    <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
-                        <img class="img-fluid w-100 h-100" src="img/cat-500x80-2.jpg" style="object-fit: cover;">
-                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
-                            Technology
-                        </a>
-                    </div>
-                    <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
-                        <img class="img-fluid w-100 h-100" src="img/cat-500x80-3.jpg" style="object-fit: cover;">
-                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
-                            Entertainment
-                        </a>
-                    </div>
-                    <div class="position-relative overflow-hidden" style="height: 80px;">
-                        <img class="img-fluid w-100 h-100" src="img/cat-500x80-4.jpg" style="object-fit: cover;">
-                        <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
-                            Sports
-                        </a>
-                    </div>
+                    @foreach ($list_4 as $item)
+                            <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
+                                <img class="img-fluid w-100 h-100" src="{{ asset(PathImages($item->hinh)) }}" style="object-fit: cover;">
+                                <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
+                                    {{ $item->tentheloai }}
+                                </a>
+                            </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -73,191 +56,38 @@
     <!-- Main News Slider End -->
 
 
-
-
-
     <!-- Category News Slider Start -->
     <div class="container-fluid">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 py-3">
+                @foreach ($list_4 as $item)
+                     <div class="col-lg-6 py-3">
                     <div class="bg-light py-2 px-4 mb-3">
-                        <h3 class="m-0">Xã Hội</h3>
+                        <h3 class="m-0">{{ $item->tentheloai }}</h3>
                     </div>
                     <div class="owl-carousel owl-carousel-3 carousel-item-2 position-relative">
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/news-500x280-1.jpg" style="object-fit: cover;">
-                            <div class="overlay position-relative bg-light">
-                                <div class="mb-2" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
+                        @if (!empty(danhSachTinTheoTheLoai_4($item->id)))
+                            @foreach (danhSachTinTheoTheLoai_4($item->id) as $list)
+                                <div class="position-relative">
+                                <img class="img-fluid w-100" src="{{ asset(PathImages($list->hinh)) }}" style="object-fit: cover;">
+                                <div class="overlay position-relative bg-light">
+                                    <div class="mb-2" style="font-size: 13px;">
+                                        <a href="">{{ $list->tenloaitin }}</a>
+                                        <span class="px-1">/</span>
+                                        <span>January 01, 2045</span>
+                                    </div>
+                                    <a class="h4 m-0" href="">{{ $list->tieude }}</a>
                                 </div>
-                                <a class="h4 m-0" href="">Sanctus amet sed ipsum lorem</a>
                             </div>
-                        </div>
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/news-500x280-2.jpg" style="object-fit: cover;">
-                            <div class="overlay position-relative bg-light">
-                                <div class="mb-2" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h4 m-0" href="">Sanctus amet sed ipsum lorem</a>
-                            </div>
-                        </div>
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/news-500x280-3.jpg" style="object-fit: cover;">
-                            <div class="overlay position-relative bg-light">
-                                <div class="mb-2" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h4 m-0" href="">Sanctus amet sed ipsum lorem</a>
-                            </div>
-                        </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
-                <div class="col-lg-6 py-3">
-                    <div class="bg-light py-2 px-4 mb-3">
-                        <h3 class="m-0">Công nghệ</h3>
-                    </div>
-                    <div class="owl-carousel owl-carousel-3 carousel-item-2 position-relative">
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/news-500x280-4.jpg" style="object-fit: cover;">
-                            <div class="overlay position-relative bg-light">
-                                <div class="mb-2" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h4 m-0" href="">Sanctus amet sed ipsum lorem</a>
-                            </div>
-                        </div>
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/news-500x280-5.jpg" style="object-fit: cover;">
-                            <div class="overlay position-relative bg-light">
-                                <div class="mb-2" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h4 m-0" href="">Sanctus amet sed ipsum lorem</a>
-                            </div>
-                        </div>
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/news-500x280-6.jpg" style="object-fit: cover;">
-                            <div class="overlay position-relative bg-light">
-                                <div class="mb-2" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h4 m-0" href="">Sanctus amet sed ipsum lorem</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+               
             </div>
         </div>
     </div>
-    </div>
-    <!-- Category News Slider End -->
-
-
-    <!-- Category News Slider Start -->
-    <div class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 py-3">
-                    <div class="bg-light py-2 px-4 mb-3">
-                        <h3 class="m-0">Giải Trí</h3>
-                    </div>
-                    <div class="owl-carousel owl-carousel-3 carousel-item-2 position-relative">
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/news-500x280-6.jpg" style="object-fit: cover;">
-                            <div class="overlay position-relative bg-light">
-                                <div class="mb-2" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h4 m-0" href="">Sanctus amet sed ipsum lorem</a>
-                            </div>
-                        </div>
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/news-500x280-5.jpg" style="object-fit: cover;">
-                            <div class="overlay position-relative bg-light">
-                                <div class="mb-2" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h4 m-0" href="">Sanctus amet sed ipsum lorem</a>
-                            </div>
-                        </div>
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/news-500x280-4.jpg" style="object-fit: cover;">
-                            <div class="overlay position-relative bg-light">
-                                <div class="mb-2" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h4 m-0" href="">Sanctus amet sed ipsum lorem</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 py-3">
-                    <div class="bg-light py-2 px-4 mb-3">
-                        <h3 class="m-0">Thể thao</h3>
-                    </div>
-                    <div class="owl-carousel owl-carousel-3 carousel-item-2 position-relative">
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/news-500x280-3.jpg" style="object-fit: cover;">
-                            <div class="overlay position-relative bg-light">
-                                <div class="mb-2" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h4 m-0" href="">Sanctus amet sed ipsum lorem</a>
-                            </div>
-                        </div>
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/news-500x280-2.jpg" style="object-fit: cover;">
-                            <div class="overlay position-relative bg-light">
-                                <div class="mb-2" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h4 m-0" href="">Sanctus amet sed ipsum lorem</a>
-                            </div>
-                        </div>
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="img/news-500x280-1.jpg" style="object-fit: cover;">
-                            <div class="overlay position-relative bg-light">
-                                <div class="mb-2" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h4 m-0" href="">Sanctus amet sed ipsum lorem</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <!-- Category News Slider End -->
-
-
     <!-- News With Sidebar Start -->
     <div class="container-fluid py-3">
         <div class="container">
@@ -267,154 +97,53 @@
                         <div class="col-12">
                             <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
                                 <h3 class="m-0">Nổi bật</h3>
-                                <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        @foreach ($noibat as $item)
+                             <div class="col-lg-6">
                             <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-500x280-2.jpg" style="object-fit: cover;">
+                                <img class="img-fluid w-100" src="{{ asset(PathImages($item->hinh)) }}" style="object-fit: cover;">
                                 <div class="overlay position-relative bg-light">
                                     <div class="mb-2" style="font-size: 14px;">
-                                        <a href="">Technology</a>
+                                        <a href="}">{{ $item->tenloaitin }}</a>
                                         <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
+                                        <span>{{ format_date($item->created_at) }}</span>
                                     </div>
-                                    <a class="h4" href="">Est stet amet ipsum stet clita rebum duo</a>
-                                    <p class="m-0">Rebum dolore duo et vero ipsum clita, est ea sed duo diam ipsum, clita at justo, lorem amet vero eos sed sit...</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <img src="img/news-100x100-1.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                                <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                    <div class="mb-1" style="font-size: 13px;">
-                                        <a href="">Technology</a>
-                                        <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
-                                    </div>
-                                    <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <img src="img/news-100x100-2.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                                <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                    <div class="mb-1" style="font-size: 13px;">
-                                        <a href="">Technology</a>
-                                        <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
-                                    </div>
-                                    <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+                                    <a class="h4" href="{{ route('chitiettintuc', ['id'=>$item->id, 'tieudekhongdau'=>$item->tieudekhongdau]) }}">{{ $item->tieude }}</a>
+                                    <p class="m-0">{{ $item->tomtat }}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-500x280-3.jpg" style="object-fit: cover;">
-                                <div class="overlay position-relative bg-light">
-                                    <div class="mb-2" style="font-size: 14px;">
-                                        <a href="">Technology</a>
-                                        <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
-                                    </div>
-                                    <a class="h4" href="">Est stet amet ipsum stet clita rebum duo</a>
-                                    <p class="m-0">Rebum dolore duo et vero ipsum clita, est ea sed duo diam ipsum, clita at justo, lorem amet vero eos sed sit...</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <img src="img/news-100x100-3.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                                <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                    <div class="mb-1" style="font-size: 13px;">
-                                        <a href="">Technology</a>
-                                        <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
-                                    </div>
-                                    <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <img src="img/news-100x100-4.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                                <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                    <div class="mb-1" style="font-size: 13px;">
-                                        <a href="">Technology</a>
-                                        <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
-                                    </div>
-                                    <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
 
                 </div>
 
                 <div class="col-lg-4 pt-3 pt-lg-0">
-
-
                     <!-- Ads Start -->
                     <div class="mb-3 pb-3">
-                        <a href=""><img class="img-fluid" src="img/news-500x280-4.jpg" alt=""></a>
+                        <a href=""><img class="img-fluid" src="{{ asset('img/news-500x280-4.jpg') }}" alt=""></a>
                     </div>
                     <!-- Ads End -->
 
                     <!-- Popular News Start -->
                     <div class="pb-3">
                         <div class="bg-light py-2 px-4 mb-3">
-                            <h3 class="m-0">Thịnh hành</h3>
+                            <h3 class="m-0">Mới Nhất</h3>
                         </div>
-                        <div class="d-flex mb-3">
-                            <img src="img/news-100x100-1.jpg" style="width: 100px; height: 100px; object-fit: cover;">
+                        @foreach ($moinhat as $item)
+                            <div class="d-flex mb-3">
+                            <img src="{{ asset(PathImages($item->hinh)) }}" style="width: 100px; height: 100px; object-fit: cover;">
                             <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                 <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
+                                    <a href="">{{ $item->tenloaitin }}</a>
                                     <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
+                                    <span>{{ format_date($item->created_at) }}</span>
                                 </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+                                <a class="h6 m-0" href="{{ route('chitiettintuc', ['id'=>$item->id, 'tieudekhongdau'=>$item->tieudekhongdau]) }}">{{ $item->tieude }}</a>
                             </div>
                         </div>
-                        <div class="d-flex mb-3">
-                            <img src="img/news-100x100-2.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="img/news-100x100-3.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="img/news-100x100-4.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="img/news-100x100-5.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <!-- Popular News End -->
                 </div>
