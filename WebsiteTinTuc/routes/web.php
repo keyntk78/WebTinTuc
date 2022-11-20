@@ -43,7 +43,7 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
         Route::get('xoa/{id}', [UserController::class, 'deleteUser'])->name('delete');
     });
 
-   
+
     Route::prefix('theloai')->name('theloai.')->group(function(){
         Route::get('/', [TheLoaiController::class, 'index'])->name('index');
 
@@ -79,10 +79,10 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
         Route::get('sua/{id}', [TinTucController::class, 'getSuaTinTuc'])->name('edit');
         Route::post('sua/{id}', [TinTucController::class, 'postSuaTinTuc'])->name('post-edit');
 
-        Route::get('xoa/{id}', [TinTucController::class, 'deleteTinTuc'])->name('delete');
+        Route::get('xoa/{id}', [TinTucController::class, 'deleteTinTuc'])->name('xoa');
     });
-    
- 
+
+
       Route::prefix('binhluan')->name('binhluan.')->group(function(){
         Route::get('/', [BinhLuanController::class, 'index'])->name('index');
 

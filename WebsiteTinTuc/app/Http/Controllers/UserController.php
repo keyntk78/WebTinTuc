@@ -13,23 +13,23 @@ class UserController extends Controller
 
     private $users;
     const _PER_PAGE = 2;
-    
+
     public function __construct()
     {
         $this->users = new User();
     }
-    
+
     public function getDangNhapAdmin(){
-        
+
         return view('admin.dangnhapadmin');
     }
 
     public function postDangNhapAdmin(Request $request){
-        
+
          $this->validate($request, [
             'email'=>'required',
             'password'=>'required|min:6|max:32'
-        ], 
+        ],
         [
             'email.required'=>'Bạn chưa nhập email',
             'password.required'=>'Bạn chưa nhập mật khẩu',
@@ -37,7 +37,7 @@ class UserController extends Controller
             'password.max'=>'Mật khẩu không được quá 32 kí tự'
         ]);
 
-         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])) 
+         if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
         {
             return redirect(route('admin'));
         } else {
@@ -52,16 +52,16 @@ class UserController extends Controller
 
 
     public function index(){
-        
+
         $user =  $this->users->DanhSachUser(self:: _PER_PAGE);
-        
+
         return view('admin.users.danhsach', compact('user'));
     }
 
 
     public function getThemUser(){
-        
-        return view('admin.users.them'); 
+
+        return view('admin.users.them');
     }
 
      public function postThemUser(Request $request){
@@ -91,7 +91,7 @@ class UserController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' =>date('Y-m-d H:i:s'),
         ];
-        
+
         $this->users->dangky($dataIsert);
         // dd($dataIsert);
 
@@ -99,7 +99,7 @@ class UserController extends Controller
     }
 
     public function getSuaUser($id = 0){
-        
+
         if(!empty($id)){
             $chitietUser = $this->users->ChiTietUser($id);
             if(!empty($chitietUser[0])){
@@ -111,11 +111,11 @@ class UserController extends Controller
         } else {
             return redirect()->route('users.index')->with('thongbao', 'Liên kết không tồn tại');
         }
-        
+
     }
 
     public function postSuaUser(Request $request,$id){
-        
+
         $request->validate([
              'hoten' => 'required',
         ],[
@@ -129,7 +129,7 @@ class UserController extends Controller
         ];
 
         $this->users->CapNhatUser($id, $dataupdate);
-        
+
         return back()->with('thongbao','Cập nhật người dùng thành công');
     }
 
@@ -138,9 +138,9 @@ class UserController extends Controller
         if(!empty($id)){
             $chitietUser = $this->users->ChiTietUser($id);
             if(!empty($chitietUser[0])){
-                
+
                 $this->users->XoaUser($id);
-                
+
                  return redirect()->route('users.index')->with('thongbao', 'Xóa người dùng thành công');
             } else {
                 return redirect()->route('users.index')->with('thongbao', 'Người dùng không tồn tại');
@@ -150,5 +150,5 @@ class UserController extends Controller
         }
     }
 
-  
+
 }
