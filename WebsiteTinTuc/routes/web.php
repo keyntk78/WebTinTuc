@@ -107,4 +107,21 @@ Route::prefix('bai-tap')->name('baitap.')->group(function(){
     Route::get('/', [BaiTapController::class, 'index'])->name('danhsach');
     Route::get('/form/baitap1', [BaiTapController::class, 'form_BaiTap1'])->name('form_bt1');
     Route::post('/form/baitap1', [BaiTapController::class, 'post_form_BaiTap1'])->name('post_form_bt1');
+
+    //bai tap 3
+    Route::get('/form/baitap3', [BaiTapController::class, 'form_BaiTap3'])->name('form_bt3');
+    Route::post('/form/baitap3', [BaiTapController::class, 'post_form_BaiTap3'])->name('post_form_bt3');
+    
+    //bai tap 6
+    Route::get('/form/baitap6', [BaiTapController::class, 'form_BaiTap6'])->name('form_bt6');
+    // Route::post('/form/baitap6', [BaiTapController::class, 'post_form_BaiTap6'])->name('post_form_bt6');
+    Route::post('/form/ketquapheptinh', [BaiTapController::class, 'form_BaiTap6_ketquapheptinh'])->name('ketquapheptinh');
+
+    //Bai tap 7
+    Route::get('/form/baitap7', [BaiTapController::class, 'form_BaiTap7'])->name('form_bt7');
+    // Route::post('/form/baitap6', [BaiTapController::class, 'post_form_BaiTap6'])->name('post_form_bt6');
+
+    //bai tap 8
+    Route::get('/form/baitap8', [BaiTapController::class, 'form_BaiTap8'])->name('form_bt8');
+    Route::post('/form/baitap8', [BaiTapController::class, 'post_form_BaiTap8'])->name('post_form_bt8');
 });
