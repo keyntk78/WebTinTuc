@@ -119,7 +119,5 @@ class PageControllers extends Controller
         // dd($dataIsert);
 
         return redirect(route("dangnhap"))->with('thongbao', 'Đăng ký thành công');
-
-
     }
 }

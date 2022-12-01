@@ -14,6 +14,13 @@ class TinTuc extends Model
        return DB::table('tintuc')->insert($data);
     }
 
+    
+    public function CapNhatTinTuc($id,$data)
+    {
+    
+        return  DB::table('tintuc')->where('id', '=', $id)->update($data);
+    }
+
     public function XoaTinTuc($id){
         return DB::table('tintuc')->delete($id);
      }
@@ -21,7 +28,6 @@ class TinTuc extends Model
      public function ChiTietTintuc($id)
      {
          $chittiet = DB::table('tintuc')->select('*')->where('id', '=', $id)->get();
-
          return $chittiet;
      }
 

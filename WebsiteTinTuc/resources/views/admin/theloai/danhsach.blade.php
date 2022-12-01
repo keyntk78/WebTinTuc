@@ -20,6 +20,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">STT</th>
+                                <th scope="col">Hình</th>
                                 <th scope="col">Tên thể loại</th>
                                 <th scope="col">Tên không dấu</th>
                                 <th scope="col"></th>
@@ -30,6 +31,7 @@
                             @foreach ($theloai as $key => $item)
                             <tr>
                                 <th scope="row">{{$key+1}}</th>
+                                <td><img width="200px" src="{{ asset(PathImages($item->hinh)) }}"></td>
                                 <td>{{$item->tentheloai}}</td>
                                 <td>{{$item->tenkhongdau}}</td>
                                 <td><a class="btn btn-primary" href="{{route('theloai.sua', ['id'=>$item->id])}}">Sửa</a></td>

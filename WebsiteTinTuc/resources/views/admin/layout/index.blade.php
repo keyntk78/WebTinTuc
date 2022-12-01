@@ -13,6 +13,9 @@
 
     <!-- Core css -->
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fontawesome/css/fontawesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/fontawesome/css/brands.css"') }} rel="stylesheet">
+    <link href="{{ asset('assets/fontawesome/css/solid.css') }}" rel="stylesheet">
 
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('ckfinder/ckfinder.js') }}"></script>

@@ -39,7 +39,7 @@
                                             <option value="">Chọn thể loại</option>
                                             @if (!empty(getAllTheLoai()))
                                             @foreach (getAllTheLoai() as $item)
-                                                <option value="{{$item->id}}" {{$item->id == $chitietloaitin->id  ? 'selected' : false }} >{{$item->tentheloai}}</option>
+                                                <option value="{{$item->id}}" {{ old('id_theloai')  == $item->id || $chitietloaitin->id_theloai == $item->id  ? 'selected' : false }} >{{$item->tentheloai}}</option>
                                             @endforeach
                                             @endif
                                         </select>
