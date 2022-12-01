@@ -37,6 +37,30 @@
                                     <td>Bài tập dạng form</td>
                                     <td><a class="btn btn-primary" href="">Xem chi tiết</a></td>
                                 </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Bài tập 3</td>
+                                    <td>Bài tập dạng form</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.form_bt3') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Bài tập 6</td>
+                                    <td>Bài tập dạng form</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.form_bt6') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Bài tập 7</td>
+                                    <td>Bài tập dạng form</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.form_bt7') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Bài tập 8</td>
+                                    <td>Bài tập dạng form</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.form_bt8') }}">Xem chi tiết</a></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
