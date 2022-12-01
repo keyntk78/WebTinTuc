@@ -107,4 +107,38 @@ Route::prefix('bai-tap')->name('baitap.')->group(function(){
     Route::get('/', [BaiTapController::class, 'index'])->name('danhsach');
     Route::get('/form/baitap1', [BaiTapController::class, 'form_BaiTap1'])->name('form_bt1');
     Route::post('/form/baitap1', [BaiTapController::class, 'post_form_BaiTap1'])->name('post_form_bt1');
+
+
+
+    //baitap chuoi
+    // bt1
+
+    Route::get('/chuoi/baitap1', [BaiTapController::class, 'chuoi_BaiTap1'])->name('chuoi_bt1');
+    Route::post('/chuoi/baitap1', [BaiTapController::class, 'post_chuoi_BaiTap1']);
+
+    //bt2
+    Route::get('/chuoi/baitap2', [BaiTapController::class, 'chuoi_BaiTap2'])->name('chuoi_bt2');
+    Route::post('/chuoi/baitap2', [BaiTapController::class, 'post_chuoi_BaiTap2']);
+    
+    //bt3
+    Route::get('/chuoi/baitap3', [BaiTapController::class, 'chuoi_BaiTap3'])->name('chuoi_bt3');
+    Route::post('/chuoi/baitap3', [BaiTapController::class, 'post_chuoi_BaiTap3']);
+
+    //bt4
+    Route::get('/chuoi/baitap4', [BaiTapController::class, 'chuoi_BaiTap4'])->name('chuoi_bt4');
+    Route::post('/chuoi/baitap4', [BaiTapController::class, 'post_chuoi_BaiTap4']);
+    
+    //bt5
+    Route::get('/chuoi/baitap5', [BaiTapController::class, 'chuoi_BaiTap5'])->name('chuoi_bt5');
+    Route::post('/chuoi/baitap5', [BaiTapController::class, 'post_chuoi_BaiTap5']);
+    //bt6
+    Route::get('/chuoi/baitap6', [BaiTapController::class, 'chuoi_BaiTap6'])->name('chuoi_bt6');
+    Route::post('/chuoi/baitap6', [BaiTapController::class, 'post_chuoi_BaiTap6']);
+
+    //bt7
+    Route::get('/chuoi/baitap7', [BaiTapController::class, 'chuoi_BaiTap7'])->name('chuoi_bt7');
+    Route::post('/chuoi/baitap7', [BaiTapController::class, 'post_chuoi_BaiTap7']);
+
+
+
 });
