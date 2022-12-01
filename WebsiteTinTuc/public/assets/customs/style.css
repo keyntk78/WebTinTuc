@@ -11,3 +11,13 @@
     width: 98%;
     /* padding-right: 20px; */
 }
+.form{
+    margin: 20px auto;
+}
+.form table{
+    background-color: #FCDDB0;
+    border-radius: 10px;
+}
+.form table tr td{
+    padding: 5px;
+}

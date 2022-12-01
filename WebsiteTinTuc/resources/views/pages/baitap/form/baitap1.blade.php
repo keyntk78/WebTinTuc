@@ -27,11 +27,11 @@
                                 }
                             }
                         ?>
-                        <form action="{{ route('baitap.post_form_bt1') }}" method="post">
+                        <form class="form" action="{{ route('baitap.post_form_bt1') }}" method="post">
                               @csrf
-                            <table bgcolor="#FEFBDC">
+                            <table>
                                 <tr>
-                                    <td colspan="3" bgcolor="#FEDA77">
+                                    <td colspan="3">
                                         <h2>DIỆN TÍCH HÌNH CHỮ NHẬT</h2>
                                     </td>
                                 </tr>
@@ -56,7 +56,7 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>
