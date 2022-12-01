@@ -3,9 +3,6 @@
 	use App\Models\LoaiTin;
 	use App\Models\TinTuc;
 
-
-
-
     function format_date($date){
         $date = date("d-m-Y", strtotime($date));
         return $date;
@@ -15,6 +12,7 @@
         $hinh_anh = 'uploads/images/' . $hinh_anh;
         return $hinh_anh;
     }
+
 
     function convert_Unsigned($str) {
 		$str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", 'a', $str);
