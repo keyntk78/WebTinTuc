@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class TinTucController extends Controller
 {
     private $tintuc;
-    const _PER_PAGE = 2;
+    const _PER_PAGE = 10;
 
     public function __construct()
     {
@@ -135,7 +135,7 @@ class TinTucController extends Controller
             'updated_at' =>date('Y-m-d H:i:s'),
         ];
 
-        
+
         $gethinh = '';
         if($request->hasFile('hinh')){
             //Hàm kiểm tra dữ liệu
@@ -160,7 +160,7 @@ class TinTucController extends Controller
         }
 
         $this->tintuc->CapNhatTinTuc($id, $dataUpdate);
-        
+
         return back()->with('thongbao','Cập nhật tin tức thành công');
     }
 
