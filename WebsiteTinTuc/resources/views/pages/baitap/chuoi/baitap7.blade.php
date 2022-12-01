@@ -70,9 +70,7 @@
                                 <td colspan="3" align="center"><?php echo $hinh;  ?></td>
                             </tr>
                         </table>
-                    </form>   
-                        
-                          
+                    </form>    
                     </div>
                 </div>
             </div>

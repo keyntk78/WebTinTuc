@@ -32,50 +32,87 @@
                                     <td><a class="btn btn-primary" href="{{ route('baitap.form_bt1') }}">Xem chi tiết</a></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">2</th>
                                     <td>Bài tập 2</td>
                                     <td>Bài tập dạng form</td>
-                                    <td><a class="btn btn-primary" href="">Xem chi tiết</a></td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.form_bt2') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Bài tập 3</td>
+                                    <td>Bài tập dạng form</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.form_bt3') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>Bài tập 4</td>
+                                    <td>Bài tập dạng form</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.form_bt4') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>Bài tập 5</td>
+                                    <td>Bài tập dạng form</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.form_bt5') }}">Xem chi tiết</a></td>
                                 </tr>
 
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">6</th>
+                                    <td>Bài tập 6</td>
+                                    <td>Bài tập dạng form</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.form_bt6') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">7</th>
+                                    <td>Bài tập 7</td>
+                                    <td>Bài tập dạng form</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.form_bt7') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>Bài tập 8</td>
+                                    <td>Bài tập dạng form</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.form_bt8') }}">Xem chi tiết</a></td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">9</th>
                                     <td>Bài tập 1</td>
                                     <td>Bài tập dạng chuỗi</td>
                                     <td><a class="btn btn-primary" href="{{ route('baitap.chuoi_bt1') }}">Xem chi tiết</a></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">10</th>
                                     <td>Bài tập 2</td>
                                     <td>Bài tập dạng chuỗi</td>
                                     <td><a class="btn btn-primary" href="{{ route('baitap.chuoi_bt2') }}">Xem chi tiết</a></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">11</th>
                                     <td>Bài tập 3</td>
                                     <td>Bài tập dạng chuỗi</td>
                                     <td><a class="btn btn-primary" href="{{ route('baitap.chuoi_bt3') }}">Xem chi tiết</a></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">12</th>
                                     <td>Bài tập 4</td>
                                     <td>Bài tập dạng chuỗi</td>
                                     <td><a class="btn btn-primary" href="{{ route('baitap.chuoi_bt4') }}">Xem chi tiết</a></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">13</th>
                                     <td>Bài tập 5</td>
                                     <td>Bài tập dạng chuỗi</td>
                                     <td><a class="btn btn-primary" href="{{ route('baitap.chuoi_bt5') }}">Xem chi tiết</a></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">14</th>
                                     <td>Bài tập 6</td>
                                     <td>Bài tập dạng chuỗi</td>
                                     <td><a class="btn btn-primary" href="{{ route('baitap.chuoi_bt6') }}">Xem chi tiết</a></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">15</th>
                                     <td>Bài tập 7</td>
                                     <td>Bài tập dạng chuỗi</td>
                                     <td><a class="btn btn-primary" href="{{ route('baitap.chuoi_bt7') }}">Xem chi tiết</a></td>
@@ -85,7 +122,6 @@
                     </div>
                 </div>
             </div>
-           
         </div>
     </div>
     </div>
