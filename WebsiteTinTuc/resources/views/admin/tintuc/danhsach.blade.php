@@ -25,10 +25,10 @@
                         <thead>
                             <tr>
                                 <th scope="col">STT</th>
+                                <th scope="col">Hinh</th>
                                 <th scope="col">Tiêu đề</th>
                                 <th scope="col">Tiêu đề không dấu</th>
                                 <th scope="col">Nổi bật</th>
-                                <th scope="col">Số lượt xem</th>
                                 <th scope="col">Loại tin</th>
                                 <th scope="col">Sửa</th>
                                 <th scope="col">Xóa</th>
@@ -38,6 +38,7 @@
                             @foreach ($tintuc as $key => $item)
                             <tr>
                                 <th scope="row">{{$key+1}}</th>
+                                <td><img width="100px" src="{{ asset(PathImages($item->hinh)) }}"></td>
                                 <td>{{$item->tieude}}</td>
                                 <td>{{$item->tieudekhongdau}}</td>
                                 <td>
@@ -47,10 +48,8 @@
                                         Không
                                     @endif
                                 </td>
-
-                                <td>{{$item->soluotxem}}</td>
                                 <td>{{$item->tenloaitin}}</td>
-                                <td><a class="btn btn-primary" href="">Sửa</a></td>
+                                <td><a class="btn btn-primary" href="{{route('tintuc.sua',['id'=>$item->id])}}">Sửa</a></td>
                                 <td><a class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"  href="{{route('tintuc.xoa',['id'=>$item->id])}}">Xóa</a></td>
                             </tr>
                             @endforeach

@@ -9,6 +9,8 @@ use App\Http\Controllers\LoaiTinController;
 use App\Http\Controllers\TinTucController;
 use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\PageControllers;
+use App\Http\Controllers\BaiTapController;
+
 
 
 // Phần admin
@@ -72,7 +74,7 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
         Route::get('them', [TinTucController::class, 'getThemTinTuc'])->name('them');
         Route::post('them', [TinTucController::class, 'postThemTinTuc'])->name('them');;
 
-        Route::get('sua/{id}', [TinTucController::class, 'getSuaTinTuc'])->name('edit');
+        Route::get('sua/{id}', [TinTucController::class, 'getSuaTinTuc'])->name('sua');
         Route::post('sua/{id}', [TinTucController::class, 'postSuaTinTuc'])->name('post-edit');
 
         Route::get('xoa/{id}', [TinTucController::class, 'deleteTinTuc'])->name('xoa');
@@ -98,3 +100,11 @@ Route::get('/dangxuat', [PageControllers::class, 'dangxuat'])->name('dangxuat');
 Route::post('/dangnhap', [PageControllers::class, 'postDangNhap'])->name('dangnhap');
 Route::get('/dangky', [PageControllers::class, 'getDangKy'])->name('dangky');
 Route::post('/dangky', [PageControllers::class, 'postDangKy'])->name('dangky');
+
+
+// bài tập
+Route::prefix('bai-tap')->name('baitap.')->group(function(){
+    Route::get('/', [BaiTapController::class, 'index'])->name('danhsach');
+    Route::get('/form/baitap1', [BaiTapController::class, 'form_BaiTap1'])->name('form_bt1');
+    Route::post('/form/baitap1', [BaiTapController::class, 'post_form_BaiTap1'])->name('post_form_bt1');
+});

@@ -26,9 +26,12 @@
                                 <b>
                                     <p>{{ $chitiettintuc->tomtat }}</p>
                                 </b>
-                                 <div class="noidung">
-                                    {!! $chitiettintuc->noidung !!}
-                                 </div>
+                                
+                            </div>
+                            <div class="noidung">
+                                
+                                {!! $chitiettintuc->noidung !!}
+                                
                             </div>
                         </div>
                     </div>

@@ -92,14 +92,76 @@ class TinTucController extends Controller
       return back()->with('thongbao', 'Thêm thành công');
     }
 
-    public function getSuaTinTuc(){
+    public function getSuaTinTuc($id){
+
+           if(!empty($id)){
+            $chitiettintuc = $this->tintuc->ChiTietTintuc($id);
+            if(!empty($chitiettintuc[0])){
+                $chitiettintuc = $chitiettintuc[0];
+                 return view('admin.tintuc.sua', compact('chitiettintuc'));
+            } else {
+                return redirect()->route('tintuc.index')->with('thongbao', 'Tin tức  không tồn tại');
+            }
+        } else {
+            return redirect()->route('tintuc.index')->with('thongbao', 'Liên kết không tồn tại');
+        }
 
         return view('admin.tintuc.sua');
     }
 
-    public function postSuaTinTuc(){
+    public function postSuaTinTuc(Request $request, $id){
 
-        return 'sua thanh công';
+         $request->validate([
+            'tieude' => 'required',
+            'id_loaitin' => 'required',
+            'tomtat' => 'required',
+            'noidung' => 'required',
+        ],[
+            'tieude.required' => 'Tên thể loại không được để trống',
+            'id_loaitin.required' => 'Phải chọn loại tin',
+            'tomtat.required' => 'Tóm tắt không được để trống',
+            'noidung.required' => 'Nội dung không được để trống',
+        ]);
+
+        $dataUpdate = [
+            'tieude' => $request->tieude,
+            'tieudekhongdau' => convert_Unsigned($request->tieude),
+            'id_loaitin' => $request->id_loaitin,
+            'tomtat' => $request->tomtat,
+            'noidung' => $request->noidung,
+            'noibat' =>$request->noibat,
+            'id_user' => Auth::user()->id,
+            'soluotxem' => 0,
+            'updated_at' =>date('Y-m-d H:i:s'),
+        ];
+
+        
+        $gethinh = '';
+        if($request->hasFile('hinh')){
+            //Hàm kiểm tra dữ liệu
+            $this->validate($request,
+                [
+                    //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
+                    'hinh' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                ],
+                [
+                    //Tùy chỉnh hiển thị thông báo không thõa điều kiện
+                    'hinh.mimes' => 'Chỉ chấp nhận hình thẻ với đuôi .jpg .jpeg .png .gif',
+                    'hinh.max' => 'Hình thẻ giới hạn dung lượng không quá 2M',
+                ]
+            );
+            //Lưu hình ảnh vào thư mục public/upload/hinhthe
+            $hinh = $request->file('hinh');
+            $gethinh = time().'_'.$hinh->getClientOriginalName();
+            $destinationPath = public_path('uploads/images');
+            $hinh->move($destinationPath, $gethinh);
+
+            $dataUpdate = $dataUpdate + ['hinh' => $gethinh];
+        }
+
+        $this->tintuc->CapNhatTinTuc($id, $dataUpdate);
+        
+        return back()->with('thongbao','Cập nhật tin tức thành công');
     }
 
      public function deleteTinTuc($id){
