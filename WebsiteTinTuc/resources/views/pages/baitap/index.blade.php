@@ -37,6 +37,67 @@
                                     <td>Bài tập dạng form</td>
                                     <td><a class="btn btn-primary" href="">Xem chi tiết</a></td>
                                 </tr>
+
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Bài tập 1</td>
+                                    <td>Bài tập dạng sql</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.sql_bt1') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Bài tập 2</td>
+                                    <td>Bài tập dạng sql</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.sql_bt2') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Bài tập 3</td>
+                                    <td>Bài tập dạng sql</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.sql_bt3') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Bài tập 4</td>
+                                    <td>Bài tập dạng sql</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.sql_bt4') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Bài tập 5</td>
+                                    <td>Bài tập dạng sql</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.sql_bt5') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Bài tập 6</td>
+                                    <td>Bài tập dạng sql</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.sql_bt6') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Bài tập 7</td>
+                                    <td>Bài tập dạng sql</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.sql_bt7') }}">Xem chi tiết</a></td>
+                                </tr>
+                                {{-- <tr>
+                                    <th scope="row">1</th>
+                                    <td>Bài tập 8</td>
+                                    <td>Bài tập dạng sql</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.sql_bt8') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Bài tập 9</td>
+                                    <td>Bài tập dạng sql</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.sql_bt9') }}">Xem chi tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Bài tập 10</td>
+                                    <td>Bài tập dạng sql</td>
+                                    <td><a class="btn btn-primary" href="{{ route('baitap.sql_bt10') }}">Xem chi tiết</a></td>
+                                </tr> --}}
                             </tbody>
                         </table>
                     </div>
