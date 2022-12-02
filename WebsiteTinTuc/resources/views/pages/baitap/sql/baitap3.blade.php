@@ -1,22 +1,25 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 3
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
-    
+
 <style>
     tr th {
         text-align: center;
         color: red;
     }
-    
+
     tr:nth-child(even) {
         background-color: #FEE0C1;
     }
-    
+
     table,
     tr {
         text-align: center;
     }
-    
+
     th,
     td {
         text-align: left;
@@ -34,7 +37,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between bg-light">
+                    <div class="d-flex mk align-items-center justify-content-between bg-light">
                     <h1 style="text-align: center;color:#2A7FAA">THÔNG TIN KHÁCH HÀNG</h1>
                     <table border="1" align="center">
                         <tr>
@@ -44,7 +47,7 @@
                             <th>Địa chỉ</th>
                             <th>Số điện thoại</th>
                         </tr>
-                        <?php 
+                        <?php
                             $servername = "localhost";
                             $username = "root";
                             $password = "";
@@ -59,9 +62,9 @@
                             if(mysqli_num_rows($result)!= 0){
                                 while($rows=mysqli_fetch_array($result))
                                 {
-                                    
+
                                     if($rows["Phai"] == 1) {
-                                        
+
                                         $avatar = "<img width=\"60px\" height=\"60px\" src='$duongdan/female.jpeg' alt=\"hinh ảnh\">";
                                     } else{
                                         $avatar = "<img width=\"60px\" height=\"60px\" src='$duongdan/male.jpeg' alt=\"hinh ảnh\">";
@@ -81,7 +84,7 @@
                     <img src="" alt="">
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

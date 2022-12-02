@@ -1,5 +1,7 @@
 @extends('admin.layout.index')
-
+@section('tittle')
+    Thêm tin tức
+@endsection
 @section('content')
               <!-- Content Wrapper START -->
                 <div class="main-content">
@@ -11,12 +13,12 @@
                                 <span class="breadcrumb-item active">Thêm tin tức</span>
                             </nav>
                         </div>
-                    </div> 
+                    </div>
                        @if(session('thongbao'))
                            <div class="alert alert-success">
                                 {{ session('thongbao') }}
                             </div>
-                        @endif     
+                        @endif
                     <div class="card">
                         <div class="card-body">
                             <h4>Thêm Tin tức</h4>
@@ -66,7 +68,7 @@
                                             @enderror
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Hình ảnh</label>
@@ -96,7 +98,7 @@
                   <script>
                         // Replace the <textarea id="editor1"> with a CKEditor 4
                         // instance, using default configuration.
-                        
+
                         CKEDITOR.replace( 'editor1', {
                             filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
                             filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}'

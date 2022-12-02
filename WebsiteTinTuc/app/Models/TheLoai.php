@@ -32,6 +32,11 @@ class TheLoai extends Model
         return  DB::table('theloai')->where('id', '=', $id)->update($data);
     }
 
+    public function Xoatheloai($id)
+    {
+        return  DB::table('theloai')->where('id', '=', $id)->delete();
+    }
+
     // danh sách 4 thể loại đầu tiên
      public function Top_4_Theloai(){
         $list = DB::table('theloai')

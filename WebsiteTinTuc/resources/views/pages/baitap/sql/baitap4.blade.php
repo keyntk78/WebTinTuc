@@ -1,4 +1,7 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 4
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
 <style>
@@ -8,18 +11,18 @@
         border-collapse: collapse;
         width: 50%;
     }
-    
+
     th,
     td {
         border: solid 0.5px;
         text-align: left;
         padding: 8px;
     }
-    
+
     tr:nth-child(even) {
         background-color: #16703681;
     }
-    
+
     .center {
         margin-left: auto;
         margin-right: auto;
@@ -37,7 +40,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between bg-light">
+                    <div class="d-flex mk align-items-center justify-content-between bg-light">
                     <h1 style="text-align: center;color:#2A7FAA">THÔNG TIN KHÁCH HÀNG</h1>
                     <table border="1" align="center">
                         <tr>
@@ -47,12 +50,12 @@
                             <th>Địa chỉ</th>
                             <th>Số điện thoại</th>
                         </tr>
-                        <?php 
+                        <?php
                             $servername = "localhost";
                             $username = "root";
                             $password = "";
                             $dbname = "quan_ly_ban_sua";
-
+                            $duongdan =  asset('uploads/images/');
                             $conn=mysqli_connect($servername, $username, $password, $dbname);
                             if(!$conn) echo "Kết nối thất bại";
                             mysqli_set_charset($conn, 'utf8');
@@ -62,9 +65,9 @@
                                 while($rows=mysqli_fetch_array($result))
                                 {
                                     if($rows["Phai"] == 1) {
-                                        $avatar = '<img width="60px" height="60px" src="../../../../../public/uploads/images/female.jpeg" alt="">';
+                                        $avatar = "<img width=\"60px\" height=\"60px\" src='$duongdan/female.jpeg' alt=\"hinh ảnh\">";
                                     } else{
-                                        $avatar = '<img width="60px" height="60px" src="../../../../../public/uploads/images/male.jpeg" alt="">';
+                                        $avatar = "<img width=\"60px\" height=\"60px\" src='$duongdan/male.jpeg' alt=\"hinh ảnh\">";
                                     }
                                     echo '<tr>
                                         <td>'.$rows["Ma_khach_hang"].'</td>
@@ -80,7 +83,7 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

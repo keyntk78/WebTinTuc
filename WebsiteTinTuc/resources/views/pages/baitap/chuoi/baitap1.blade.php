@@ -1,4 +1,7 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 1
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
     <div class="container-fluid py-3">
@@ -45,16 +48,16 @@
                                 $n = $_POST["n"];
                                 $arr = array();
                                 if(filter_var($n, FILTER_VALIDATE_INT) && $n > 0){
-                                    for ($i=0; $i < $n; $i++) { 
+                                    for ($i=0; $i < $n; $i++) {
                                         $arr[$i] = rand(-200,200);
-                                    }   
+                                    }
 
                                     $dem = demSOChan($arr, $n);
                                     $dembe100 = dembe100($arr, $n);
                                 } else {
                                     $kq = "Số nguyên dương";
                                 }
-                                
+
                             }
                         ?>
 
@@ -92,11 +95,20 @@
                             </form>
 
 
+<<<<<<< HEAD
+=======
+                            <p><?php
+                                echo "MẢNG: ";
+                                for ($i=0; $i < $n; $i++) {
+                                    echo $arr[$i]. ", ";
+                                }
+                            ?></p>
+>>>>>>> 2fc86a7463c68d4d8be435bb1c36f8e9b72af217
 
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

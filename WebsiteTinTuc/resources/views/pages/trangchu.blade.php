@@ -1,4 +1,8 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Trang chủ
+@endsection
+
 
 @section('content')
 @if(session('thongbao'))
@@ -75,7 +79,7 @@
                     </div>
                 </div>
                 @endforeach
-               
+
             </div>
         </div>
     </div>
@@ -141,7 +145,7 @@
         </div>
     </div>
 
- 
+
 
     </div>
     <!-- News With Sidebar End -->

@@ -1,4 +1,5 @@
 @extends('admin.layout.index')
+
 @section('content')
 <div class="main-content">
     <div class="page-header">
@@ -10,35 +11,32 @@
             </nav>
         </div>
     </div>
-     @if(session('thongbao'))
-    <div class="alert alert-success">
-         {{ session('thongbao') }}
-     </div>
- @endif
     <div class="card">
         <div class="card-body">
-            <h4>Danh sách bình luận</h4>
+            <h4>Danh sách Video</h4>
             <div class="m-t-25">
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">STT</th>
-                                <th scope="col">Tin tức</th>
-                                <th scope="col">Nội dung</th>
-                                <th scope="col">Người dùng</th>
+                                <th scope="col">Tiêu đề</th>
+                                <th scope="col">Tiêu đề không dấu</th>
+                                <th scope="col">Link</th>
+                                <th scope="col"></th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($dsBinhLuan as $key => $item)
+                            
+                            @foreach ($video as $key => $item)
                             <tr>
                                 <th scope="row">{{$key+1}}</th>
-                                <td>{{ $item->tieudetintuc }}</td>
-                                 <td>{{ $item->noidung }}</td>
-                                <td>{{ $item->hoten }}</td>
-
-                                 <td><a class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')"  href="{{ route('binhluan.xoa', ['id'=>$item->id]) }}">Xóa</a></td>
+                                <td>{{$item->tieude}}</td>
+                                <td>{{$item->tieudekhongdau}}</td>
+                                <td>{{$item->link}}</td>
+                                <td><a class="btn btn-primary" href="{{route('video.sua', ['id'=>$item->id])}}">Sửa</a></td>
+                                <td><a class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa video?')"  href="{{route('video.xoa',['id'=>$item->id])}}">Xóa</a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -49,5 +47,6 @@
         </div>
     </div>
 </div>
-    
+
+
 @endsection

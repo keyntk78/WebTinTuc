@@ -1,5 +1,7 @@
 @extends('pages.layouts.index')
-
+@section('tittle')
+    Thể loại
+@endsection
 @section('content')
 @if(session('thongbao'))
 <div class="alert alert-success">
@@ -33,9 +35,9 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach                       
+                        @endforeach
                     </div>
-                   
+
                 </div>
             </div>
         </div>

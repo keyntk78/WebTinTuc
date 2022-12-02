@@ -1,24 +1,27 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 7
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
- 
+
 <style>
     table,
     tr {
         text-align: center;
     }
-    
+
     ul {
         list-style-type: none;
         margin-left: -35px;
     }
     </style>
-    
+
     <div class="container-fluid py-3">
         <div class="container">
             <div class="row">
                  <div class="col-12">
-                            <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                            <div class="d-flex align-items-center justify-content-between fle bg-light py-2 px-4 mb-3">
                                 <h3 class="m-0">Bài tập sql - Bài tập 7</h3>
                             </div>
                         </div>
@@ -33,7 +36,7 @@
                         $dbname="quan_ly_ban_sua";
                         $conn=mysqli_connect($servername, $username, $password, $dbname);
                         mysqli_set_charset($conn, 'utf8');
-                        $query = "SELECT * FROM sua 
+                        $query = "SELECT * FROM sua
                                  join loai_sua  on sua.Ma_loai_sua = loai_sua.Ma_loai_sua
                                  join hang_sua  on sua.Ma_hang_sua = hang_sua.Ma_hang_sua";
                         $result = mysqli_query($conn,$query);
@@ -58,9 +61,14 @@
                                     {
                                         echo "<tr>";
                                     }
+                                    
+                                    
+                                    // <a href="chitietsanpham.php?id='.$rows["Ma_sua"].'"><b>'.$rows["Ten_sua"].'</b></a>
+                                    // <a class="h4" href="{{ route('chitietsanpham', ['id'=>$rows["Ma_sua"]]) }}"><b>'.$rows["Ten_sua"].'</b></a>
+
                                     echo '<td>
                                         <ul align="center">
-                                            <li><a href="chitietsanpham.php?id='.$rows["Ma_sua"].'"><b>'.$rows["Ten_sua"].'</b></a></li>
+                                            <li><a href="/bai-tap/sql/chitietsanpham?id='.$rows["Ma_sua"].'"><b>'.$rows["Ten_sua"].'</b></a></li>
                                             <li>'.$rows["Trong_luong"].' gr - '.$rows["Don_gia"].' VNĐ</li>
                                              <li><img style="width: 110px; height: 110px;" src="'.$duongdan.''."/".''.$rows["Hinh"].'" ></li>
                                         </ul>
@@ -79,7 +87,7 @@
                     <img src="" alt="">
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

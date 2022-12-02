@@ -1,4 +1,7 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 3
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
     <div class="container-fluid py-3">
@@ -13,10 +16,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between bg-light">
-                        <?php 
+                        <?php
                                 function tao_mang ($n) {
                                     $arr = array();
-                                    for ($i=0; $i < $n; $i++) { 
+                                    for ($i=0; $i < $n; $i++) {
                                         $arr[$i] = rand(0,20);
                                     }
                                     return $arr;
@@ -29,7 +32,7 @@
 
                                 function tim_max($arr){
                                     $max = $arr[0];
-                                    for ($i=1; $i < count($arr); $i++) { 
+                                    for ($i=1; $i < count($arr); $i++) {
                                         if($max < $arr[$i]) $max = $arr[$i];
                                     }
                                     // $max = max($arr);
@@ -106,12 +109,12 @@
                                         </td>
                                     </tr>
                                 </table>
-                        
+
                             </form>
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

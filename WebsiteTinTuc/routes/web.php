@@ -10,6 +10,8 @@ use App\Http\Controllers\TinTucController;
 use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\PageControllers;
 use App\Http\Controllers\BaiTapController;
+use App\Http\Controllers\VideoController;
+
 
 
 
@@ -27,7 +29,7 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
     Route::get('/', [HomeController::class, 'index'])->name('admin');
     Route::get('/doimatkhau', [HomeController::class, 'DoiMatKhau'])->name('doimatkhau');
     Route::post('/doimatkhau', [HomeController::class, 'postDoiMatKhau'])->name('doimatkhau');
-    
+
     Route::get('/thongtinnguoidung', [HomeController::class, 'thongTinNguoiDung'])->name('thongtin');
     Route::post('/thongtinnguoidung', [HomeController::class, 'post_thongTinNguoiDung']);
 
@@ -56,6 +58,18 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
         Route::post('sua/{id}', [TheLoaiController::class, 'postSuaTheLoai'])->name('post-edit');
 
         Route::get('xoa/{id}', [TheLoaiController::class, 'deleteTheLoai'])->name('xoa');
+    });
+
+    Route::prefix('video')->name('video.')->group(function(){
+        Route::get('/', [VideoController::class, 'index'])->name('index');
+
+        Route::get('them', [VideoController::class, 'getThemVideo'])->name('them');
+        Route::post('them', [VideoController::class, 'postThemVideo'])->name('post-them');;
+
+        Route::get('sua/{id}', [VideoController::class, 'getSuaVideo'])->name('sua');
+        Route::post('sua/{id}', [VideoController::class, 'postSuaVideo'])->name('post-edit');
+
+        Route::get('xoa/{id}', [VideoController::class, 'deleteVideo'])->name('xoa');
     });
 
 
@@ -88,7 +102,7 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
       Route::prefix('binhluan')->name('binhluan.')->group(function(){
         Route::get('/', [BinhLuanController::class, 'index'])->name('index');
 
-        Route::get('xoa/{id}', [BinhLuanController::class, 'deleteBinhLuan'])->name('delete');
+        Route::get('xoa/{id}', [BinhLuanController::class, 'deleteBinhLuan'])->name('xoa');
     });
 
 });
@@ -104,6 +118,9 @@ Route::get('/video', [PageControllers::class, 'danhSachVideo'])->name('video');
 Route::get('/tim-kiem', [PageControllers::class, 'TimKiem'])->name('timkiem');
 Route::get('/send-mail', [PageControllers::class, 'sendMail'])->name('senmail');
 
+Route::get('/thongtin', [PageControllers::class, 'thongtinngoai'])->name('thongtinngoai');
+
+Route::get('/thongtinchitietcanhan', [PageControllers::class, 'thongtinchitietcanhan'])->name('thongtinchitietcanhan');
 
 
 Route::get('/dangnhap', [PageControllers::class, 'dangnhap'])->name('dangnhap');
@@ -130,7 +147,7 @@ Route::prefix('bai-tap')->name('baitap.')->group(function(){
     //bt2
     Route::get('/chuoi/baitap2', [BaiTapController::class, 'chuoi_BaiTap2'])->name('chuoi_bt2');
     Route::post('/chuoi/baitap2', [BaiTapController::class, 'post_chuoi_BaiTap2']);
-    
+
     //bt3
     Route::get('/chuoi/baitap3', [BaiTapController::class, 'chuoi_BaiTap3'])->name('chuoi_bt3');
     Route::post('/chuoi/baitap3', [BaiTapController::class, 'post_chuoi_BaiTap3']);
@@ -138,7 +155,7 @@ Route::prefix('bai-tap')->name('baitap.')->group(function(){
     //bt4
     Route::get('/chuoi/baitap4', [BaiTapController::class, 'chuoi_BaiTap4'])->name('chuoi_bt4');
     Route::post('/chuoi/baitap4', [BaiTapController::class, 'post_chuoi_BaiTap4']);
-    
+
     //bt5
     Route::get('/chuoi/baitap5', [BaiTapController::class, 'chuoi_BaiTap5'])->name('chuoi_bt5');
     Route::post('/chuoi/baitap5', [BaiTapController::class, 'post_chuoi_BaiTap5']);
@@ -180,7 +197,7 @@ Route::prefix('bai-tap')->name('baitap.')->group(function(){
     Route::get('/form/baitap8', [BaiTapController::class, 'form_BaiTap8'])->name('form_bt8');
     Route::post('/form/baitap8', [BaiTapController::class, 'post_form_BaiTap8'])->name('post_form_bt8');
 
-    //baitap sql 
+    //baitap sql
     // bai tap 1
     Route::get('/sql/baitap1', [BaiTapController::class, 'sql_baitap1'])->name('sql_bt1');
     // Route::post('/sql/baitap1', [BaiTapController::class, 'post_form_BaiTap1'])->name('post_form_bt1');
@@ -196,10 +213,13 @@ Route::prefix('bai-tap')->name('baitap.')->group(function(){
     Route::get('/sql/baitap6', [BaiTapController::class, 'sql_baitap6'])->name('sql_bt6');
      // bai tap 7
     Route::get('/sql/baitap7', [BaiTapController::class, 'sql_baitap7'])->name('sql_bt7');
+
+    Route::get('/sql/chitietsanpham', [BaiTapController::class, 'sql_chitietsanpham'])->name('chitietsanpham');
+
     // bai tap 8
     Route::get('/sql/baitap8', [BaiTapController::class, 'sql_baitap8'])->name('sql_bt8');
     // bai tap 9
-    Route::get('/sql/baitap8', [BaiTapController::class, 'sql_baitap9'])->name('sql_bt9');
+    Route::get('/sql/baitap9', [BaiTapController::class, 'sql_baitap9'])->name('sql_bt9');
     // bai tap 10
     Route::get('/sql/baitap10', [BaiTapController::class, 'sql_baitap10'])->name('sql_bt10');
 

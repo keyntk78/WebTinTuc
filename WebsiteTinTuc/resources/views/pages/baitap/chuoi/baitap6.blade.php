@@ -1,4 +1,7 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 6
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
     <div class="container-fluid py-3">
@@ -23,8 +26,8 @@
 
 
                         function sap_tang($arr) {
-                            for ($i=0; $i < count($arr); $i++) { 
-                                for ($j=$i + 1; $j < count($arr); $j++) { 
+                            for ($i=0; $i < count($arr); $i++) {
+                                for ($j=$i + 1; $j < count($arr); $j++) {
                                     if ($arr[$i] > $arr[$j]) {
                                         hoan_vi($arr[$i], $arr[$j]);
                                     }
@@ -35,8 +38,8 @@
                         }
 
                         function sap_giam($arr) {
-                            for ($i=0; $i < count($arr); $i++) { 
-                                for ($j=$i + 1; $j < count($arr); $j++) { 
+                            for ($i=0; $i < count($arr); $i++) {
+                                for ($j=$i + 1; $j < count($arr); $j++) {
                                     if ($arr[$i] < $arr[$j]) {
                                         hoan_vi($arr[$i], $arr[$j]);
                                     }
@@ -55,7 +58,7 @@
                         if(isset($_POST['submit'])){
                             $day_so = $_POST['dayso'];
                             $a = explode(",", $day_so);
-                            
+
                             foreach($a as $value){
                                 if (!is_numeric($value)) {
                                     $day_so = "Mãng không chứ ký tự!";
@@ -113,14 +116,14 @@
                                         <p> <span style="color: red;">(*)</span> Các dấu được nhập cách nhau bằng dấu ","</p>
                                     </td>
                                 </tr>
-                    
+
                             </table>
                         </form>
-                          
+
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

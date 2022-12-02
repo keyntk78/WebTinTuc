@@ -1,4 +1,7 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 1
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
     <div class="container-fluid py-3">

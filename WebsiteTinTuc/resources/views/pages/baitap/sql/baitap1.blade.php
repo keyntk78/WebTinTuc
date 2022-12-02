@@ -1,4 +1,7 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 1
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
     <style>
@@ -6,16 +9,16 @@
             text-align: center;
             color: red;
         }
-        
+
         tr:nth-child(even) {
             background-color: #FEE0C1;
         }
-        
+
         table,
         tr {
             text-align: center;
         }
-        
+
         th,
         td {
             text-align: left;
@@ -26,6 +29,7 @@
         <div class="container">
             <div class="row">
                  <div class="col-12">
+                    
                             <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
                                 <h3 class="m-0">Bài tập sql - Bài tập 1</h3>
                             </div>
@@ -33,7 +37,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between bg-light">
+                    <div class="d-flex align-items-center mk justify-content-between bg-light">
                         <h1 style="text-align:center; font-style: italic; color:#2A7FAA ">THÔNG TIN HÃNG SỮA</h1>
                             <table border="1" align="center">
                                 <tr>
@@ -44,7 +48,7 @@
                                     <th>Email</th>
 
                                 </tr>
-                                <?php 
+                                <?php
                                     $servername="localhost";
                                     $username="root";
                                     $password="";
@@ -72,7 +76,7 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

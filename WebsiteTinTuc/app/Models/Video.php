@@ -14,6 +14,24 @@ class Video extends Model
         $list = DB::table('video')->get();
         return $list;
     }
-
+    public function ThemVideo($data){
+        return DB::table('video')->insert($data);  
+     }
     
+     public function ChiTietVideo($id)
+    {
+        $chittiet = DB::table('video')->select('*')->where('id', '=', $id)->get();
+
+        return $chittiet;
+    }
+
+    public function CapNhatVideo($id,$data)
+    {
+    
+        return  DB::table('video')->where('id', '=', $id)->update($data);
+    }
+
+    public function XoaVideo($id){
+        return DB::table('video')->delete($id);
+     }
 }

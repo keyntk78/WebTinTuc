@@ -1,4 +1,7 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 5
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
     <div class="container-fluid py-3">
@@ -13,10 +16,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between bg-light">
-                        <?php   
+                        <?php
 
                             function thay_the($arr, $cu, $moi){
-                                for ($i=0; $i < count($arr); $i++) { 
+                                for ($i=0; $i < count($arr); $i++) {
                                     if ($arr[$i] == $cu) {
                                         $arr[$i] = $moi;
                                     }
@@ -103,7 +106,7 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

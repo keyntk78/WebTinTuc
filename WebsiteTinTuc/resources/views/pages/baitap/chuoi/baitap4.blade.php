@@ -1,4 +1,7 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 4
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
     <div class="container-fluid py-3">
@@ -13,13 +16,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between bg-light">
-                        <?php 
+                        <?php
                             function tim_kiem($arr, $giatri) {
-                                for ($i=0; $i < count($arr); $i++) { 
+                                for ($i=0; $i < count($arr); $i++) {
                                     if ($arr[$i] == $giatri) {
                                         return $i;
                                     }
-                                } 
+                                }
 
                                 return -1;
                             }
@@ -28,7 +31,7 @@
                             $giatri = "";
                             $mang = "";
                             $kq = "";
-                            
+
                             $erro = 0;
 
                             if(isset($_POST['submit']) && isset($_POST['dayso']) && isset($_POST['giatri'])){
@@ -37,7 +40,7 @@
 
                                 $a = explode(",", $txt_dayso);
 
-                                
+
                                 foreach ($a as $value){
                                     if (!is_numeric($value)){
                                         $txt_dayso="Dãy số không được có kí tự";
@@ -50,7 +53,7 @@
                                     $erro = 1;
                                 }
 
-                            
+
                                 if($erro == 0) {
                                     $mang = implode(", ", $a );
                                     $kq_tim = tim_kiem($a, $giatri);
@@ -61,7 +64,7 @@
                                     }
 
                                 }
-                            
+
 
                             }
                         ?>
@@ -101,7 +104,7 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>
