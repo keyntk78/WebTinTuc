@@ -1,9 +1,11 @@
 @extends('pages.layouts.index')
+
 @section('tittle')
     Đăng nhập
 @endsection
+
 @section('content')
-    <!-- Contact Start -->
+    <!-- Start: Nội dung -->
     <div class="container-fluid py-3">
         <div class="container">
             <div class="bg-light py-2 px-4 mb-3">
@@ -53,5 +55,5 @@
             </div>
         </div>
     </div>
-    <!-- Contact End -->
+    <!-- End: Nội dung -->
 @endsection

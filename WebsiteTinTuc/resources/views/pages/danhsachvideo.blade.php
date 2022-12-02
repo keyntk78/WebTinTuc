@@ -1,4 +1,5 @@
 @extends('pages.layouts.index')
+
 @section('tittle')
     Video
 @endsection
@@ -10,7 +11,7 @@
         {{ session('thongbao') }}
     </div>
 @endif
-     <!-- News With Sidebar Start -->
+     <!-- Start: Nội dung-->
     <div class="container-fluid py-3">
         <div class="container">
             <div class="row">
@@ -24,7 +25,6 @@
                         @foreach ($dsVideo as $item)
                             <div class="col-lg-6">
                                 <div class="position-relative mb-3">
-                                     {{-- <img class="img-fluid w-100 theloai" src="{{ asset(PathImages($item->hinh)) }}" style="object-fit: cover;"> --}}
                                     <div class="overlay position-relative bg-light video">
                                            <iframe  width="100%" height="300" src="{{ $item->link }}" frameborder="0" allowfullscreen></iframe>
                                         </iframe>
@@ -39,8 +39,18 @@
                     </div>
                 </div>
             </div>
+              <!-- Start: Phân trang -->
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="Page navigation">
+                      <ul class="pagination justify-content-center">
+                         {{ $dsVideo->withQueryString()->links() }}
+                    </nav>
+                </div>
+            </div>
+             <!-- End: Phân trang -->
         </div>
     </div>
     </div>
-    <!-- News With Sidebar End -->
+    <!-- End: Nội dung -->
 @endsection

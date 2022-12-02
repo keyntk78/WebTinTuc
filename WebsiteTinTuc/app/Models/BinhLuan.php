@@ -18,6 +18,7 @@ class BinhLuan extends Model
         return $list;
     }
 
+    // Lấy danh sách các bình luận theo tin tức
       public function DSBinhLuanTheoTin($id)
     {
         $list = DB::table('binhluan')->select('binhluan.*' ,'users.hoten as hoten', 'users.avatar as avatar')
@@ -26,6 +27,8 @@ class BinhLuan extends Model
         return $list;
     }
 
+
+    // Lấy số lượng bình luận theo tin tức
     public function SoLuongBinhLuan($id)
     {
         $list = DB::table('binhluan')->select('*')

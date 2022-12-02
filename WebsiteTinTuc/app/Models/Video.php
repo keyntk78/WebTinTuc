@@ -10,10 +10,19 @@ class Video extends Model
 {
     use HasFactory;
 
-    public function DanhsachVideo(){
-        $list = DB::table('video')->get();
+    // Lấy thông tin danh sách video
+    public function DanhsachVideo($per_page = null){
+        $list = DB::table('video');
+        
+        if (!empty($per_page)) {
+                    $list = $list->paginate($per_page);
+                } else {
+                    $list = $list->get();
+                }
+                
         return $list;
     }
+    
     public function ThemVideo($data){
         return DB::table('video')->insert($data);  
      }

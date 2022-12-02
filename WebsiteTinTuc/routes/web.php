@@ -12,6 +12,51 @@ use App\Http\Controllers\PageControllers;
 use App\Http\Controllers\BaiTapController;
 use App\Http\Controllers\VideoController;
 
+/**Phần Page */
+
+// trang chủ
+Route::get('/', [PageControllers::class, 'index'])->name('trangchu');
+Route::get('/trangchu', [PageControllers::class, 'index'])->name('trangchu');
+
+//Chi tiết tin tức 
+Route::get('/tintuc/{id}/{tieudekhongdau}', [PageControllers::class, 'ChiTietTinTuc'])->name('chitiettintuc');
+//Bình luận trong tin tức
+Route::post('/tintuc/{id}/{tieudekhongdau}', [PageControllers::class, 'postBinhLuan'])->name('binluan');
+
+//Danh sách tin tức theo thể loại
+Route::get('/theloai/{id}/{tenkhongdau}', [PageControllers::class, 'TheLoai'])->name('thelloai');
+
+// Danh sách tin tức theo loại tin
+Route::get('/loaitin/{id}/{tenkhongdau}', [PageControllers::class, 'Loaitin'])->name('loaitin');
+
+
+// tìm kiếm tin tức theo từ khóa
+Route::get('/tim-kiem', [PageControllers::class, 'TimKiem'])->name('timkiem');
+
+// Danh sách video
+Route::get('/video', [PageControllers::class, 'danhSachVideo'])->name('video');
+
+// Thông tin thành viên
+Route::get('/thong-tin-thanh-vien', [PageControllers::class, 'thongTinThanhViien'])->name('thongtinngoai');
+
+// Đăng nhập
+Route::get('/dangnhap', [PageControllers::class, 'dangnhap'])->name('dangnhap');
+Route::post('/dangnhap', [PageControllers::class, 'postDangNhap'])->name('dangnhap');
+
+//Đăng xuất
+Route::get('/dangxuat', [PageControllers::class, 'dangxuat'])->name('dangxuat');
+
+// Đăng ký
+Route::get('/dangky', [PageControllers::class, 'getDangKy'])->name('dangky');
+Route::post('/dangky', [PageControllers::class, 'postDangKy'])->name('dangky');
+
+// thông tin tài khoản
+Route::get('/thong-tin-tai-khoan', [PageControllers::class, 'thongTinTaiKhoan'])->name('thongtinchitietcanhan');
+Route::post('/thong-tin-tai-khoan', [PageControllers::class, 'postThongTinTaiKhoan']);
+
+// Đổi mật khẩu
+Route::get('/doi-mat-khau', [PageControllers::class, 'doiMatKhau'])->name('page_doimatkhau');
+Route::post('/doi-mat-khau', [PageControllers::class, 'postDoiMatKhau'])->name('page_doimatkhau');
 
 
 
@@ -21,8 +66,6 @@ Route::get('/admin-dangnhap', [UserController::class, 'getDangNhapAdmin'])->name
 Route::post('/admin-dangnhap', [UserController::class, 'postDangNhapAdmin'])->name('dangnhapadmin');;
 
 Route::get('/admin-dangxuat', [UserController::class, 'getDangXuatAdmin'])->name('dangxuatadmin');;
-
-
 
 
 Route::prefix('admin')->middleware('adminLogin')->group(function(){
@@ -107,27 +150,6 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
 
 });
 
-// phần page
-Route::get('/', [PageControllers::class, 'index'])->name('trangchu');
-Route::get('/trangchu', [PageControllers::class, 'index'])->name('trangchu');
-Route::get('/tintuc/{id}/{tieudekhongdau}', [PageControllers::class, 'ChiTietTinTuc'])->name('chitiettintuc');
-Route::post('/tintuc/{id}/{tieudekhongdau}', [PageControllers::class, 'postBinhLuan'])->name('binluan');
-
-Route::get('/theloai/{id}/{tenkhongdau}', [PageControllers::class, 'TheLoai'])->name('thelloai');
-Route::get('/video', [PageControllers::class, 'danhSachVideo'])->name('video');
-Route::get('/tim-kiem', [PageControllers::class, 'TimKiem'])->name('timkiem');
-Route::get('/send-mail', [PageControllers::class, 'sendMail'])->name('senmail');
-
-Route::get('/thongtin', [PageControllers::class, 'thongtinngoai'])->name('thongtinngoai');
-
-Route::get('/thongtinchitietcanhan', [PageControllers::class, 'thongtinchitietcanhan'])->name('thongtinchitietcanhan');
-
-
-Route::get('/dangnhap', [PageControllers::class, 'dangnhap'])->name('dangnhap');
-Route::get('/dangxuat', [PageControllers::class, 'dangxuat'])->name('dangxuat');
-Route::post('/dangnhap', [PageControllers::class, 'postDangNhap'])->name('dangnhap');
-Route::get('/dangky', [PageControllers::class, 'getDangKy'])->name('dangky');
-Route::post('/dangky', [PageControllers::class, 'postDangKy'])->name('dangky');
 
 
 // bài tập

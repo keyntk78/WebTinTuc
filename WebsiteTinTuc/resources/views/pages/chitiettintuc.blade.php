@@ -1,25 +1,26 @@
 @extends('pages.layouts.index')
+
 @section('tittle')
-    Chi tiết tin tức
+    {{ $chitiettintuc->tieude }}
 @endsection
+
 @section('content')
 @if(session('thongbao'))
 <div class="alert alert-success">
         {{ session('thongbao') }}
     </div>
 @endif
-
-    <!-- News With Sidebar Start -->
+    <!-- Start: Nội dung -->
     <div class="container-fluid py-3">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <!-- News Detail Start -->
+                    <!-- Start: Thông tin chi tiết tin tức -->
                     <div class="position-relative mb-3">
                         <img class="img-fluid w-100" src="{{ asset(PathImages($chitiettintuc->hinh)) }}" style="object-fit: cover;">
                         <div class="overlay position-relative bg-light">
                             <div class="mb-3">
-                                <a href="">{{ $chitiettintuc->tenloaitin }}</a>
+                                <a href="{{ route('loaitin', ['id'=>$chitiettintuc->id_loaitin, 'tenkhongdau'=>$chitiettintuc->tenkhongdau]) }}">{{ $chitiettintuc->tenloaitin }}</a>
                                 <span class="px-1">/</span>
                                 <span>{{ format_date($chitiettintuc->created_at) }}</span>
                             </div>
@@ -37,9 +38,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- News Detail End -->
+                    <!-- End: Thông tin chi tiết tin tức -->
 
-                    <!-- Comment List Start -->
+                    <!-- Start: Hiển thị bình luận -->
                     <div class="bg-light mb-3" style="padding: 30px;">
                         <h3 class="mb-4">{{ $soluongbinhluan }} bình luận</h3>
                         @foreach ($dsBinhLuan as $item)
@@ -51,13 +52,11 @@
                                 </div>
                             </div>
                         @endforeach
-
-
                     </div>
-                    <!-- Comment List End -->
+                    <!-- End: Hiển thị bình luận -->
 
                     @if (Auth::check())
-                            <!-- Comment Form Start -->
+                            <!-- Start: Viết bình luận -->
                         <div class="bg-light mb-3" style="padding: 30px;">
                             <h3 class="mb-4">Viết bình luận</h3>
                             <form action="" method="POST">
@@ -75,16 +74,12 @@
                                 </div>
                             </form>
                         </div>
-                        <!-- Comment Form End -->
+                        <!-- End: Viết bình luận -->
                     @endif
-
-
                 </div>
             </div>
         </div>
     </div>
     </div>
-    <!-- News With Sidebar End -->
-
-
+    <!-- End: Nội dung -->
 @endsection
