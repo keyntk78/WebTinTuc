@@ -1,19 +1,22 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 7
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
- 
+
 <style>
     table,
     tr {
         text-align: center;
     }
-    
+
     ul {
         list-style-type: none;
         margin-left: -35px;
     }
     </style>
-    
+
     <div class="container-fluid py-3">
         <div class="container">
             <div class="row">
@@ -33,7 +36,7 @@
                         $dbname="quan_ly_ban_sua";
                         $conn=mysqli_connect($servername, $username, $password, $dbname);
                         mysqli_set_charset($conn, 'utf8');
-                        $query = "SELECT * FROM sua 
+                        $query = "SELECT * FROM sua
                                  join loai_sua  on sua.Ma_loai_sua = loai_sua.Ma_loai_sua
                                  join hang_sua  on sua.Ma_hang_sua = hang_sua.Ma_hang_sua";
                         $result = mysqli_query($conn,$query);
@@ -79,7 +82,7 @@
                     <img src="" alt="">
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

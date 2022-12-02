@@ -1,4 +1,7 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 4
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
 <style>
@@ -8,18 +11,18 @@
         border-collapse: collapse;
         width: 50%;
     }
-    
+
     th,
     td {
         border: solid 0.5px;
         text-align: left;
         padding: 8px;
     }
-    
+
     tr:nth-child(even) {
         background-color: #16703681;
     }
-    
+
     .center {
         margin-left: auto;
         margin-right: auto;
@@ -47,7 +50,7 @@
                             <th>Địa chỉ</th>
                             <th>Số điện thoại</th>
                         </tr>
-                        <?php 
+                        <?php
                             $servername = "localhost";
                             $username = "root";
                             $password = "";
@@ -80,7 +83,7 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

@@ -1,5 +1,7 @@
 @extends('pages.layouts.index')
-
+@section('tittle')
+    Chi tiết tin tức
+@endsection
 @section('content')
 @if(session('thongbao'))
 <div class="alert alert-success">
@@ -26,12 +28,12 @@
                                 <b>
                                     <p>{{ $chitiettintuc->tomtat }}</p>
                                 </b>
-                                
+
                             </div>
                             <div class="noidung">
-                                
+
                                 {!! $chitiettintuc->noidung !!}
-                                
+
                             </div>
                         </div>
                     </div>
@@ -49,8 +51,8 @@
                                 </div>
                             </div>
                         @endforeach
-                        
-                   
+
+
                     </div>
                     <!-- Comment List End -->
 
@@ -76,7 +78,7 @@
                         <!-- Comment Form End -->
                     @endif
 
-                   
+
                 </div>
             </div>
         </div>

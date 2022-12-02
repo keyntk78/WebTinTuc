@@ -1,5 +1,7 @@
 @extends('pages.layouts.index')
-
+@section('tittle')
+    Thành viên nhóm
+@endsection
 @section('content')
 @if(session('thongbao'))
 <div class="alert alert-success">

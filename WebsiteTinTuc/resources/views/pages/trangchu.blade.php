@@ -1,4 +1,8 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Trang chủ
+@endsection
+
 
 @section('content')
 @if(session('thongbao'))

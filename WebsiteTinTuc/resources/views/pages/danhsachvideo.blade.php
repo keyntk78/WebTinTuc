@@ -1,4 +1,8 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Video
+@endsection
+
 
 @section('content')
 @if(session('thongbao'))
@@ -31,7 +35,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach                       
+                        @endforeach
                     </div>
                 </div>
             </div>

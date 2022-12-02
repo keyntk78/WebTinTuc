@@ -1,5 +1,7 @@
 @extends('admin.layout.index')
-
+@section('tittle')
+    Danh sách tin tức
+@endsection
 @section('content')
 <div class="main-content">
     <div class="page-header">
