@@ -82,7 +82,7 @@ class PageControllers extends Controller
             'updated_at' =>date('Y-m-d H:i:s'),
         ];
 
-        
+
         $tentintuc = $this->tintuc->ChiTietTintuc($id)[0]->tieude;
         $id_nguoiviettin = $this->tintuc->ChiTietTintuc($id)[0]->id_user;
 
@@ -93,13 +93,13 @@ class PageControllers extends Controller
         ];
 
         $layUserTheoTin = $this->users->LayUserTheoTin($id_nguoiviettin)[0];
-        
+
         $this->binhluan->ThemBinhLuan($dataIsert);
 
 
         Mail::send('pages.email.binhluan', compact('data'), function($email) use($layUserTheoTin){
             $email->subject('Bình luận');
-            $email->to($layUserTheoTin->email, $layUserTheoTin->hoten);  
+            $email->to($layUserTheoTin->email, $layUserTheoTin->hoten);
         });
 
         return back();
@@ -218,8 +218,19 @@ class PageControllers extends Controller
     {
         $name = 'test mail';
         Mail::send('pages.test', compact('name'), function($email){
-          $email->to('kiet61133822@gmail.com', 'Tuấn Kiệt');  
+          $email->to('kiet61133822@gmail.com', 'Tuấn Kiệt');
         });
     }
 
+
+    // thontgtin
+    public function thongtinngoai()
+    {
+        return view('pages.thongtinngoai');
+    }
+
+    public function thongtinchitietcanhan()
+    {
+        return view('pages.thongtinchitietcanhan');
+    }
 }

@@ -27,7 +27,7 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
     Route::get('/', [HomeController::class, 'index'])->name('admin');
     Route::get('/doimatkhau', [HomeController::class, 'DoiMatKhau'])->name('doimatkhau');
     Route::post('/doimatkhau', [HomeController::class, 'postDoiMatKhau'])->name('doimatkhau');
-    
+
     Route::get('/thongtinnguoidung', [HomeController::class, 'thongTinNguoiDung'])->name('thongtin');
     Route::post('/thongtinnguoidung', [HomeController::class, 'post_thongTinNguoiDung']);
 
@@ -104,6 +104,9 @@ Route::get('/video', [PageControllers::class, 'danhSachVideo'])->name('video');
 Route::get('/tim-kiem', [PageControllers::class, 'TimKiem'])->name('timkiem');
 Route::get('/send-mail', [PageControllers::class, 'sendMail'])->name('senmail');
 
+Route::get('/thongtin', [PageControllers::class, 'thongtinngoai'])->name('thongtinngoai');
+
+Route::get('/thongtinchitietcanhan', [PageControllers::class, 'thongtinchitietcanhan'])->name('thongtinchitietcanhan');
 
 
 Route::get('/dangnhap', [PageControllers::class, 'dangnhap'])->name('dangnhap');
@@ -130,7 +133,7 @@ Route::prefix('bai-tap')->name('baitap.')->group(function(){
     //bt2
     Route::get('/chuoi/baitap2', [BaiTapController::class, 'chuoi_BaiTap2'])->name('chuoi_bt2');
     Route::post('/chuoi/baitap2', [BaiTapController::class, 'post_chuoi_BaiTap2']);
-    
+
     //bt3
     Route::get('/chuoi/baitap3', [BaiTapController::class, 'chuoi_BaiTap3'])->name('chuoi_bt3');
     Route::post('/chuoi/baitap3', [BaiTapController::class, 'post_chuoi_BaiTap3']);
@@ -138,7 +141,7 @@ Route::prefix('bai-tap')->name('baitap.')->group(function(){
     //bt4
     Route::get('/chuoi/baitap4', [BaiTapController::class, 'chuoi_BaiTap4'])->name('chuoi_bt4');
     Route::post('/chuoi/baitap4', [BaiTapController::class, 'post_chuoi_BaiTap4']);
-    
+
     //bt5
     Route::get('/chuoi/baitap5', [BaiTapController::class, 'chuoi_BaiTap5'])->name('chuoi_bt5');
     Route::post('/chuoi/baitap5', [BaiTapController::class, 'post_chuoi_BaiTap5']);
@@ -180,7 +183,7 @@ Route::prefix('bai-tap')->name('baitap.')->group(function(){
     Route::get('/form/baitap8', [BaiTapController::class, 'form_BaiTap8'])->name('form_bt8');
     Route::post('/form/baitap8', [BaiTapController::class, 'post_form_BaiTap8'])->name('post_form_bt8');
 
-    //baitap sql 
+    //baitap sql
     // bai tap 1
     Route::get('/sql/baitap1', [BaiTapController::class, 'sql_baitap1'])->name('sql_bt1');
     // Route::post('/sql/baitap1', [BaiTapController::class, 'post_form_BaiTap1'])->name('post_form_bt1');

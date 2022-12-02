@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 @endforeach
-               
+
             </div>
         </div>
     </div>
@@ -141,7 +141,7 @@
         </div>
     </div>
 
- 
+
 
     </div>
     <!-- News With Sidebar End -->
