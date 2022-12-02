@@ -1,5 +1,7 @@
 @extends('pages.layouts.index')
-
+@section('tittle')
+    Bài tập
+@endsection
 @section('content')
 
     <!-- News With Sidebar Start -->

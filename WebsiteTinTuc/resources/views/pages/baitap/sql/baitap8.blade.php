@@ -1,13 +1,16 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 8
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
- 
+
 <style>
     table {
         width: 600px;
     }
     </style>
-    
+
     <div class="container-fluid py-3">
         <div class="container">
             <div class="row">
@@ -27,24 +30,24 @@
                                 $username="root";
                                 $password="";
                                 $dbname="qlbansua";
-                    
+
                                  $conn=mysqli_connect($servername, $username, $password, $dbname);
                                 if(!$conn) echo "Kết nối thất bại";
                                 mysqli_set_charset($conn, 'utf8');
-                    
-                                
+
+
                                 $rowsPerPage=2; // số lượng dòng 1 trang
                                 if ( ! isset($_GET['page']))
                                     $_GET['page'] = 1;
                                 $offset =($_GET['page']-1)*$rowsPerPage;
-                    
+
                                 $query="SELECT * FROM `sua` LIMIT $offset, $rowsPerPage;";
-                                
+
                                 $result = mysqli_query($conn,$query);
                                 if (!$result ) die ('<br> <b>Query failed</b>');
                                 $numRows= mysqli_num_rows($result); // Số dòng
                                 $maxPage = ceil($numRows / $rowsPerPage);
-                                
+
                                 if($numRows != 0) {
                                     $temp=$_GET['page']*$rowsPerPage;// danh so thu tu
                                     if($temp<=$rowsPerPage) $num=0;
@@ -72,7 +75,7 @@
                                 }
                             ?>
                         </table>
-                        <?php 
+                        <?php
                             $re = mysqli_query($conn, 'select * from sua');
                             $numRows = mysqli_num_rows($re);
                             $maxPage = floor($numRows/$rowsPerPage) + 1;
@@ -99,7 +102,7 @@
                     <img src="" alt="">
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

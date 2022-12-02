@@ -1,5 +1,7 @@
 @extends('admin.layout.index')
-
+@section('tittle')
+    Thêm thể loại
+@endsection
 @section('content')
               <!-- Content Wrapper START -->
                 <div class="main-content">
@@ -11,12 +13,12 @@
                                 <span class="breadcrumb-item active">Thêm thể loại</span>
                             </nav>
                         </div>
-                    </div> 
+                    </div>
                        @if(session('thongbao'))
                            <div class="alert alert-success">
                                 {{ session('thongbao') }}
                             </div>
-                        @endif     
+                        @endif
                     <div class="card">
                         <div class="card-body">
                             <h4>Thêm thể loại</h4>

@@ -1,5 +1,7 @@
 @extends('admin.layout.index')
-
+@section('tittle')
+    Home
+@endsection
 @section('content')
 <div class="main-content">
     <div class="row">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Enlink - Admin Dashboard Template</title>
+    <title>Đăng Nhập</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png') }}">
@@ -20,7 +20,7 @@
         <div class="container-fluid p-h-0 p-v-20 bg full-height d-flex" style="background-image: url('assets/images/others/login-3.png')">
             <div class="d-flex flex-column justify-content-between w-100">
                 <div class="container d-flex h-100">
-                 
+
                     <div class="row align-items-center w-100">
                         <div class="col-md-7 col-lg-5 m-h-auto">
                             <div class="card shadow-lg">
@@ -33,7 +33,7 @@
                                         <div class="alert alert-success">
                                                 {{ session('thongbao') }}
                                             </div>
-                                        @endif 
+                                        @endif
                                     <form action="" method="POST">
                                         @csrf
                                         <div class="form-group">
@@ -41,7 +41,7 @@
                                             <div class="input-affix">
                                                 <i class="prefix-icon anticon anticon-user"></i>
                                                 <input type="text" class="form-control" name="email" placeholder="Nhập email ...">
-                                                
+
                                             </div>
                                              @error('email')
                                                     <span style="color: red">{{ $message }}</span>
@@ -84,7 +84,7 @@
         </div>
     </div>
 
-    
+
     <!-- Core Vendors JS -->
     <script src="{{ asset('assets/js/vendors.min.js"') }}></script>
 

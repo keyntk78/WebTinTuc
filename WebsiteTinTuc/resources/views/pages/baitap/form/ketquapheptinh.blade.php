@@ -1,4 +1,7 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Kết quả
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
     <div class="container-fluid py-3">
@@ -13,13 +16,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between bg-light">
-                        <?php 
+                        <?php
                         $ketqua = "";
                         if(isset($_POST['submit'])) {
                         $sothu1 = $_POST['sothu1'];
                         $sothu2 = $_POST['sothu2'];
                         $pheptinh = $_POST['pheptinh'];
-            
+
                             if (is_numeric($sothu1) || is_numeric($sothu2)) {
                                 if ($pheptinh == "Cộng") {
                                     $ketqua = $sothu1+$sothu2;
@@ -38,7 +41,7 @@
                                 $sothu2 = "Phải là số";
                             }
                         }
-                
+
                         if (isset($_POST['quaylai'])) {
                             header('location:baitap6.php');
                         }
@@ -76,7 +79,7 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>
