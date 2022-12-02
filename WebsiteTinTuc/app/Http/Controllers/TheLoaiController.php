@@ -103,9 +103,18 @@ class TheLoaiController extends Controller
         return back()->with('thongbao','Cập nhật thể loại thành công');
     }
 
-     public function deleteTheLoai(){
-        
-        return 'xoa thanh công';
+     public function deleteTheLoai($id){
+        if(!empty($id)){
+            $chitiettheloai = $this->theloai->ChiTietTheLoai($id);
+            if(!empty($chitiettheloai[0])){
+                $this->theloai->XoaTheloai($id);
+                 return redirect()->route('theloai.index')->with('thongbao', 'Xoá thể loại thành công');
+            } else {
+                return redirect()->route('theloai.index')->with('thongbao', 'Thể loại không tồn tại');
+            }
+        } else {
+            return redirect()->route('theloai.index')->with('thongbao', 'Liên kết không tồn tại');
+        }
     }
 
 }

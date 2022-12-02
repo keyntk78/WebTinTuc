@@ -35,7 +35,7 @@
                                 <td>{{$item->tentheloai}}</td>
                                 <td>{{$item->tenkhongdau}}</td>
                                 <td><a class="btn btn-primary" href="{{route('theloai.sua', ['id'=>$item->id])}}">Sửa</a></td>
-                                <td><a class="btn btn-danger" href="">Xóa</a></td>
+                                <td><a class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')" href="{{route('theloai.xoa',['id'=>$item->id])}}">Xóa</a></td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -24,18 +24,18 @@
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Tên video</label>
-                                        <input type="text" class="form-control" name="tenideo" value="{{ old('tenvideo') }}" placeholder="Nhập tên video">
-                                           @error('suavideo')
+                                        <label for="inputEmail4">Tiêu đề</label>
+                                        <input type="text" class="form-control" name="tieude" value="{{ old('tieude') ?? $chitietvideo->tieude }}">
+                                           @error('tieude')
                                                 <span style="color: red">{{ $message }}</span>
                                             @enderror
                                     </div>
                                 </div>
-                                  <div class="form-row">
+                                <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Hình ảnh</label>
-                                        <input type="file" class="form-control" name="hinh" value="{{ old('hinh') }}">
-                                           @error('hinh')
+                                        <label for="inputEmail4">Link</label>
+                                        <input type="text" class="form-control" name="link" value="{{ old('link') ?? $chitietvideo->link }}">
+                                           @error('link')
                                                 <span style="color: red">{{ $message }}</span>
                                             @enderror
                                     </div>
