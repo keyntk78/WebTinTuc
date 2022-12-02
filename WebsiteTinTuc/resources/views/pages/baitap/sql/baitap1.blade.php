@@ -26,6 +26,7 @@
         <div class="container">
             <div class="row">
                  <div class="col-12">
+                    
                             <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
                                 <h3 class="m-0">Bài tập sql - Bài tập 1</h3>
                             </div>
@@ -33,7 +34,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between bg-light">
+                    <div class="d-flex align-items-center mk justify-content-between bg-light">
                         <h1 style="text-align:center; font-style: italic; color:#2A7FAA ">THÔNG TIN HÃNG SỮA</h1>
                             <table border="1" align="center">
                                 <tr>

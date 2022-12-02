@@ -160,24 +160,25 @@
                                     <td>Bài tập dạng sql</td>
                                     <td><a class="btn btn-primary" href="{{ route('baitap.sql_bt7') }}">Xem chi tiết</a></td>
                                 </tr>
-                                {{-- <tr>
-                                    <th scope="row">1</th>
+                                <tr>
+                                    <th scope="row">23</th>
                                     <td>Bài tập 8</td>
                                     <td>Bài tập dạng sql</td>
                                     <td><a class="btn btn-primary" href="{{ route('baitap.sql_bt8') }}">Xem chi tiết</a></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">24</th>
                                     <td>Bài tập 9</td>
                                     <td>Bài tập dạng sql</td>
                                     <td><a class="btn btn-primary" href="{{ route('baitap.sql_bt9') }}">Xem chi tiết</a></td>
                                 </tr>
+                                
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">25</th>
                                     <td>Bài tập 10</td>
                                     <td>Bài tập dạng sql</td>
                                     <td><a class="btn btn-primary" href="{{ route('baitap.sql_bt10') }}">Xem chi tiết</a></td>
-                                </tr> --}}
+                                </tr>
                             </tbody>
                         </table>
                     </div>

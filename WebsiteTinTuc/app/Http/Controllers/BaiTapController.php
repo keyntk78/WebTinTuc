@@ -222,20 +222,24 @@ class BaiTapController extends Controller
      {
          return view('pages.baitap.sql.baitap7');
      }
+     public function sql_chitietsanpham()
+     {
+         return view('pages.baitap.sql.chitietsanpham');
+     }
      // bai tap 8
      public function sql_baitap8()
      {
          return view('pages.baitap.sql.baitap8');
      }
       // bai tap 9
-    //   public function sql_baitap9()
-    //   {
-    //       return view('pages.baitap.sql.baitap9');
-    //   }
+      public function sql_baitap9()
+      {
+          return view('pages.baitap.sql.baitap9');
+      }
     //   // bai tap 10
-    //   public function sql_baitap10()
-    //   {
-    //       return view('pages.baitap.sql.baitap10');
-    //   }
+      public function sql_baitap10()
+      {
+          return view('pages.baitap.sql.baitap10');
+      }
 }
 

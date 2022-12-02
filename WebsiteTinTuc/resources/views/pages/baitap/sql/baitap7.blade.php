@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                  <div class="col-12">
-                            <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                            <div class="d-flex align-items-center justify-content-between fle bg-light py-2 px-4 mb-3">
                                 <h3 class="m-0">Bài tập sql - Bài tập 7</h3>
                             </div>
                         </div>
@@ -58,9 +58,14 @@
                                     {
                                         echo "<tr>";
                                     }
+                                    
+                                    
+                                    // <a href="chitietsanpham.php?id='.$rows["Ma_sua"].'"><b>'.$rows["Ten_sua"].'</b></a>
+                                    // <a class="h4" href="{{ route('chitietsanpham', ['id'=>$rows["Ma_sua"]]) }}"><b>'.$rows["Ten_sua"].'</b></a>
+
                                     echo '<td>
                                         <ul align="center">
-                                            <li><a href="chitietsanpham.php?id='.$rows["Ma_sua"].'"><b>'.$rows["Ten_sua"].'</b></a></li>
+                                            <li><a href="/bai-tap/sql/chitietsanpham?id='.$rows["Ma_sua"].'"><b>'.$rows["Ten_sua"].'</b></a></li>
                                             <li>'.$rows["Trong_luong"].' gr - '.$rows["Don_gia"].' VNĐ</li>
                                              <li><img style="width: 110px; height: 110px;" src="'.$duongdan.''."/".''.$rows["Hinh"].'" ></li>
                                         </ul>

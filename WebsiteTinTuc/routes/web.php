@@ -196,10 +196,13 @@ Route::prefix('bai-tap')->name('baitap.')->group(function(){
     Route::get('/sql/baitap6', [BaiTapController::class, 'sql_baitap6'])->name('sql_bt6');
      // bai tap 7
     Route::get('/sql/baitap7', [BaiTapController::class, 'sql_baitap7'])->name('sql_bt7');
+
+    Route::get('/sql/chitietsanpham', [BaiTapController::class, 'sql_chitietsanpham'])->name('chitietsanpham');
+
     // bai tap 8
     Route::get('/sql/baitap8', [BaiTapController::class, 'sql_baitap8'])->name('sql_bt8');
     // bai tap 9
-    Route::get('/sql/baitap8', [BaiTapController::class, 'sql_baitap9'])->name('sql_bt9');
+    Route::get('/sql/baitap9', [BaiTapController::class, 'sql_baitap9'])->name('sql_bt9');
     // bai tap 10
     Route::get('/sql/baitap10', [BaiTapController::class, 'sql_baitap10'])->name('sql_bt10');
 

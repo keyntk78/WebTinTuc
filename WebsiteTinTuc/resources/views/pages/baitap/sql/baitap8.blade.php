@@ -1,13 +1,26 @@
 @extends('pages.layouts.index')
 @section('content')
     <!-- News With Sidebar Start -->
- 
 <style>
-    table {
-        width: 600px;
+table {
+    width: 600px;
+}
+
+a {
+      text-decoration: none;
+      color: darksea  ;
+      padding: 0 10px;
     }
-    </style>
-    
+
+    a:hover {
+      color: dark  ;
+    }
+
+    tr {
+        border: 1px solid #000;
+    }
+</style>
+ 
     <div class="container-fluid py-3">
         <div class="container">
             <div class="row">
@@ -19,7 +32,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between bg-light">
+                    <div class="dk">
                         <h1 style="text-align:center;color:#AA1F00;font-style:italic">THÔNG TIN CÁC LOẠI SỮA</h1>
                         <table align="center">
                             <?php
@@ -44,11 +57,13 @@
                                 if (!$result ) die ('<br> <b>Query failed</b>');
                                 $numRows= mysqli_num_rows($result); // Số dòng
                                 $maxPage = ceil($numRows / $rowsPerPage);
-                                
+                                $duongdan =  asset('uploads/images/');
                                 if($numRows != 0) {
                                     $temp=$_GET['page']*$rowsPerPage;// danh so thu tu
                                     if($temp<=$rowsPerPage) $num=0;
                                     else $num=$temp-$rowsPerPage;
+                              
+
                                      while($rows=mysqli_fetch_array($result))
                                     {
                                        echo '<tr bgcolor="#FFEEE6">
@@ -58,7 +73,7 @@
                                         </tr>
                                         <tr>
                                                 <td align="center">
-                                                    <img width="160px" height ="110px" src="./Hinh_sua/'.$rows["Hinh"].'" alt="Không có">
+                                                    <img width="160px" height ="110px" src="'.$duongdan.''."/".''.$rows["Hinh"].'" alt="Không có">
                                                 </td>
                                                 <td>
                                                    <p><b>Thành phần dinh dưỡng:</b></p>
@@ -76,7 +91,7 @@
                             $re = mysqli_query($conn, 'select * from sua');
                             $numRows = mysqli_num_rows($re);
                             $maxPage = floor($numRows/$rowsPerPage) + 1;
-                            echo "<div class='center'>";
+                            echo "<div class=''>";
                                 if ($_GET['page'] > 1){
                                     echo "<a  href=" .$_SERVER['PHP_SELF']."?page=".($_GET['page']-1).">Back</a> "; //gắn thêm nút Back
                                 }
@@ -84,10 +99,10 @@
                                 {
                                     if ($i == $_GET['page'])
                                     {
-                                        echo '<b class="center">Trang'.$i.'</b> '; //trang hiện tại sẽ được bôi đậm
+                                        echo ' <b class="center">' . $i . '</b> '; //trang hiện tại sẽ được bôi đậm
                                     }
                                     else {
-                                        echo "<a  href=" . $_SERVER['PHP_SELF'] . "?page=" . $i . ">Trang " . $i . "</a> ";
+                                        echo "<a  href=" . $_SERVER['PHP_SELF'] . "?page=" . $i . "> " . $i . "</a> ";
                                     }
                                 }
                                 if ($_GET['page'] < $maxPage) {

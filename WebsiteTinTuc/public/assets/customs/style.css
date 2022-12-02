@@ -50,3 +50,8 @@ img.img-fluid.w-100.theloai {
 img.avatar {
     border-radius: 25px;
 }
+
+
+.d-flex.align-items-center.mk.justify-content-between.bg-light {
+    flex-direction: column;
+}
