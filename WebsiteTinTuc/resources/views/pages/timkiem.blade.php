@@ -1,14 +1,16 @@
 @extends('pages.layouts.index')
+
 @section('tittle')
-    Tìm kiếm
+     {{ $keyword }}
 @endsection
+
 @section('content')
 @if(session('thongbao'))
 <div class="alert alert-success">
         {{ session('thongbao') }}
     </div>
 @endif
-     <!-- News With Sidebar Start -->
+     <!-- Start: nội dung -->
     <div class="container-fluid py-3">
         <div class="container">
             <div class="row">
@@ -25,7 +27,7 @@
                                      <img class="img-fluid w-100 theloai" src="{{ asset(PathImages($item->hinh)) }}" style="object-fit: cover;">
                                     <div class="overlay position-relative bg-light theloai">
                                         <div class="mb-2" style="font-size: 14px;">
-                                           <a href="}">{{ $item->tenloaitin }}</a>
+                                           <a href="{{ route('loaitin', ['id'=>$item->id_loaitin, 'tenkhongdau'=>$item->tenkhongdau]) }}">{{ $item->tenloaitin }}</a>
                                             <span class="px-1">/</span>
                                             <span>{{ format_date($item->created_at) }}</span>
                                         </div>
@@ -36,11 +38,21 @@
                             </div>
                         @endforeach
                     </div>
-
                 </div>
             </div>
+
+            <!-- Start: Phân trang -->
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="Page navigation">
+                      <ul class="pagination justify-content-center">
+                         {{ $ketqua->withQueryString()->links() }}
+                    </nav>
+                </div>
+            </div>
+             <!-- End: Phân trang -->
         </div>
     </div>
     </div>
-    <!-- News With Sidebar End -->
+    <!-- End: nội dung-->
 @endsection

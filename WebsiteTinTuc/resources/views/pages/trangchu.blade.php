@@ -3,17 +3,17 @@
     Trang chủ
 @endsection
 
-
 @section('content')
 @if(session('thongbao'))
 <div class="alert alert-success">
         {{ session('thongbao') }}
     </div>
 @endif
-    <!-- Main News Slider Start -->
+    <!-- Start: Phần Slider -->
     <div class="container-fluid py-3">
         <div class="container">
             <div class="row">
+                {{-- Start: carousel --}}
                 <div class="col-lg-8">
                     <div class="owl-carousel owl-carousel-2 carousel-item-1 position-relative mb-3 mb-lg-0">
                         @foreach ($noibat as $item)
@@ -21,7 +21,7 @@
                             <img class="img-fluid h-100" src="{{ asset(PathImages($item->hinh)) }}" style="object-fit: cover;">
                             <div class="overlay">
                                 <div class="mb-1">
-                                    <a class="text-white" href="">{{ $item->tenloaitin }}</a>
+                                    <a class="text-white" href="{{ route('loaitin', ['id'=>$item->id_loaitin, 'tenkhongdau'=>$item->tenkhongdau]) }}">{{ $item->tenloaitin }}</a>
                                     <span class="px-2 text-white">/</span>
                                     <a class="text-white" href="">{{ format_date($item->created_at) }}</a>
                                 </div>
@@ -32,6 +32,9 @@
 
                     </div>
                 </div>
+                {{-- End: carousel --}}
+
+                {{-- Start: Danh mục thể loại --}}
                 <div class="col-lg-4">
                     <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
                         <h3 class="m-0">Thể loại</h3>
@@ -45,13 +48,14 @@
                             </div>
                     @endforeach
                 </div>
+                {{-- End: Danh mục thể loại --}}
             </div>
         </div>
     </div>
-    <!-- Main News Slider End -->
+    <!-- End: Phần Slider  -->
 
 
-    <!-- Category News Slider Start -->
+    <!--Start: Tin tức theo danh mục thể loại -->
     <div class="container-fluid">
         <div class="container">
             <div class="row">
@@ -67,7 +71,7 @@
                                 <img class="img-fluid w-100" src="{{ asset(PathImages($list->hinh)) }}" style="object-fit: cover;">
                                 <div class="overlay position-relative bg-light">
                                     <div class="mb-2" style="font-size: 13px;">
-                                        <a href="">{{ $list->tenloaitin }}</a>
+                                        <a href="{{ route('loaitin', ['id'=>$list->id_loaitin, 'tenkhongdau'=>$list->tenkhongdau]) }}">{{ $list->tenloaitin }}</a>
                                         <span class="px-1">/</span>
                                         <span>January 01, 2045</span>
                                     </div>
@@ -79,14 +83,18 @@
                     </div>
                 </div>
                 @endforeach
-
             </div>
         </div>
     </div>
-    <!-- News With Sidebar Start -->
+    <!--End: Tin tức theo danh mục thể loại -->
+
+
+    <!-- Start: Danh mục nổi bật và mới nhất -->
     <div class="container-fluid py-3">
         <div class="container">
             <div class="row">
+
+                <!-- Start: Danh mục nổi bật -->
                 <div class="col-lg-8">
                     <div class="row mb-3">
                         <div class="col-12">
@@ -100,7 +108,7 @@
                                 <img class="img-fluid w-100 tc-noibat" src="{{ asset(PathImages($item->hinh)) }}" style="object-fit: cover;">
                                 <div class="overlay position-relative bg-light tc-noibat">
                                     <div class="mb-2" style="font-size: 14px;">
-                                        <a href="}">{{ $item->tenloaitin }}</a>
+                                        <a href="{{ route('loaitin', ['id'=>$item->id_loaitin, 'tenkhongdau'=>$item->tenkhongdau]) }}">{{ $item->tenloaitin }}</a>
                                         <span class="px-1">/</span>
                                         <span>{{ format_date($item->created_at) }}</span>
                                     </div>
@@ -112,15 +120,15 @@
                         @endforeach
                     </div>
                 </div>
+                <!-- End: Danh mục nổi bật -->
 
+                <!-- Start: Danh mục mới nhất -->
                 <div class="col-lg-4 pt-3 pt-lg-0">
-                    <!-- Ads Start -->
+
                     <div class="mb-3 pb-3">
                         <a href=""><img class="img-fluid" src="{{ asset('img/news-500x280-4.jpg') }}" alt=""></a>
                     </div>
-                    <!-- Ads End -->
-
-                    <!-- Popular News Start -->
+        
                     <div class="pb-3">
                         <div class="bg-light py-2 px-4 mb-3">
                             <h3 class="m-0">Mới Nhất</h3>
@@ -130,7 +138,7 @@
                             <img src="{{ asset(PathImages($item->hinh)) }}" style="width: 100px; height: 100px; object-fit: cover;">
                             <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                 <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">{{ $item->tenloaitin }}</a>
+                                    <a href="{{ route('loaitin', ['id'=>$item->id_loaitin, 'tenkhongdau'=>$item->tenkhongdau]) }}">{{ $item->tenloaitin }}</a>
                                     <span class="px-1">/</span>
                                     <span>{{ format_date($item->created_at) }}</span>
                                 </div>
@@ -139,14 +147,13 @@
                         </div>
                         @endforeach
                     </div>
-                    <!-- Popular News End -->
                 </div>
+                <!-- End: Danh mục mới nhất -->
+
             </div>
         </div>
     </div>
-
-
-
     </div>
-    <!-- News With Sidebar End -->
+    <!-- End: Danh mục nổi bật và mới nhất -->
+
 @endsection

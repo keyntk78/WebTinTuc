@@ -2,7 +2,7 @@
 
 @section('tittle')
 {{-- Tiêu đề --}}
-    {{ $tenTheLoai }}
+   {{ $tenLoaiTin }}
 @endsection
 
 @section('content')
@@ -19,16 +19,16 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
-                                <h3 class="m-0">{{ $tenTheLoai }}</h3>
+                                <h3 class="m-0">{{ $tenLoaiTin }}</h3>
                             </div>
                         </div>
-                        @foreach ($dsTinTheoTL as $item)
+                        @foreach ($dsTinTheoLT as $item)
                             <div class="col-lg-4">
                                 <div class="position-relative mb-3">
                                      <img class="img-fluid w-100 theloai" src="{{ asset(PathImages($item->hinh)) }}" style="object-fit: cover;">
                                     <div class="overlay position-relative bg-light theloai">
                                         <div class="mb-2" style="font-size: 14px;">
-                                           <a href="{{ route('loaitin', ['id'=>$item->id_loaitin, 'tenkhongdau'=>$item->tenkhongdau]) }}">{{ $item->tenloaitin }}</a>
+                                           <a href="}">{{ $item->tenloaitin }}</a>
                                             <span class="px-1">/</span>
                                             <span>{{ format_date($item->created_at) }}</span>
                                         </div>
@@ -46,7 +46,7 @@
                 <div class="col-12">
                     <nav aria-label="Page navigation">
                       <ul class="pagination justify-content-center">
-                         {{ $dsTinTheoTL->withQueryString()->links() }}
+                         {{ $dsTinTheoLT->withQueryString()->links() }}
                     </nav>
                 </div>
             </div>

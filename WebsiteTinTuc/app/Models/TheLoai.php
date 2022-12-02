@@ -19,8 +19,8 @@ class TheLoai extends Model
        return DB::table('theloai')->insert($data);  
     }
 
-    public function ChiTietTheLoai($id)
-    {
+    // Chi tiết thể loại
+    public function ChiTietTheLoai($id){
         $chittiet = DB::table('theloai')->select('*')->where('id', '=', $id)->get();
 
         return $chittiet;
@@ -37,7 +37,7 @@ class TheLoai extends Model
         return  DB::table('theloai')->where('id', '=', $id)->delete();
     }
 
-    // danh sách 4 thể loại đầu tiên
+    // Lấy 4 thể loại đầu tiên
      public function Top_4_Theloai(){
         $list = DB::table('theloai')
         ->orderBy('created_at', 'asc')

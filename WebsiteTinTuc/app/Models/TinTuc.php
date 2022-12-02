@@ -25,14 +25,14 @@ class TinTuc extends Model
         return DB::table('tintuc')->delete($id);
      }
 
-     public function ChiTietTintuc($id)
-     {
+     // Chi tiết tin tức theo id
+     public function ChiTietTintuc($id){
          $chittiet = DB::table('tintuc')->select('*')->where('id', '=', $id)->get();
          return $chittiet;
      }
 
-    public function DanhSachLoaiTin($per_page = null)
-    {
+     // láy danh sách tin tức theo loại tin
+    public function DanhSachLoaiTin($per_page = null){
         $list = DB::table('tintuc')
         ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin')
         ->join('loaitin', 'tintuc.id_loaitin', '=', 'loaitin.id');
@@ -45,10 +45,11 @@ class TinTuc extends Model
         return $list;
     }
 
+
+    // Top 4 tin tức nổi bật mới nhất
     public function TinNoiBat(){
-        
         $list = DB::table('tintuc')
-        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin')
+        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin',  'loaitin.tenkhongdau as tenkhongdau' )
         ->join('loaitin', 'tintuc.id_loaitin', '=', 'loaitin.id')
         ->where('tintuc.noibat', '=', 1)
         ->orderBy('created_at', 'desc')
@@ -57,10 +58,11 @@ class TinTuc extends Model
         return $list;
     }
 
+    // Lấy 6 tin tức mới nhất
     public function MoiNhat(){
         
         $list = DB::table('tintuc')
-        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin')
+        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin', 'loaitin.tenkhongdau as tenkhongdau' )
         ->join('loaitin', 'tintuc.id_loaitin', '=', 'loaitin.id')
         ->orderBy('created_at', 'desc')
         ->take(6)
@@ -68,10 +70,11 @@ class TinTuc extends Model
         return $list;
     }
 
+    // lấy 4 tin theo thể loại id
     public function DanhSachTinTheoTheLoai_4($id){
         
         $list = DB::table('tintuc')
-        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin')
+        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin','loaitin.tenkhongdau as tenkhongdau' )
         ->join('loaitin', 'tintuc.id_loaitin', '=', 'loaitin.id')
         ->where('loaitin.id_theloai' ,'=', $id)
         ->orderBy('created_at', 'desc')
@@ -80,21 +83,45 @@ class TinTuc extends Model
         return $list;
     }
 
-     public function DanhSachTinTheoTheLoai($id){
-        
+    // Danh sách tin tức theo thể loại
+    public function DanhSachTinTheoTheLoai($id, $per_page = null){
+
         $list = DB::table('tintuc')
-        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin')
+        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin', 'loaitin.tenkhongdau as tenkhongdau' )
         ->join('loaitin', 'tintuc.id_loaitin', '=', 'loaitin.id')
         ->where('loaitin.id_theloai' ,'=', $id)
-        ->orderBy('created_at', 'desc')
-        ->get();
+        ->orderBy('created_at', 'desc');
+                
+        if (!empty($per_page)) {
+                    $list = $list->paginate($per_page);
+                } else {
+                    $list = $list->get();
+                }
         return $list;
     }
 
-      public function ChietTietTinTucPage($id){
+     // Danh sách tin tức theo thể loại
+    public function DanhSachTinTheoLoaiTin($id, $per_page = null){
+
+        $list = DB::table('tintuc')
+        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin')
+        ->join('loaitin', 'tintuc.id_loaitin', '=', 'loaitin.id')
+        ->where('loaitin.id' ,'=', $id)
+        ->orderBy('created_at', 'desc');
+                
+        if (!empty($per_page)) {
+                    $list = $list->paginate($per_page);
+                } else {
+                    $list = $list->get();
+                }
+        return $list;
+    }
+
+    // Lấy thông tin tin tức có loại tin theo id
+    public function ChietTietTinTucPage($id){
         
         $chitiet = DB::table('tintuc')
-        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin')
+        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin', 'loaitin.tenkhongdau as tenkhongdau' )
         ->join('loaitin', 'tintuc.id_loaitin', '=', 'loaitin.id')
         ->where('tintuc.id' ,'=', $id)
         ->get();
@@ -102,28 +129,27 @@ class TinTuc extends Model
     }
 
 
-     // tìm kiếm
-      public function getAllTimKiem($keyword)
-    {
-       $deltail = DB::table('tintuc')
-        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin')
+     // tìm kiếm tin tức theo từ khóa (tiêu đề tin tức, thể loại, tên loại tin)
+    public function getAllTimKiem($keyword, $per_page = null){
+       $list = DB::table('tintuc')
+        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin', 'loaitin.tenkhongdau as tenkhongdau' )
         ->join('loaitin', 'tintuc.id_loaitin', '=', 'loaitin.id')
         ->join('theloai', 'loaitin.id_theloai', '=', 'theloai.id')
         ->orderBy('created_at', 'desc');
         
         if (!empty($keyword)) {
-            $deltail = $deltail->where(function($query) use ($keyword) {
+            $deltail = $list->where(function($query) use ($keyword) {
                 $query->orwhere('tintuc.tieude', 'like', '%'.$keyword.'%');
                 $query->orwhere('loaitin.tenloaitin', 'like', '%'.$keyword.'%');
                 $query->orwhere('theloai.tentheloai', 'like', '%'.$keyword.'%');
             });
         }
 
-        $deltail = $deltail->get();
-       return $deltail;
-    }
-
-
-    
-    
+        if (!empty($per_page)) {
+                    $list = $list->paginate($per_page);
+                } else {
+                    $list = $list->get();
+                }
+       return $list;
+    } 
 }

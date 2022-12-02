@@ -9,7 +9,7 @@
             <div class="col-lg-8 text-center text-lg-right">
                 @if(Auth::check())
                     <a href="{{route("thongtinchitietcanhan")}}" class="login" >{{ Auth::user()->hoten }}</a>
-                    <a href="{{route("dangxuat")}}" class="register">Đăng xuất</a>
+                    {{-- <a href="{{route("dangxuat")}}" class="register">Đăng xuất</a> --}}
                      <img class="avatar" width="50px" height="50px" src="{{ asset(PathImages(Auth::user()->avatar))}}" alt="">
                 @else
                     <a href="{{route("dangnhap")}}" class="login" >Đăng nhập</a>

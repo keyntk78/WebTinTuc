@@ -1,15 +1,16 @@
 @extends('pages.layouts.index')
+
 @section('tittle')
     Thành viên nhóm
 @endsection
+
 @section('content')
 @if(session('thongbao'))
 <div class="alert alert-success">
         {{ session('thongbao') }}
     </div>
 @endif
-    <!-- Main News Slider Start -->
-
+    <!-- Start: Nội dung -->
     <div class="container-fluid py-3">
         <div class="container">
            <div class="row">
@@ -54,7 +55,7 @@
                        <tr>
                          <th scope="row">4</th>
                          <td>Nguyễn Văn Tâm</td>
-                         <td></td>
+                         <td>61132086</td>
                          <td>61cntt2</td>
                        </tr>
                        <tr>
@@ -82,5 +83,5 @@
            </div>
         </div>
     </div>
-    <!-- Main News Slider End -->
+    <!--  End: Nội dung -->
 @endsection

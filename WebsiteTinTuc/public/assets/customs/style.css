@@ -51,7 +51,10 @@ img.avatar {
     border-radius: 25px;
 }
 
-
 .d-flex.align-items-center.mk.justify-content-between.bg-light {
     flex-direction: column;
+}
+
+p.small.text-muted {
+    display: none;
 }

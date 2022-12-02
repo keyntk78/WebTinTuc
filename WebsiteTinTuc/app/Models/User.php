@@ -44,9 +44,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function dangky($data)
-    {
+    // Đăng ký
+    public function dangky($data){
         return DB::table('users')->insert($data);
     }
 
@@ -81,8 +80,8 @@ class User extends Authenticatable
         return  DB::table('users')->where('id', '=', $id)->delete();
     }
 
-     public function LayUserTheoTin($id)
-    {
+    // Lấy thông tin người dùng theo tin
+     public function LayUserTheoTin($id){
         return  DB::table('users')
         ->select('*')
         ->where('id', '=', $id)->get();
