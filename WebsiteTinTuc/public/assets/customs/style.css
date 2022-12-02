@@ -46,3 +46,7 @@ img.img-fluid.w-100.theloai {
 .form table tr td {
     padding: 5px;
 }
+
+img.avatar {
+    border-radius: 25px;
+}

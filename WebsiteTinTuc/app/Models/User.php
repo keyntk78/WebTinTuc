@@ -81,5 +81,10 @@ class User extends Authenticatable
         return  DB::table('users')->where('id', '=', $id)->delete();
     }
 
-    
+     public function LayUserTheoTin($id)
+    {
+        return  DB::table('users')
+        ->select('*')
+        ->where('id', '=', $id)->get();
+    }
 }

@@ -7,8 +7,8 @@
                         <div class="header-sub-title">
                             <nav class="breadcrumb breadcrumb-dash">
                                 <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
-                                <a class="breadcrumb-item" href="#">Danh sách</a>
-                                <span class="breadcrumb-item active">Sửa người dùng</span>
+                                {{-- <a class="breadcrumb-item" href="#">Danh sách</a> --}}
+                                <span class="breadcrumb-item active">Thông tin người dùng</span>
                             </nav>
                         </div>
                     </div> 
@@ -19,7 +19,7 @@
                         @endif     
                     <div class="card">
                         <div class="card-body">
-                            <h4>Sửa người dùng</h4>
+                            <h4>Thông tin người dùng</h4>
                             <form action="" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-row">
@@ -51,18 +51,7 @@
                                             @enderror
                                     </div>
                                 </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">Quyền</label>
-                                        <select name="quyen" class="form-control">
-                                             <option value="0"{{$chitietUser->quyen == 0  ? 'selected' : false }}>Người dùng</option>
-                                            <option value="1" {{$chitietUser->quyen == 1  ? 'selected' : false }}>Admin</option>
-                                             <option value="2"{{$chitietUser->quyen == 2  ? 'selected' : false }}>Người viết bài</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Sửa</button>
+                                <button type="submit" class="btn btn-primary">Cập nhật</button>
                             </form>
                         </div>
                     </div>

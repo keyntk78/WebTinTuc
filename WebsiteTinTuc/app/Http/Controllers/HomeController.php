@@ -24,10 +24,87 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
+    private $users;
+
+    public function __construct()
+    {
+        $this->users = new User();
+    }
+
     public function index()
     {
         return view('admin.home');
     }
+
+    public function thongTinNguoiDung()
+    {    
+        $id = Auth::user()->id;
+
+        if(!empty($id)){
+            $chitietUser = $this->users->ChiTietUser($id);
+            if(!empty($chitietUser[0])){
+                $chitietUser = $chitietUser[0];
+                  return view('admin.thongtin',compact('chitietUser'));
+            } else {
+                return redirect()->route('users.index')->with('thongbao', 'Người dùng không tồn tại');
+            }
+        } else {
+            return redirect()->route('users.index')->with('thongbao', 'Liên kết không tồn tại');
+        }
+
+    }
+
+    public function post_thongTinNguoiDung(Request $request){
+
+        $id = Auth::user()->id;
+
+        $request->validate([
+             'hoten' => 'required',
+        ],[
+            'hoten.required' => 'Họ tên bắt buộc phải nhập',
+        ]);
+
+        
+
+        $dataupdate = [
+            'hoten' => $request->hoten,
+            'updated_at' =>date('Y-m-d H:i:s'),
+        ];
+
+
+        
+        $gethinh = '';
+
+        
+        if($request->hasFile('hinh')){
+            //Hàm kiểm tra dữ liệu
+            $this->validate($request,
+                [
+                    //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
+                    'hinh' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                ],
+                [
+                    //Tùy chỉnh hiển thị thông báo không thõa điều kiện
+                    'hinh.mimes' => 'Chỉ chấp nhận hình thẻ với đuôi .jpg .jpeg .png .gif',
+                    'hinh.max' => 'Hình thẻ giới hạn dung lượng không quá 2M',
+                ]
+            );
+            //Lưu hình ảnh vào thư mục public/upload/hinhthe
+            $hinh = $request->file('hinh');
+            $gethinh = time().'_avatar'.'_'.$hinh->getClientOriginalName();
+            $destinationPath = public_path('uploads/images');
+            $hinh->move($destinationPath, $gethinh);
+
+            $dataupdate = $dataupdate + ['avatar' => $gethinh];
+        }
+
+        $this->users->CapNhatUser($id, $dataupdate);
+
+        return back()->with('thongbao','Cập nhật thông tin người dùng thành công');
+    }
+
     public function DoiMatKhau()
     {
         return view('admin.doimatkhau');

@@ -27,6 +27,11 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
     Route::get('/', [HomeController::class, 'index'])->name('admin');
     Route::get('/doimatkhau', [HomeController::class, 'DoiMatKhau'])->name('doimatkhau');
     Route::post('/doimatkhau', [HomeController::class, 'postDoiMatKhau'])->name('doimatkhau');
+    
+    Route::get('/thongtinnguoidung', [HomeController::class, 'thongTinNguoiDung'])->name('thongtin');
+    Route::post('/thongtinnguoidung', [HomeController::class, 'post_thongTinNguoiDung']);
+
+
 
     Route::prefix('user')->name('users.')->group(function(){
         Route::get('/', [UserController::class, 'index'])->name('index');
@@ -97,7 +102,7 @@ Route::post('/tintuc/{id}/{tieudekhongdau}', [PageControllers::class, 'postBinhL
 Route::get('/theloai/{id}/{tenkhongdau}', [PageControllers::class, 'TheLoai'])->name('thelloai');
 Route::get('/video', [PageControllers::class, 'danhSachVideo'])->name('video');
 Route::get('/tim-kiem', [PageControllers::class, 'TimKiem'])->name('timkiem');
-
+Route::get('/send-mail', [PageControllers::class, 'sendMail'])->name('senmail');
 
 
 
