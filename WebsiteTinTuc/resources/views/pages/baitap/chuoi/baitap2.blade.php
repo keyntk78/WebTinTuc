@@ -26,29 +26,34 @@
                         $kq=array_product($a);
                     }
                     ?>
-                    <form action="" method="post">
+                    <form  class="form" action="" method="post">
                         @csrf
                         <table align="center" bgcolor="lightpink" width="auto">
                             <tr>
-                                <td bgcolor="red" colspan="2" align="center">
-                                    <h2>Tính Tich</h2>
+                                <td bgcolor="lightblue" colspan="2" align="center">
+                                    <h2>Tính Tích</h2>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Nhập dãy số:</td>
+                                <td>Nhập dãy số: </td>
                                 <td><input type="text" name="dayso" value="<?php if(isset($txt_dayso)) echo $txt_dayso; ?>" size="30"
                                         placeholder="Các số cách nhau bằng dấu ,"></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>
-                                    <input type="submit" name="submit" value="Tính tích">
+                                    <input type="submit" name="submit" style="background: rgb(241, 241, 140) " value="Tính Tích">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Kết quả:</td>
-                                <td align="center" colspan="2"><input type="text" name="Ketqua" value="<?php if(isset($kq)) echo $kq ?>"
+                                <td align="center" colspan="2"><input type="text" style="background-color: lightgreen " name="Ketqua" value="<?php if(isset($kq)) echo $kq ?>"
                                         size="30"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                   <p style="color: red">(*) Các số được nhập cách nhau bởi ","</p>
+                                </td>
                             </tr>
                         </table>
                     </form>

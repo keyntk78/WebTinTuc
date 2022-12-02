@@ -64,11 +64,11 @@
 
                             }
                         ?>
-                        <form action="" method="POST">
+                        <form class="form" action="" method="POST">
                             @csrf
                             <table align="center">
                                 <tr>
-                                    <th colspan="2" bgcolor="#A10A72">THAY THẾ</th>
+                                    <th colspan="2" align="center" bgcolor="#A10A72">THAY THẾ</th>
                                 </tr>
                                 <tr bgcolor="#FED6F1">
                                     <td>Nhập các phần tử:</td>
@@ -83,7 +83,7 @@
                                     <td><input type="text" name="gt" size="20" value="<?php echo $gtThay;?>"></td>
                                 </tr>
                                 <tr bgcolor="#FED6F1">
-                                    <td colspan="2" align="center"><input type="submit" value="Thay thế" name="submit"></td>
+                                    <td colspan="2" align="center"><input type="submit" style="background-color: rgb(241, 241, 82)" value="Thay thế" name="submit"></td>
                                 </tr>
                                 <tr bgcolor="#FFF5FF">
                                     <td>Mãng cũ:</td>
@@ -94,6 +94,9 @@
                                     <td>Mãng cũ:</td>
                                     <td><input type="text" name="mangmoi" size="40" style="background-color: #FBA6A1;" readonly
                                             value="<?php echo $mangmoi;?>"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2", align="center" style="color: red">Các phần tử trong mảng sẽ cách nhau bằng dấu ","</td>
                                 </tr>
                             </table>
                         </form>

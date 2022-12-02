@@ -6,7 +6,7 @@
             <div class="row">
                  <div class="col-12">
                             <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
-                                <h3 class="m-0">Bài tập chuỗi - Bài tập 2</h3>
+                                <h3 class="m-0">Bài tập chuỗi - Bài tập 6</h3>
                             </div>
                         </div>
             </div>
@@ -79,7 +79,7 @@
                             padding-right: 20px;
                         }
                     </style>
-                        <form action="" method="POST">
+                        <form class="form" action="" method="POST">
                             @csrf
                             <table align="center" bgcolor="#D1DED4">
                                 <tr>

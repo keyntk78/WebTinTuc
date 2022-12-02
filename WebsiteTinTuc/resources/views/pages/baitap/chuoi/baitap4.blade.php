@@ -65,11 +65,11 @@
 
                             }
                         ?>
-                        <form action="" method="POST">
+                        <form class="form" action="" method="POST">
                             @csrf
-                            <table align="center" bgcolor="#D1DED4">
+                            <table align="center" bgcolor="Gray">
                                 <tr>
-                                    <th colspan="2" align="center" bgcolor="#359998">
+                                    <th colspan="2" align="center" bgcolor="lightblue">
                                         TÌM KIẾM
                                     </th>
                                 </tr>
@@ -82,7 +82,8 @@
                                     <td><input type="text" name="giatri" value="<?php echo $giatri;?>"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" align="center"><input type="submit" name="submit" value="Tìm kiếm"></td>
+                                    <td colspan="2" align="center"><input type="submit" style="background-color: rgb(231, 231, 104)
+                                        " name="submit" value="Tìm kiếm"></td>
                                 </tr>
                                 <tr>
                                     <td>Mảng:</td>
@@ -90,7 +91,10 @@
                                 </tr>
                                 <tr>
                                     <td>Kết quả tìm kiếm:</td>
-                                    <td><input type="text" name="kq_tim" readonly size="50" value="<?php echo $kq;?>"></td>
+                                    <td><input type="text" style="color: red" name="kq_tim" readonly size="50" value="<?php echo $kq;?>"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2", align="center" style="background-color: lightblue">Các phần tử trong mảng sẽ cách nhau bằng dấu ","</td>
                                 </tr>
                             </table>
                         </form>

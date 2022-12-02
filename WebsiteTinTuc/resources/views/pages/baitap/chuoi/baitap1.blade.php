@@ -6,7 +6,7 @@
             <div class="row">
                  <div class="col-12">
                             <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
-                                <h3 class="m-0">Bài tập chuỗi - Bài tập 2</h3>
+                                <h3 class="m-0">Bài tập chuỗi - Bài tập 1</h3>
                             </div>
                         </div>
             </div>
@@ -58,9 +58,9 @@
                             }
                         ?>
 
-                            <form action="" method="POST">
+                            <form class="form" action="" method="POST">
                                 @csrf
-                                <table align="center">
+                                <table  align="center">
                                     <tr>
                                         <td>Nhập n</td>
                                         <td><input type="text" name="n"></td>
@@ -70,23 +70,29 @@
                                             <input type="submit" name="submit" value="Thực hiện">
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                        <?php 
+                                            echo "MẢNG: ";
+                                            for($i=0; $i < $n; $i++) { 
+                                                echo $arr[$i]. ", ";
+                                            }
+                                        ?>
+                                        </>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <?php
+                                                echo "Số phần tử là số chẳn: $dem </br>";
+                                                echo "Số phần tử nhỏ hơn 100: $dembe100 </br>";
+                                            ?>
+                                        </td>
+                                    </tr>
                                 </table>
                             </form>
 
 
-                            <p><?php 
-                                echo "MẢNG: ";
-                                for ($i=0; $i < $n; $i++) { 
-                                    echo $arr[$i]. ", ";
-                                }
-                            ?></p>
 
-                            <p>
-                                <?php
-                                    echo "Số phần tử là số chẳn: $dem </br>";
-                                    echo "Số phần tử nhỏ hơn 100: $dembe100 </br>";
-                                ?>
-                            </p>
                     </div>
                 </div>
             </div>

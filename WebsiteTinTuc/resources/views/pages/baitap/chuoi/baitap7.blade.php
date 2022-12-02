@@ -54,11 +54,11 @@
                             padding: 0 10px;
                         }
                     </style>
-                    <form action="" method="POST">
+                    <form class="form" action="" method="POST">
                         @csrf
                         <table align="center" bgcolor="#B9EEFF">
                             <tr>
-                                <th colspan="3" bgcolor="#1062C8">TÍNH NĂM ÂM LỊCH</th>
+                                <th colspan="3" bgcolor="lightblue">TÍNH NĂM ÂM LỊCH</th>
                             </tr>
                             <tr>
                                 <td><span>Năm dương lịch</span> <br> <input type="text" name="duonglich"

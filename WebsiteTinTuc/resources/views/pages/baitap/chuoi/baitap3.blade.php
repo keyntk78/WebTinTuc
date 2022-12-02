@@ -66,7 +66,7 @@
                                     $tong = tinh_tong($mang);
                                 }
                             ?>
-                            <form action="" method="POST">
+                            <form class="form" action="" method="POST">
                                 @csrf
                                 <table align="center" bgcolor="lightpink">
                                     <tr>
@@ -81,28 +81,28 @@
                                     <tr>
                                         <td></td>
                                         <td>
-                                            <input type="submit" name="submit" value="Phát sinh và tính toán">
+                                            <input type="submit" name="submit" style="background-color: rgb(245, 245, 111)" value="Phát sinh và tính toán">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Mảng:</td>
-                                        <td><input type="text" name="mang" size="30" readonly value="<?php echo $mang_kq;?>"></td>
+                                        <td><input type="text" style="background-color: pink" name="mang" size="30" readonly value="<?php echo $mang_kq;?>"></td>
                                     </tr>
                                     <tr>
                                         <td>GTLN (MAX) trong mảng:</td>
-                                        <td><input type="text" name="gtln" size="10" readonly value="<?php echo $max;?>"></td>
+                                        <td><input type="text" name="gtln" style="background-color: pink" size="10" readonly value="<?php echo $max;?>"></td>
                                     </tr>
                                     <tr>
                                         <td>TTNN (MIN) trong mảng:</td>
-                                        <td><input type=" text" name="ttnn" size="10" readonly value="<?php echo $min;?>"></td>
+                                        <td><input type=" text" name="ttnn" style="background-color: pink" size="10" readonly value="<?php echo $min;?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Tổng mảng:</td>
-                                        <td><input type="text" name="tong" size="10" readonly value="<?php echo $tong;?>"></td>
+                                        <td><input type="text" name="tong" style="background-color: pink" size="10" readonly value="<?php echo $tong;?>"></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                            <p>(Ghi chú: các giá trị trong mảng sẽ có giá trị từ 0 đến 20)</p>
+                                            <p style="color: red">(Ghi chú: các giá trị trong mảng sẽ có giá trị từ 0 đến 20)</p>
                                         </td>
                                     </tr>
                                 </table>
