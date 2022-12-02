@@ -1,5 +1,7 @@
 @extends('admin.layout.index')
-
+@section('tittle')
+    Sửa user
+@endsection
 @section('content')
               <!-- Content Wrapper START -->
                 <div class="main-content">
@@ -11,12 +13,12 @@
                                 <span class="breadcrumb-item active">Sửa người dùng</span>
                             </nav>
                         </div>
-                    </div> 
+                    </div>
                        @if(session('thongbao'))
                            <div class="alert alert-success">
                                 {{ session('thongbao') }}
                             </div>
-                        @endif     
+                        @endif
                     <div class="card">
                         <div class="card-body">
                             <h4>Sửa người dùng</h4>
@@ -34,7 +36,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Email</label>
-                                        <input type="email" class="form-control" value="{{ old('email') ?? $chitietUser->email }}" name="email" placeholder="Nhập họ tên ..." disabled> 
+                                        <input type="email" class="form-control" value="{{ old('email') ?? $chitietUser->email }}" name="email" placeholder="Nhập họ tên ..." disabled>
                                         @error('email')
                                                 <span style="color: red">{{ $message }}</span>
                                         @enderror

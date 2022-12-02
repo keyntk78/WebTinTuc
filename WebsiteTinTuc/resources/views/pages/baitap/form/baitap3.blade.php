@@ -1,4 +1,7 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 3
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
     <div class="container-fluid py-3">
@@ -24,7 +27,7 @@
                                     if(isset($chisocu) && is_numeric($chisocu) && isset($chisomoi) && is_numeric($chisomoi) && ($chisocu<$chisomoi)){
                                         $thanhtien=($chisomoi-$chisocu)*$dongia;
                                     }
-                                    else 
+                                    else
                                     {
                                         $chisocu="Nhập sai";
                                         $chisomoi="Nhập sai";
@@ -46,7 +49,7 @@
                                     </tr>
                                     <tr>
                                         <td>Chỉ số cũ</td>
-                                        <td> <input type="text" name="chisocu" size="30" value="<?php 
+                                        <td> <input type="text" name="chisocu" size="30" value="<?php
                                          echo $chisocu;
                                         ?>"></td>
                                     </tr>
@@ -73,7 +76,7 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

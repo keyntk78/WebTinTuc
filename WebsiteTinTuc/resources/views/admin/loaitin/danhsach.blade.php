@@ -1,7 +1,9 @@
 @extends('admin.layout.index')
-
+@section('tittle')
+    Danh sách loại tin
+@endsection
 @section('content')
-<div class="main-content"> 
+<div class="main-content">
     <div class="page-header">
         <div class="header-sub-title">
             <nav class="breadcrumb breadcrumb-dash">
@@ -14,14 +16,14 @@
 
     <div class="card">
         <div class="card-body">
-            <h4>Danh sách loại tin</h4>                           
+            <h4>Danh sách loại tin</h4>
             <div class="m-t-25">
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">STT</th>
-        
+
                                 <th scope="col">Thể loại</th>
                                 <th scope="col">Tên loại tin</th>
                                 <th scope="col">Tên không dấu</th>
@@ -40,7 +42,7 @@
                                 <td><a class ="btn btn-danger"href="{{route('loaitin.xoa', ['id'=>$item->id])}}" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a></td>
                             </tr>
                             @endforeach
-                            
+
 
                         </tbody>
                     </table>

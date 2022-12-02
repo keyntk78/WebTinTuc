@@ -1,4 +1,7 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 7
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
     <div class="container-fluid py-3">
@@ -13,16 +16,16 @@
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex align-items-center justify-content-between bg-light">
-                        <?php 
+                        <?php
                         $mang_can = array("Qúy", "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm");
                         $mang_chi = array("Hợi","Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất" );
                         $mang_hinh = array("hoi.jpg","ty.jpg", "suu.jpg", "dan.jpg", "mao.jpg", "thin.jpg", "tyy.jpg", "ngo.jpg", "mui.jpg", "than.jpg", "dau.jpg", "tuat.jpg" );
-                    
+
                         $duonglich = "";
                         $amlich = "";
                         $hinh = "";
 
-                        
+
 
                         if(isset($_POST['submit'])){
                             $duonglich = $_POST['duonglich'];
@@ -31,17 +34,17 @@
                                 $nam = $nam - 3;
                                 $can = $nam%10;
                                 $chi = $nam%12;
-                    
+
                                 $amlich = $mang_can[$can];
                                 $amlich = $amlich. " " . $mang_chi[$chi];
-                                
+
                                 $hinh = $mang_hinh[$chi];
                                 $duongdan =  asset('uploads/images/') . "/" . $hinh;
                                 $hinh = "<img src='$duongdan' width=\"200px\" height=\"200px\" >";
                             } else {
                                 $duonglich = "Không được rõng";
                             }
-                        } 
+                        }
                     ?>
                     <style>
                         table td span {
@@ -49,7 +52,7 @@
                             display: block;
                             text-align: center;
                         }
-                        
+
                         table td {
                             padding: 0 10px;
                         }
@@ -72,11 +75,11 @@
                                 <td colspan="3" align="center"><?php echo $hinh;  ?></td>
                             </tr>
                         </table>
-                    </form>    
+                    </form>
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

@@ -1,7 +1,10 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 5
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
-    
+
 <style>
     table,
     tr,
@@ -9,14 +12,14 @@
     th {
         border: 1px solid #16703681;
     }
-    
+
     th {
         padding: 20px 40px;
         background-color: #FFEEE6;
         color: #FF6D0A;
     }
-    
-    
+
+
     td {
         padding: 10px 20px;
     }
@@ -42,15 +45,15 @@
                                 $username = "root";
                                 $password = "";
                                 $dbname = "quan_ly_ban_sua";
-                    
+
                                 $conn=mysqli_connect($servername, $username, $password, $dbname);
                                 if(!$conn) echo "Kết nối thất bại";
                                 mysqli_set_charset($conn, 'utf8');
-                                
-                                $query = 'SELECT  hang_sua.Ten_hang_sua, sua.*, loai_sua.Ten_loai FROM `sua` 
+
+                                $query = 'SELECT  hang_sua.Ten_hang_sua, sua.*, loai_sua.Ten_loai FROM `sua`
                                         JOIN hang_sua ON sua.Ma_hang_sua = hang_sua.Ma_hang_sua
                                         JOIN loai_sua ON sua.Ma_loai_sua = loai_sua.Ma_loai_sua';
-                                 
+
                                 $result = mysqli_query($conn,$query);
                                 $duongdan =  asset('uploads/images/');
                                  if(mysqli_num_rows($result)!= 0){
@@ -72,7 +75,7 @@
                     <img src="" alt="">
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

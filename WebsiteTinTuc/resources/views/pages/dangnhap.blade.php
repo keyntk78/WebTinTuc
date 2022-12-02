@@ -1,5 +1,7 @@
 @extends('pages.layouts.index')
-
+@section('tittle')
+    Đăng nhập
+@endsection
 @section('content')
     <!-- Contact Start -->
     <div class="container-fluid py-3">

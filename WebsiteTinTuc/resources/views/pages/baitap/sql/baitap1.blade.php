@@ -1,4 +1,7 @@
 @extends('pages.layouts.index')
+@section('tittle')
+    Bài tập 1
+@endsection
 @section('content')
     <!-- News With Sidebar Start -->
     <style>
@@ -6,16 +9,16 @@
             text-align: center;
             color: red;
         }
-        
+
         tr:nth-child(even) {
             background-color: #FEE0C1;
         }
-        
+
         table,
         tr {
             text-align: center;
         }
-        
+
         th,
         td {
             text-align: left;
@@ -44,7 +47,7 @@
                                     <th>Email</th>
 
                                 </tr>
-                                <?php 
+                                <?php
                                     $servername="localhost";
                                     $username="root";
                                     $password="";
@@ -72,7 +75,7 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     </div>

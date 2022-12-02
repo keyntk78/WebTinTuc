@@ -1,5 +1,7 @@
 @extends('admin.layout.index')
-
+@section('tittle')
+    Danh sách thể loại
+@endsection
 @section('content')
 <div class="main-content">
     <div class="page-header">
@@ -47,9 +49,9 @@
                     </table>
                 </div>
             </div>
-           
+
         </div>
     </div>
 </div>
-    
+
 @endsection
