@@ -8,7 +8,7 @@
             </div>
             <div class="col-lg-8 text-center text-lg-right">
                 @if(Auth::check())
-                    <a href="" class="login" >{{ Auth::user()->hoten }}</a>
+                    <a href="{{route("thongtinchitietcanhan")}}" class="login" >{{ Auth::user()->hoten }}</a>
                     <a href="{{route("dangxuat")}}" class="register">Đăng xuất</a>
                      <img class="avatar" width="50px" height="50px" src="{{ asset(PathImages(Auth::user()->avatar))}}" alt="">
                 @else
@@ -39,13 +39,13 @@
                             @if (!empty(getAllTheLoai()))
                                 @foreach (getAllTheLoai() as $item)
                                     <a href="{{ route('thelloai', ['id'=>$item->id, 'tenkhongdau'=>$item->tenkhongdau]) }}" class="dropdown-item">{{ $item->tentheloai }}</a>
-                                @endforeach  
+                                @endforeach
                             @endif
-                            
+
                         </div>
                     </div>
                      <a href="{{ route('baitap.danhsach') }}" class="nav-item nav-link">Bài Tập</a>
-                    <a href="contact.html" class="nav-item nav-link">Thông tin</a>
+                    <a href="{{route('thongtinngoai')}}" class="nav-item nav-link">Thông tin</a>
                 </div>
                <form action="{{ route('timkiem') }}" method="GET">
                  <div class="input-group ml-auto" style="width: 100%; max-width: 300px;">
