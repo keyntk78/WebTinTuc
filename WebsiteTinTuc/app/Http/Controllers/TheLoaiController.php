@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TheLoai;
 
+
 class TheLoaiController extends Controller
 {
      private $theloai;

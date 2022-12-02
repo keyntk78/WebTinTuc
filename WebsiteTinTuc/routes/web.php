@@ -102,7 +102,7 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
       Route::prefix('binhluan')->name('binhluan.')->group(function(){
         Route::get('/', [BinhLuanController::class, 'index'])->name('index');
 
-        Route::get('xoa/{id}', [BinhLuanController::class, 'deleteBinhLuan'])->name('delete');
+        Route::get('xoa/{id}', [BinhLuanController::class, 'deleteBinhLuan'])->name('xoa');
     });
 
 });

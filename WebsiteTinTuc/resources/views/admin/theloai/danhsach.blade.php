@@ -11,6 +11,11 @@
             </nav>
         </div>
     </div>
+     @if(session('thongbao'))
+    <div class="alert alert-success">
+         {{ session('thongbao') }}
+     </div>
+ @endif
     <div class="card">
         <div class="card-body">
             <h4>Danh sách thể loại</h4>

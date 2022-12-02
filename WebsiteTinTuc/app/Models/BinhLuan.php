@@ -10,6 +10,14 @@ class BinhLuan extends Model
 {
     use HasFactory;
 
+    public function DSBinhLuan()
+    {
+        $list = DB::table('binhluan')->select('binhluan.*' ,'users.hoten as hoten', 'tintuc.tieude as tieudetintuc')
+        ->join('users', 'binhluan.id_user', '=', 'users.id')
+        ->join('tintuc', 'binhluan.id_tintuc', '=', 'tintuc.id')->get();
+        return $list;
+    }
+
       public function DSBinhLuanTheoTin($id)
     {
         $list = DB::table('binhluan')->select('binhluan.*' ,'users.hoten as hoten', 'users.avatar as avatar')
@@ -24,6 +32,17 @@ class BinhLuan extends Model
         ->where('id_tintuc', '=', $id)->count();
         return $list;
     }
+
+    
+     public function ChiTietBinhLuan($id)
+     {
+         $chittiet = DB::table('binhluan')->select('*')->where('id', '=', $id)->get();
+         return $chittiet;
+     }
+
+      public function XoaBinhLuan($id){
+        return DB::table('binhluan')->delete($id);
+     }
 
     public function ThemBinhLuan($data){
        return DB::table('binhluan')->insert($data);  

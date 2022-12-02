@@ -87,6 +87,24 @@
                             </ul>
                         </li>
 
+                         <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" href="javascript:void(0);">
+                                <span class="icon-holder">
+                                    <i class="fas fa-caret-square-down"></i>
+                                </span>
+                                <span class="title">Quản lý bình luận</span>
+                                <span class="arrow">
+                                    <i class="arrow-icon"></i>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{route('binhluan.index')}}">Danh sách</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
                         @if (Auth::user()->quyen == 1)
                              <li class="nav-item dropdown">
                                 <a class="dropdown-toggle" href="javascript:void(0);">
