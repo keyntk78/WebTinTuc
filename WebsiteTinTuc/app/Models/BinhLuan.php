@@ -12,7 +12,7 @@ class BinhLuan extends Model
 
       public function DSBinhLuanTheoTin($id)
     {
-        $list = DB::table('binhluan')->select('binhluan.*' ,'users.hoten as hoten')
+        $list = DB::table('binhluan')->select('binhluan.*' ,'users.hoten as hoten', 'users.avatar as avatar')
         ->join('users', 'binhluan.id_user', '=', 'users.id')
         ->where('id_tintuc', '=', $id)->get();
         return $list;

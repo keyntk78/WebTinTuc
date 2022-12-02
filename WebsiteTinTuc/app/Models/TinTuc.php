@@ -123,5 +123,7 @@ class TinTuc extends Model
        return $deltail;
     }
 
+
+    
     
 }

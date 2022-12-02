@@ -10,6 +10,7 @@ use  App\Models\TheLoai;
 use  App\Models\TinTuc;
 use  App\Models\BinhLuan;
 use  App\Models\Video;
+use Illuminate\Support\Facades\Mail;
 
 
 
@@ -81,8 +82,25 @@ class PageControllers extends Controller
             'updated_at' =>date('Y-m-d H:i:s'),
         ];
 
+        
+        $tentintuc = $this->tintuc->ChiTietTintuc($id)[0]->tieude;
+        $id_nguoiviettin = $this->tintuc->ChiTietTintuc($id)[0]->id_user;
 
+        $hoten = Auth::user()->hoten;
+        $data = $dataIsert + [
+            'tentintuc' => $tentintuc,
+            'hoten' => $hoten,
+        ];
+
+        $layUserTheoTin = $this->users->LayUserTheoTin($id_nguoiviettin)[0];
+        
         $this->binhluan->ThemBinhLuan($dataIsert);
+
+
+        Mail::send('pages.email.binhluan', compact('data'), function($email) use($layUserTheoTin){
+            $email->subject('Bình luận');
+            $email->to($layUserTheoTin->email, $layUserTheoTin->hoten);  
+        });
 
         return back();
     }
@@ -164,6 +182,7 @@ class PageControllers extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password) ,
             'quyen' => 0,
+            'avatar' => 'user.png',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' =>date('Y-m-d H:i:s'),
         ];
@@ -193,6 +212,14 @@ class PageControllers extends Controller
 
 
         return view('pages.timkiem', compact('ketqua', 'keyword'));
+    }
+
+      public function sendMail()
+    {
+        $name = 'test mail';
+        Mail::send('pages.test', compact('name'), function($email){
+          $email->to('kiet61133822@gmail.com', 'Tuấn Kiệt');  
+        });
     }
 
 }

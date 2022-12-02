@@ -26,6 +26,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">STT</th>
+                                            <th scope="col">Avatar</th>
                                             <th scope="col">Họ và tên</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Quyền</th>
@@ -38,13 +39,16 @@
                                         @foreach ($user as $key => $item)
                                         <tr>
                                             <th scope="row">{{ $key+1 }}</th>
+                                            <td><img width="100px" src="{{ asset(PathImages($item->avatar)) }}"></td>
                                             <td>{{ $item->hoten }}</td>
                                             <td>{{ $item->email }}</td>
                                             <td>  
-                                            @if ($item->quyen == 1)
+                                            @if ($item->quyen == 0)
+                                                Khách hàng
+                                            @elseif($item->quyen == 1)
                                                 Quản trị
                                             @else
-                                                Khách hàng
+                                                Người viết bài
                                             @endif
                                             </td>
                                             <td><a class="btn btn-primary" href="{{ route('users.edit', ['id'=>$item->id]) }}">Sửa</a></td>

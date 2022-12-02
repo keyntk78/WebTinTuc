@@ -12,7 +12,7 @@ class UserController extends Controller
 {
 
     private $users;
-    const _PER_PAGE = 2;
+    const _PER_PAGE = 10;
 
     public function __construct()
     {
@@ -87,7 +87,8 @@ class UserController extends Controller
             'hoten' => $request->hoten,
             'email' => $request->email,
             'password' => Hash::make($request->password) ,
-            'quyen' => 1,
+            'quyen' => 2,
+            'avatar' => 'user.png',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' =>date('Y-m-d H:i:s'),
         ];
@@ -122,11 +123,40 @@ class UserController extends Controller
             'hoten.required' => 'Họ tên bắt buộc phải nhập',
         ]);
 
+        
+
         $dataupdate = [
             'hoten' => $request->hoten,
             'quyen' => $request->quyen,
             'updated_at' =>date('Y-m-d H:i:s'),
         ];
+
+
+        
+        $gethinh = '';
+
+        
+        if($request->hasFile('hinh')){
+            //Hàm kiểm tra dữ liệu
+            $this->validate($request,
+                [
+                    //Kiểm tra đúng file đuôi .jpg,.jpeg,.png.gif và dung lượng không quá 2M
+                    'hinh' => 'mimes:jpg,jpeg,png,gif|max:2048',
+                ],
+                [
+                    //Tùy chỉnh hiển thị thông báo không thõa điều kiện
+                    'hinh.mimes' => 'Chỉ chấp nhận hình thẻ với đuôi .jpg .jpeg .png .gif',
+                    'hinh.max' => 'Hình thẻ giới hạn dung lượng không quá 2M',
+                ]
+            );
+            //Lưu hình ảnh vào thư mục public/upload/hinhthe
+            $hinh = $request->file('hinh');
+            $gethinh = time().'_avatar'.'_'.$hinh->getClientOriginalName();
+            $destinationPath = public_path('uploads/images');
+            $hinh->move($destinationPath, $gethinh);
+
+            $dataupdate = $dataupdate + ['avatar' => $gethinh];
+        }
 
         $this->users->CapNhatUser($id, $dataupdate);
 

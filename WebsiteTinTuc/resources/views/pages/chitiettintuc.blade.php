@@ -42,7 +42,7 @@
                         <h3 class="mb-4">{{ $soluongbinhluan }} bình luận</h3>
                         @foreach ($dsBinhLuan as $item)
                             <div class="media mb-4">
-                                <img src="{{ asset('img/user.jpg') }}" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                <img src="{{ asset(PathImages($item->avatar))}}" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                 <div class="media-body">
                                     <h6><a href="">{{ $item->hoten }}</a> <small><i>{{ format_date($item->created_at) }}</i></small></h6>
                                     <p>{{ $item->noidung }}</p>
@@ -50,29 +50,7 @@
                             </div>
                         @endforeach
                         
-                        {{-- <div class="media">
-                            <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                            <div class="media-body">
-                                <h6><a href="">John Doe</a> <small><i>01 Jan 2045 at 12:00pm</i></small></h6>
-                                <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
-                                    accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.
-                                    Gubergren clita aliquyam consetetur sadipscing, at tempor amet ipsum diam tempor
-                                    consetetur at sit.</p>
-                                <button class="btn btn-sm btn-outline-secondary">Reply</button>
-                                <div class="media mt-4">
-                                    <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1"
-                                        style="width: 45px;">
-                                    <div class="media-body">
-                                        <h6><a href="">John Doe</a> <small><i>01 Jan 2045 at 12:00pm</i></small></h6>
-                                        <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor
-                                            labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed
-                                            eirmod ipsum. Gubergren clita aliquyam consetetur sadipscing, at tempor amet
-                                            ipsum diam tempor consetetur at sit.</p>
-                                        <button class="btn btn-sm btn-outline-secondary">Reply</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
+                   
                     </div>
                     <!-- Comment List End -->
 
