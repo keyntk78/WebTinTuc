@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2022 at 02:33 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: Dec 02, 2022 at 07:39 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,10 +31,35 @@ CREATE TABLE `binhluan` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `id_user` bigint(20) UNSIGNED NOT NULL,
   `id_tintuc` bigint(20) UNSIGNED NOT NULL,
-  `noidung` varchar(255) NOT NULL,
+  `noidung` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `binhluan`
+--
+
+INSERT INTO `binhluan` (`id`, `id_user`, `id_tintuc`, `noidung`, `created_at`, `updated_at`) VALUES
+(1, 1, 26, 'OK', '2022-12-01 17:00:31', '2022-12-01 17:00:31'),
+(2, 5, 26, 'bình', '2022-12-01 17:00:31', '2022-12-01 17:00:31'),
+(3, 5, 26, 'rất hay', '2022-12-01 11:12:23', '2022-12-01 11:12:23'),
+(4, 2, 19, ':(', '2022-12-01 11:17:08', '2022-12-01 11:17:08'),
+(5, 2, 25, 'rất hay', '2022-12-01 11:25:50', '2022-12-01 11:25:50'),
+(6, 5, 23, 'xin chào', '2022-12-01 21:15:06', '2022-12-01 21:15:06'),
+(7, 5, 23, 'xin chào', '2022-12-01 21:18:30', '2022-12-01 21:18:30'),
+(8, 5, 23, 'xin chào', '2022-12-01 21:18:46', '2022-12-01 21:18:46'),
+(9, 5, 20, 'hài', '2022-12-01 21:19:58', '2022-12-01 21:19:58'),
+(10, 5, 20, 'a', '2022-12-01 21:20:57', '2022-12-01 21:20:57'),
+(11, 5, 20, 'aa', '2022-12-01 21:21:51', '2022-12-01 21:21:51'),
+(12, 5, 20, 'hài :v', '2022-12-01 21:22:04', '2022-12-01 21:22:04'),
+(13, 5, 20, 'hài :v', '2022-12-01 21:23:37', '2022-12-01 21:23:37'),
+(14, 2, 22, ':(', '2022-12-01 21:24:34', '2022-12-01 21:24:34'),
+(15, 2, 22, ':(', '2022-12-01 21:24:49', '2022-12-01 21:24:49'),
+(16, 2, 11, 'wao', '2022-12-01 21:29:19', '2022-12-01 21:29:19'),
+(17, 4, 23, 'test bình luận', '2022-12-01 21:40:30', '2022-12-01 21:40:30'),
+(18, 2, 27, 'hay', '2022-12-01 22:36:18', '2022-12-01 22:36:18'),
+(19, 9, 27, 'Từ việc sản xuất nội dung \"bẩn\" để lôi kéo lượt xem, lượt tương tác, các TikToker có thể kiếm về thu nhập lớn nhờ tiếp thị liên kết.', '2022-12-01 23:18:44', '2022-12-01 23:18:44');
 
 -- --------------------------------------------------------
 
@@ -44,11 +69,11 @@ CREATE TABLE `binhluan` (
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) NOT NULL,
-  `connection` text NOT NULL,
-  `queue` text NOT NULL,
-  `payload` longtext NOT NULL,
-  `exception` longtext NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -61,8 +86,8 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `loaitin` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `id_theloai` bigint(20) UNSIGNED NOT NULL,
-  `tenloaitin` varchar(255) NOT NULL,
-  `tenkhongdau` varchar(255) NOT NULL,
+  `tenloaitin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tenkhongdau` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -72,10 +97,11 @@ CREATE TABLE `loaitin` (
 --
 
 INSERT INTO `loaitin` (`id`, `id_theloai`, `tenloaitin`, `tenkhongdau`, `created_at`, `updated_at`) VALUES
-(7, 5, 'Thể Thao', 'the-thao', '2022-12-01 05:24:40', '2022-12-01 05:26:11'),
-(8, 6, 'Công nghệ', 'cong-nghe', '2022-12-01 05:25:02', '2022-12-01 05:26:27'),
-(9, 7, 'Xã Hội', 'xa-hoi', '2022-12-01 05:25:16', '2022-12-01 05:26:39'),
-(10, 8, 'Y Tế', 'y-te', '2022-12-01 05:25:25', '2022-12-01 05:26:47');
+(7, 5, 'Thể thao quốc tế', 'the-thao-quoc-te', '2022-12-01 05:24:40', '2022-12-01 09:47:51'),
+(8, 6, 'BlockChani', 'blockchani', '2022-12-01 05:25:02', '2022-12-01 09:48:29'),
+(9, 7, 'Pháp Luật', 'phap-luat', '2022-12-01 05:25:16', '2022-12-01 09:48:41'),
+(10, 8, 'Covid-19', 'covid-19', '2022-12-01 05:25:25', '2022-12-01 09:49:06'),
+(11, 6, 'INTERNET', 'internet', '2022-12-01 22:32:35', '2022-12-01 22:32:35');
 
 -- --------------------------------------------------------
 
@@ -85,7 +111,7 @@ INSERT INTO `loaitin` (`id`, `id_theloai`, `tenloaitin`, `tenkhongdau`, `created
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -103,7 +129,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (10, '2022_11_16_061910_alter_fkn_to_loaitin', 3),
 (11, '2022_11_16_061452_create_tintuc_table', 4),
 (12, '2022_11_16_062314_create_binhluan_table', 5),
-(13, '2022_11_20_070203_add_hinh_theloai_table', 6);
+(13, '2022_11_20_070203_add_hinh_theloai_table', 6),
+(14, '2022_12_01_183346_create_video_table', 7),
+(15, '2022_12_02_045415_add_hinh_users_table', 8);
 
 -- --------------------------------------------------------
 
@@ -112,8 +140,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -125,11 +153,11 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `token` varchar(64) NOT NULL,
-  `abilities` text DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -144,11 +172,11 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `theloai` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tentheloai` varchar(255) NOT NULL,
-  `tenkhongdau` varchar(255) NOT NULL,
+  `tentheloai` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tenkhongdau` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `hinh` text DEFAULT NULL
+  `hinh` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -170,11 +198,11 @@ INSERT INTO `theloai` (`id`, `tentheloai`, `tenkhongdau`, `created_at`, `updated
 
 CREATE TABLE `tintuc` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tieude` varchar(255) NOT NULL,
-  `tieudekhongdau` varchar(255) NOT NULL,
-  `tomtat` text DEFAULT NULL,
-  `noidung` text DEFAULT NULL,
-  `hinh` text DEFAULT NULL,
+  `tieude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tieudekhongdau` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tomtat` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `noidung` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `hinh` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `noibat` int(11) DEFAULT NULL,
   `soluotxem` int(11) DEFAULT NULL,
   `id_loaitin` bigint(20) UNSIGNED NOT NULL,
@@ -210,7 +238,8 @@ INSERT INTO `tintuc` (`id`, `tieude`, `tieudekhongdau`, `tomtat`, `noidung`, `hi
 (24, 'Việt Nam ghi nhận thêm một ca tử vong do Covid-19', 'viet-nam-ghi-nhan-them-mot-ca-tu-vong-do-covid-19', 'Hôm nay, số ca nhiễm nCoV tại Việt Nam tăng hơn 90 ca so với ngày trước đó và có một trường hợp tử vong được ghi nhận tại thành phố Cần Thơ', '<p style=\"text-align:center\"><img src=\"https://znews-photo.zingcdn.me/w960/Uploaded/moguvt/2022_12_01/1_zing_1.jpg\" style=\"height:600px; width:900px\" /></p>\r\n\r\n<p style=\"text-align:justify\">Theo th&ocirc;ng tin từ Bộ Y tế tối 1/12, trong 24 giờ qua, Việt Nam ghi nhận 581 trường hợp mắc Covid-19, tăng 96 ca so với ng&agrave;y trước đ&oacute;.</p>\r\n\r\n<p style=\"text-align:justify\">Kể từ đầu dịch đến nay, nước ta c&oacute; 11.516.489 ca nhiễm, đứng thứ 13/230 quốc gia v&agrave; v&ugrave;ng l&atilde;nh thổ.</p>\r\n\r\n<p style=\"text-align:justify\">Trong ng&agrave;y, Việt Nam ghi nhận th&ecirc;m một ca tử vong do Covid-19 tại th&agrave;nh phố Cần Thơ. Tổng số ca tử vong do Covid-19 tại Việt Nam t&iacute;nh đến nay l&agrave; 43.176 ca, chiếm tỷ lệ 0,4% so với tổng số ca nhiễm. Tổng số ca tử vong xếp thứ 26/230 v&ugrave;ng l&atilde;nh thổ, số ca tử vong tr&ecirc;n một triệu d&acirc;n xếp thứ 139/230 quốc gia, v&ugrave;ng l&atilde;nh thổ tr&ecirc;n thế giới.</p>\r\n\r\n<p style=\"text-align:justify\">Theo Cục Quản l&yacute; Kh&aacute;m, Chữa bệnh, cả nước hiện điều trị cho 45 bệnh nh&acirc;n Covid-19 phải thở oxy, trong đ&oacute;, 38 ca thở qua mặt nạ, 4 ca thở oxy d&ograve;ng cao HFNC v&agrave; 3 ca phải thở m&aacute;y x&acirc;m lấn.</p>\r\n\r\n<p style=\"text-align:justify\">Trong ng&agrave;y 30/11, cả nước c&oacute; 100.761 liều vaccine ph&ograve;ng Covid-19 được ti&ecirc;m. Như vậy, tổng số liều vaccine đ&atilde; được ti&ecirc;m l&agrave; 264.486.568 liều.</p>\r\n\r\n<p style=\"text-align:justify\">Cụ thể, số liều ti&ecirc;m cho người từ 18 tuổi trở l&ecirc;n l&agrave; 222.984.241 liều: Mũi 1 l&agrave; 71.078.249 liều; mũi 2 l&agrave; 68.684.449 liều; mũi bổ sung l&agrave; 14.500.267 liều; mũi nhắc lại lần 1 l&agrave; 51.594.088 liều; mũi nhắc lại lần 2 l&agrave; 17.127.188 liều.</p>\r\n\r\n<p style=\"text-align:justify\">Số liều ti&ecirc;m cho trẻ 12-17 tuổi l&agrave; 23.789.969 liều: Mũi 1 l&agrave; 9.125.936 liều; mũi 2 l&agrave; 8.942.019 liều; mũi nhắc lại lần 1 l&agrave; 5.722.014 liều.</p>\r\n\r\n<p style=\"text-align:justify\">Số liều ti&ecirc;m cho trẻ 5-11 tuổi l&agrave; 17.712.358 liều: Mũi 1 l&agrave; 10.133.139 liều; mũi 2 l&agrave; 7.579.219 liều.</p>', '1669900140_1_zing_1.jpg', 1, 0, 10, 1, '2022-12-01 06:09:00', '2022-12-01 06:09:00'),
 (25, 'Tác động của virus Zika đối với thai nhi', 'tac-dong-cua-virus-zika-doi-voi-thai-nhi', 'Nhóm nghiên cứu tại Mỹ vừa công bố kết quả nghiên cứu về tác động của virus Zika lên quá trình phát triển của những trẻ bị phơi nhiễm trước khi chào đời.', '<p style=\"text-align:center\"><img src=\"https://znews-photo.zingcdn.me/w960/Uploaded/dagttz/2022_12_01/zika.jpg\" /></p>\r\n\r\n<p style=\"text-align:justify\">Trẻ em tiếp x&uacute;c với virus Zika c&oacute; thể cần được hỗ trợ nhiều hơn khi bắt đầu đi học, ngay cả khi ch&uacute;ng kh&ocirc;ng được chẩn đo&aacute;n mắc c&aacute;c dị tật bẩm sinh li&ecirc;n quan đến virus n&agrave;y v&agrave; hội chứng Zika bẩm sinh (CZS).</p>\r\n\r\n<p style=\"text-align:justify\">Những ph&aacute;t hiện n&agrave;y đ&atilde; được c&ocirc;ng bố v&agrave;o ng&agrave;y 29 th&aacute;ng 11 tr&ecirc;n tạp ch&iacute;&nbsp;<em>Nghi&ecirc;n cứu Nhi khoa</em>. Theo đ&oacute;, trẻ em vẫn c&oacute; thể c&oacute; sự kh&aacute;c biệt trong qu&aacute; tr&igrave;nh ph&aacute;t triển n&atilde;o bộ, bao gồm cả những kh&aacute;c biệt về kỹ năng tư duy, t&acirc;m trạng v&agrave; khả năng vận động d&ugrave; c&aacute;c nh&agrave; nghi&ecirc;n cứu cho biết một số điểm được x&aacute;c định trong nghi&ecirc;n cứu c&oacute; thể l&agrave; thước đo sự lo lắng của cha mẹ hơn l&agrave; sự kh&aacute;c biệt thực sự.</p>\r\n\r\n<p style=\"text-align:justify\">Tiến sĩ Sarah Mulkey, nh&agrave; thần kinh học tiền sản - sơ sinh tại Bệnh viện Nhi đồng Quốc gia ở Washington, D.C., cho biết: &ldquo;Vẫn c&ograve;n nhiều c&acirc;u hỏi chưa được trả lời về t&aacute;c động l&acirc;u d&agrave;i của Zika đối với trẻ em bị phơi nhiễm trong tử cung. Những ph&aacute;t hiện n&agrave;y l&agrave; một phần kh&aacute;c của nghi&ecirc;n cứu nhằm cung cấp c&aacute;i nh&igrave;n s&acirc;u sắc về sự ph&aacute;t triển thần kinh l&acirc;u d&agrave;i của nh&oacute;m trẻ em n&agrave;y&quot;.</p>\r\n\r\n<p style=\"text-align:justify\">B&agrave; cho biết giới nghi&ecirc;n cứu cần đ&aacute;nh gi&aacute; th&ecirc;m t&igrave;nh h&igrave;nh khi những đứa trẻ n&agrave;y lớn l&ecirc;n. Thực tế, những trẻ phơi nhiễm trước khi sinh với virus Zika trong đợt dịch 2015-2017 nay đ&atilde; đến tuổi đi học.</p>\r\n\r\n<p style=\"text-align:justify\">Nh&oacute;m của tiến sĩ Mulkey đ&atilde; nghi&ecirc;n cứu sự ph&aacute;t triển n&atilde;o bộ của 55 trẻ ở Sabanalarga, Colombia, hiện từ 3 đến 5 tuổi. C&aacute;c em từng tiếp x&uacute;c với Zika trong bụng mẹ. Nh&oacute;m nghi&ecirc;n cứu tiến h&agrave;nh so s&aacute;nh những trẻ n&agrave;y với 70 trẻ kh&aacute;c trong độ tuổi 4-5, kh&ocirc;ng bị phơi nhiễm với Zika trước khi ch&agrave;o đời.</p>\r\n\r\n<p style=\"text-align:justify\">Những đứa trẻ được kiểm tra về sự kh&eacute;o l&eacute;o trong thủ c&ocirc;ng (chẳng hạn cho đồng xu qua khe), nhắm mục ti&ecirc;u v&agrave; bắt, giữ thăng bằng c&ugrave;ng nhận ​thức về m&agrave;u sắc, chữ c&aacute;i, con số, h&igrave;nh dạng.</p>\r\n\r\n<p style=\"text-align:justify\">Cha mẹ của họ tự ho&agrave;n th&agrave;nh việc cung cấp th&ocirc;ng tin về chức năng t&acirc;m thần của trẻ, bao gồm tr&iacute; nhớ, khả năng kiểm so&aacute;t cảm x&uacute;c; điều kiện h&agrave;nh vi, thể chất, chẳng hạn tr&aacute;ch nhiệm v&agrave; độ linh động; cảm x&uacute;c của ch&iacute;nh trẻ về c&aacute;ch nu&ocirc;i dạy của bố mẹ, bao gồm cả việc trẻ c&oacute; cảm thấy đau khổ hay kh&ocirc;ng.</p>\r\n\r\n<p style=\"text-align:justify\">C&aacute;c nh&agrave; nghi&ecirc;n cứu nhận thấy mặc d&ugrave; cha mẹ của những đứa trẻ bị phơi nhiễm Zika cho biết mức độ linh động v&agrave; tr&aacute;ch nhiệm của con c&aacute;i họ thấp hơn đ&aacute;ng kể so với nh&oacute;m đối chứng, sự kh&aacute;c biệt về điểm kiểm tra nhận thức kh&ocirc;ng đ&aacute;ng kể.</p>\r\n\r\n<p style=\"text-align:justify\">Cha mẹ của 6 đứa trẻ bị phơi nhiễm Zika, tương đương 11%, cho biết con của họ c&oacute; vấn đề về t&acirc;m trạng so với 1% trẻ đối chứng. Cha mẹ của những đứa trẻ bị nhiễm Zika cũng b&aacute;o c&aacute;o t&igrave;nh trạng đau khổ cao hơn. Thử nghiệm của c&aacute;c chuy&ecirc;n gia cho thấy kh&ocirc;ng c&oacute; sự kh&aacute;c biệt đ&aacute;ng kể n&agrave;o về sự kh&eacute;o l&eacute;o của đ&ocirc;i tay ở trẻ em tiếp x&uacute;c với Zika. Cả hai nh&oacute;m đều c&oacute; điểm thấp về mức độ sẵn s&agrave;ng đi học.</p>\r\n\r\n<p style=\"text-align:justify\">C&aacute;c nh&agrave; nghi&ecirc;n cứu cho biết phản ứng của cha mẹ bị ảnh hưởng bởi sự lo lắng của họ về sự ph&aacute;t triển của con m&igrave;nh do phơi nhiễm Zika. Họ n&oacute;i th&ecirc;m rằng một số kh&aacute;c biệt c&oacute; thể do tuổi của trẻ.</p>', '1669900254_zika.jpg', 1, 0, 10, 1, '2022-12-01 06:10:54', '2022-12-01 06:10:54');
 INSERT INTO `tintuc` (`id`, `tieude`, `tieudekhongdau`, `tomtat`, `noidung`, `hinh`, `noibat`, `soluotxem`, `id_loaitin`, `id_user`, `created_at`, `updated_at`) VALUES
-(26, 'Argentina tìm ra lời giải cho \'bài toán Messi', 'argentina-tim-ra-loi-giai-cho--bai-toan-messi', 'Chiến thắng trước Ba Lan không chỉ mang tới suất đi tiếp tại bảng C cho ĐT Argentina, mà còn giúp ông Scaloni thử nghiệm thành công phương án giúp siêu sao của mình tỏa sáng', '<p>Lần thứ ba tại World Cup 2022, HLV Lionel Scaloni đưa ra những điều chỉnh mang t&iacute;nh hệ thống. Một mặt, việc gi&agrave;nh chiến thắng l&agrave; rất quan trọng, nhưng mặt kh&aacute;c, cuối c&ugrave;ng &ocirc;ng cũng c&oacute; trong tay một phương &aacute;n ph&ugrave; hợp nhất với hiện trạng cho đại diện của xứ sở tang</p>\r\n\r\n<h3>C&aacute;i kh&oacute; của Scaloni</h3>\r\n\r\n<p>Lối chơi của Argentina kh&ocirc;ng phải l&agrave; biến đổi kh&ocirc;n lường. N&oacute; đ&atilde; được định h&igrave;nh trong suốt 4 năm l&agrave;m việc đ&atilde; qua của &ocirc;ng Scaloni, v&agrave; ch&iacute;nh x&aacute;c hơn l&agrave; từ người tiền nghiệm Jorge Sampaoli.</p>\r\n\r\n<p>Scaloni duy tr&igrave; Argentina chơi b&oacute;ng với nền tảng l&agrave; việc chủ động kiểm so&aacute;t b&oacute;ng, x&acirc;y dựng một khung vận h&agrave;nh mở rộng tr&ecirc;n khắp chiều ngang của s&acirc;n v&agrave; từ đ&oacute; t&igrave;m kiếm những cơ hội đẩy nhanh nhịp độ thi đấu, tấn c&ocirc;ng chiều s&acirc;u. Argentina &iacute;t khi tấn c&ocirc;ng qua trung lộ, nhưng lu&ocirc;n chủ động cầm b&oacute;ng chắc ở trung lộ để từ đ&oacute; đ&aacute;nh nhanh xuống hai bi&ecirc;n.</p>\r\n\r\n<p>Lối chơi l&agrave; vậy, nhưng để t&igrave;m ra một hệ thống đủ tốt th&igrave; quả thực nhọc nhằn cho vị HLV trẻ tuổi nhất World Cup 2022. Qua mỗi giải đấu m&agrave; &ocirc;ng dẫn dắt, dường như lu&ocirc;n c&oacute; những vấn đề ở tuyển Argentina: con người, phong độ của trụ cột... Dường như chỉ c&oacute; một thứ l&agrave; bất biến: đẳng cấp của Lionel Messi v&agrave; Angel Di Maria.</p>\r\n\r\n<p>Chẳng hạn, một c&aacute;i t&ecirc;n đ&aacute;ng n&oacute;i l&agrave; Lautaro Martinez. Ch&acirc;n s&uacute;t 25 tuổi c&oacute; đ&oacute;ng g&oacute;p quan trọng để gi&uacute;p Albicelestes đăng quang Copa America 2021, nhưng lại thể hiện phong độ kh&aacute; kh&oacute; lường tại v&ograve;ng loại World Cup. Anh l&agrave; mẫu cầu thủ khi chơi tốt th&igrave; đạt ngay &quot;điểm 10&quot;, nhưng lại c&oacute; thời điểm khiến ai cũng phải ng&aacute;n ngẩm v&igrave; độ v&ocirc; duy&ecirc;n cho đội tuyển.</p>\r\n\r\n<p>Bước v&agrave;o World Cup năm nay, Martinez đ&atilde; 2 lần l&agrave;m Scaloni thất vọng, qua 2 trận đầu ti&ecirc;n. Chẳng biết c&oacute; phải ngẫu nhi&ecirc;n kh&ocirc;ng, nhưng c&oacute; vẻ ch&iacute;nh phong độ thấp của anh gi&uacute;p cho &ocirc;ng Scaloni t&igrave;m ra lời giải cho &quot;b&agrave;i to&aacute;n Messi&quot;.</p>\r\n\r\n<h3>Qu&aacute; tam ba bận</h3>\r\n\r\n<p>Messi b&acirc;y giờ đ&atilde; kh&aacute;c Messi khi xưa. Ai cũng nhớ về thời điểm anh c&oacute; khả năng đi b&oacute;ng qua 6 cầu thủ đối phương v&agrave; khoan thủng mọi bức tường ph&ograve;ng ngự.</p>\r\n\r\n<p>Nhưng hiện tại của Messi l&agrave; một nhạc trưởng, cầu thủ c&oacute; khả năng xử l&yacute; b&oacute;ng trong phạm vi si&ecirc;u hẹp, t&igrave;m kiếm những khoảng trống v&agrave; tung ra những đường chuyền l&agrave;m thay đổi thế trận. Messi b&acirc;y giờ kh&ocirc;ng chơi b&oacute;ng theo kiểu &quot;t&ocirc;i l&agrave; người giỏi nhất&quot; nữa. Anh đang chơi b&oacute;ng để những người xung quanh giỏi hơn.</p>\r\n\r\n<p>3 trận tại bảng C l&agrave; 3 khung sơ đồ kh&aacute;c nhau m&agrave; HLV Scaloni &aacute;p dụng. Trận đầu ti&ecirc;n, &ocirc;ng đưa ra sơ đồ 4-4-2, với Lautaro Martinez chơi ph&iacute;a trước Messi, hai c&aacute;nh l&agrave; Papu Gomez v&agrave; Angel Di Maria.</p>\r\n\r\n<p>Papu Gomez đ&atilde; chơi kh&ocirc;ng tồi, nhưng hệ thống n&agrave;y của &ocirc;ng Scaloni đ&atilde; kh&ocirc;ng gi&uacute;p cho Messi ph&aacute;t tiết được hết khả năng của anh. Điển h&igrave;nh l&agrave; những c&uacute; đẩy b&oacute;ng về hướng ch&acirc;n tr&aacute;i trước khi tung ra những pha chuyển hướng l&agrave;m thế trận v&agrave; nhịp độ ph&ograve;ng ngự của đối phương của x&ocirc; lệch.</p>\r\n\r\n<p>Những pha chuyển hướng, mở b&oacute;ng ra bi&ecirc;n tr&aacute;i ấy kh&ocirc;ng phải qu&aacute; đặc biệt nếu chỉ nghe m&ocirc; tả. Điểm đặc biệt của n&oacute; l&agrave; t&iacute;nh thời điểm v&agrave; t&iacute;nh ch&iacute;nh x&aacute;c đ&aacute;ng kinh ngạc. Tại CLB Barcelona, đ&atilde; kh&ocirc;ng &iacute;t trận đấu được giải quyết ho&agrave;n to&agrave;n bằng những đường chuyền như vậy của Messi tới ch&acirc;n Jordi Alba.</p>\r\n\r\n<p>Khi Papu Gomez b&oacute; v&agrave;o b&ecirc;n trong, Nico Tagliafico thường giữ vị tr&iacute; kh&aacute; thấp theo kiểu hậu vệ tr&aacute;i truyền thống. Anh n&agrave;y kh&ocirc;ng đủ sự nhạy cảm v&agrave; tốc độ để băng l&ecirc;n. Bản th&acirc;n Messi cũng &iacute;t khi thực hiện pha chuyển hướng sở trường, đơn giản bởi anh cầm b&oacute;ng th&igrave; kh&ocirc;ng thấy điểm đến n&agrave;o b&ecirc;n bi&ecirc;n tr&aacute;i.</p>\r\n\r\n<p>Sang tới trận gặp Mexico, &ocirc;ng Scaloni chuyển sang bộ khung 3-4-3 khi tấn c&ocirc;ng, với Marcos Acuna chạy c&aacute;nh tr&aacute;i. Acuna kh&ocirc;ng chỉ được ph&eacute;p giữ vị tr&iacute; cao hơn tại bi&ecirc;n tr&aacute;i m&agrave; c&ograve;n l&agrave; một cầu thủ c&oacute; khả năng tấn c&ocirc;ng xuy&ecirc;n ph&aacute; tốt hơn so với Tagliafico.</p>\r\n\r\n<p>D&ugrave; vậy, Lautaro Martinez tiếp tục g&acirc;y thất vọng, ngo&agrave;i ra hệ thống ph&ograve;ng ngự với 2 h&agrave;ng ngang 4 người (do Messi v&agrave; Martinez ở lại ph&iacute;a tr&ecirc;n) vẫn c&oacute; những điểm yếu tiềm t&agrave;ng.</p>\r\n\r\n<p>Sang tới trận thứ ba, lần n&agrave;y HLV Scaloni dường như đ&atilde; c&oacute; được một hệ thống ưng &yacute; nhất. Điểm nhấn quan trọng l&agrave; Julian Alvarez, c&aacute;i t&ecirc;n thay thế Lautaro.</p>\r\n\r\n<p>Alvarez l&agrave; một cầu thủ t&iacute;ch hợp khả năng của cả một tiền đạo lẫn một tiền vệ bi&ecirc;n. Anh gi&agrave;u năng lượng, cần mẫn để hỗ trợ ph&ograve;ng ngự bi&ecirc;n, cũng như đủ sắc b&eacute;n để nhập v&agrave;o v&ograve;ng cấm trong vai tr&ograve; số 9 khi tấn c&ocirc;ng.</p>\r\n\r\n<p>Khi Argentina ph&ograve;ng thủ, t&acirc;n binh của Manchester City sẽ đ&oacute;ng hoạt động như một tiền vệ tr&aacute;i trong sơ đồ 4-3-3. Kh&aacute;c với việc Lautaro Martinez c&ugrave;ng Messi &quot;giải lao&quot; tr&ecirc;n cao, giờ đ&acirc;y chỉ c&oacute; Messi được nghỉ ngơi. Những người kh&aacute;c đều phải l&agrave;m việc v&agrave; c&ograve;n ai l&agrave;m việc chăm chỉ hơn Julian Alvarez. Số lượng v&agrave; chất lượng ph&ograve;ng ngự đều tăng.</p>\r\n\r\n<p><img alt=\"Messi Argentina anh 3\" src=\"https://znews-photo.zingcdn.me/w1920/Uploaded/ofh_huqfztmf/2022_12_01/Messi_switch.jpg\" style=\"height:506px; width:900px\" /></p>\r\n\r\n<p>Khi c&oacute; b&oacute;ng, Argentina sẽ chủ động giảm nhịp độ lại v&agrave; chuyển tiếp th&agrave;nh sơ đồ 3-4-3. Alvarez sẽ di chuyển v&agrave;o b&ecirc;n trong trở th&agrave;nh tiền đạo, Acuna đẩy l&ecirc;n cao, Messi v&agrave; Mac Allister chơi sau lưng Alvarez.</p>\r\n\r\n<p>Hệ thống n&agrave;y kh&ocirc;ng chỉ gi&uacute;p Messi tự do t&igrave;m kiếm khoảng trống v&agrave; nhận b&oacute;ng trong kh&ocirc;ng gian sở trường, m&agrave; c&ograve;n đặt Acuna v&agrave;o khu vực để Messi tung ra những pha chuyển hướng sở trường.</p>\r\n\r\n<p>Tổng cộng Messi đ&atilde; tung ra 5 đường chuyền theo dạng n&agrave;y cho Acuna. V&agrave; đ&oacute; cũng chỉ l&agrave; một phần để thể hiện rằng Argentina đ&atilde; chơi tốt. Ngo&agrave;i việc tạo ra điều kiện để số 10 chơi tốt, những mắt x&iacute;ch trẻ như Alvarez, Enzo Fernandez, Mac Allister đều đ&atilde; thể hiện được chất lượng của bản th&acirc;n, thậm ch&iacute; tỏa s&aacute;ng bằng những b&agrave;n thắng.</p>\r\n\r\n<p>C&oacute; vẻ như &ocirc;ng Scaloni đ&atilde; t&igrave;m ra lời giải cho kỳ World Cup năm nay.</p>', '1669900415_2022_11_30T213947Z_2043543939_UP1EIBU1MSPRI_RTRMADP_3_SOCCER_WORLDCUP_POL_ARG_REPORT_1.jpg', 1, 0, 7, 1, '2022-12-01 06:13:35', '2022-12-01 06:13:35');
+(26, 'Argentina tìm ra lời giải cho \'bài toán Messi', 'argentina-tim-ra-loi-giai-cho--bai-toan-messi', 'Chiến thắng trước Ba Lan không chỉ mang tới suất đi tiếp tại bảng C cho ĐT Argentina, mà còn giúp ông Scaloni thử nghiệm thành công phương án giúp siêu sao của mình tỏa sáng', '<p>Lần thứ ba tại World Cup 2022, HLV Lionel Scaloni đưa ra những điều chỉnh mang t&iacute;nh hệ thống. Một mặt, việc gi&agrave;nh chiến thắng l&agrave; rất quan trọng, nhưng mặt kh&aacute;c, cuối c&ugrave;ng &ocirc;ng cũng c&oacute; trong tay một phương &aacute;n ph&ugrave; hợp nhất với hiện trạng cho đại diện của xứ sở tang</p>\r\n\r\n<h3>C&aacute;i kh&oacute; của Scaloni</h3>\r\n\r\n<p>Lối chơi của Argentina kh&ocirc;ng phải l&agrave; biến đổi kh&ocirc;n lường. N&oacute; đ&atilde; được định h&igrave;nh trong suốt 4 năm l&agrave;m việc đ&atilde; qua của &ocirc;ng Scaloni, v&agrave; ch&iacute;nh x&aacute;c hơn l&agrave; từ người tiền nghiệm Jorge Sampaoli.</p>\r\n\r\n<p>Scaloni duy tr&igrave; Argentina chơi b&oacute;ng với nền tảng l&agrave; việc chủ động kiểm so&aacute;t b&oacute;ng, x&acirc;y dựng một khung vận h&agrave;nh mở rộng tr&ecirc;n khắp chiều ngang của s&acirc;n v&agrave; từ đ&oacute; t&igrave;m kiếm những cơ hội đẩy nhanh nhịp độ thi đấu, tấn c&ocirc;ng chiều s&acirc;u. Argentina &iacute;t khi tấn c&ocirc;ng qua trung lộ, nhưng lu&ocirc;n chủ động cầm b&oacute;ng chắc ở trung lộ để từ đ&oacute; đ&aacute;nh nhanh xuống hai bi&ecirc;n.</p>\r\n\r\n<p>Lối chơi l&agrave; vậy, nhưng để t&igrave;m ra một hệ thống đủ tốt th&igrave; quả thực nhọc nhằn cho vị HLV trẻ tuổi nhất World Cup 2022. Qua mỗi giải đấu m&agrave; &ocirc;ng dẫn dắt, dường như lu&ocirc;n c&oacute; những vấn đề ở tuyển Argentina: con người, phong độ của trụ cột... Dường như chỉ c&oacute; một thứ l&agrave; bất biến: đẳng cấp của Lionel Messi v&agrave; Angel Di Maria.</p>\r\n\r\n<p>Chẳng hạn, một c&aacute;i t&ecirc;n đ&aacute;ng n&oacute;i l&agrave; Lautaro Martinez. Ch&acirc;n s&uacute;t 25 tuổi c&oacute; đ&oacute;ng g&oacute;p quan trọng để gi&uacute;p Albicelestes đăng quang Copa America 2021, nhưng lại thể hiện phong độ kh&aacute; kh&oacute; lường tại v&ograve;ng loại World Cup. Anh l&agrave; mẫu cầu thủ khi chơi tốt th&igrave; đạt ngay &quot;điểm 10&quot;, nhưng lại c&oacute; thời điểm khiến ai cũng phải ng&aacute;n ngẩm v&igrave; độ v&ocirc; duy&ecirc;n cho đội tuyển.</p>\r\n\r\n<p>Bước v&agrave;o World Cup năm nay, Martinez đ&atilde; 2 lần l&agrave;m Scaloni thất vọng, qua 2 trận đầu ti&ecirc;n. Chẳng biết c&oacute; phải ngẫu nhi&ecirc;n kh&ocirc;ng, nhưng c&oacute; vẻ ch&iacute;nh phong độ thấp của anh gi&uacute;p cho &ocirc;ng Scaloni t&igrave;m ra lời giải cho &quot;b&agrave;i to&aacute;n Messi&quot;.</p>\r\n\r\n<h3>Qu&aacute; tam ba bận</h3>\r\n\r\n<p>Messi b&acirc;y giờ đ&atilde; kh&aacute;c Messi khi xưa. Ai cũng nhớ về thời điểm anh c&oacute; khả năng đi b&oacute;ng qua 6 cầu thủ đối phương v&agrave; khoan thủng mọi bức tường ph&ograve;ng ngự.</p>\r\n\r\n<p>Nhưng hiện tại của Messi l&agrave; một nhạc trưởng, cầu thủ c&oacute; khả năng xử l&yacute; b&oacute;ng trong phạm vi si&ecirc;u hẹp, t&igrave;m kiếm những khoảng trống v&agrave; tung ra những đường chuyền l&agrave;m thay đổi thế trận. Messi b&acirc;y giờ kh&ocirc;ng chơi b&oacute;ng theo kiểu &quot;t&ocirc;i l&agrave; người giỏi nhất&quot; nữa. Anh đang chơi b&oacute;ng để những người xung quanh giỏi hơn.</p>\r\n\r\n<p>3 trận tại bảng C l&agrave; 3 khung sơ đồ kh&aacute;c nhau m&agrave; HLV Scaloni &aacute;p dụng. Trận đầu ti&ecirc;n, &ocirc;ng đưa ra sơ đồ 4-4-2, với Lautaro Martinez chơi ph&iacute;a trước Messi, hai c&aacute;nh l&agrave; Papu Gomez v&agrave; Angel Di Maria.</p>\r\n\r\n<p>Papu Gomez đ&atilde; chơi kh&ocirc;ng tồi, nhưng hệ thống n&agrave;y của &ocirc;ng Scaloni đ&atilde; kh&ocirc;ng gi&uacute;p cho Messi ph&aacute;t tiết được hết khả năng của anh. Điển h&igrave;nh l&agrave; những c&uacute; đẩy b&oacute;ng về hướng ch&acirc;n tr&aacute;i trước khi tung ra những pha chuyển hướng l&agrave;m thế trận v&agrave; nhịp độ ph&ograve;ng ngự của đối phương của x&ocirc; lệch.</p>\r\n\r\n<p>Những pha chuyển hướng, mở b&oacute;ng ra bi&ecirc;n tr&aacute;i ấy kh&ocirc;ng phải qu&aacute; đặc biệt nếu chỉ nghe m&ocirc; tả. Điểm đặc biệt của n&oacute; l&agrave; t&iacute;nh thời điểm v&agrave; t&iacute;nh ch&iacute;nh x&aacute;c đ&aacute;ng kinh ngạc. Tại CLB Barcelona, đ&atilde; kh&ocirc;ng &iacute;t trận đấu được giải quyết ho&agrave;n to&agrave;n bằng những đường chuyền như vậy của Messi tới ch&acirc;n Jordi Alba.</p>\r\n\r\n<p>Khi Papu Gomez b&oacute; v&agrave;o b&ecirc;n trong, Nico Tagliafico thường giữ vị tr&iacute; kh&aacute; thấp theo kiểu hậu vệ tr&aacute;i truyền thống. Anh n&agrave;y kh&ocirc;ng đủ sự nhạy cảm v&agrave; tốc độ để băng l&ecirc;n. Bản th&acirc;n Messi cũng &iacute;t khi thực hiện pha chuyển hướng sở trường, đơn giản bởi anh cầm b&oacute;ng th&igrave; kh&ocirc;ng thấy điểm đến n&agrave;o b&ecirc;n bi&ecirc;n tr&aacute;i.</p>\r\n\r\n<p>Sang tới trận gặp Mexico, &ocirc;ng Scaloni chuyển sang bộ khung 3-4-3 khi tấn c&ocirc;ng, với Marcos Acuna chạy c&aacute;nh tr&aacute;i. Acuna kh&ocirc;ng chỉ được ph&eacute;p giữ vị tr&iacute; cao hơn tại bi&ecirc;n tr&aacute;i m&agrave; c&ograve;n l&agrave; một cầu thủ c&oacute; khả năng tấn c&ocirc;ng xuy&ecirc;n ph&aacute; tốt hơn so với Tagliafico.</p>\r\n\r\n<p>D&ugrave; vậy, Lautaro Martinez tiếp tục g&acirc;y thất vọng, ngo&agrave;i ra hệ thống ph&ograve;ng ngự với 2 h&agrave;ng ngang 4 người (do Messi v&agrave; Martinez ở lại ph&iacute;a tr&ecirc;n) vẫn c&oacute; những điểm yếu tiềm t&agrave;ng.</p>\r\n\r\n<p>Sang tới trận thứ ba, lần n&agrave;y HLV Scaloni dường như đ&atilde; c&oacute; được một hệ thống ưng &yacute; nhất. Điểm nhấn quan trọng l&agrave; Julian Alvarez, c&aacute;i t&ecirc;n thay thế Lautaro.</p>\r\n\r\n<p>Alvarez l&agrave; một cầu thủ t&iacute;ch hợp khả năng của cả một tiền đạo lẫn một tiền vệ bi&ecirc;n. Anh gi&agrave;u năng lượng, cần mẫn để hỗ trợ ph&ograve;ng ngự bi&ecirc;n, cũng như đủ sắc b&eacute;n để nhập v&agrave;o v&ograve;ng cấm trong vai tr&ograve; số 9 khi tấn c&ocirc;ng.</p>\r\n\r\n<p>Khi Argentina ph&ograve;ng thủ, t&acirc;n binh của Manchester City sẽ đ&oacute;ng hoạt động như một tiền vệ tr&aacute;i trong sơ đồ 4-3-3. Kh&aacute;c với việc Lautaro Martinez c&ugrave;ng Messi &quot;giải lao&quot; tr&ecirc;n cao, giờ đ&acirc;y chỉ c&oacute; Messi được nghỉ ngơi. Những người kh&aacute;c đều phải l&agrave;m việc v&agrave; c&ograve;n ai l&agrave;m việc chăm chỉ hơn Julian Alvarez. Số lượng v&agrave; chất lượng ph&ograve;ng ngự đều tăng.</p>\r\n\r\n<p><img alt=\"Messi Argentina anh 3\" src=\"https://znews-photo.zingcdn.me/w1920/Uploaded/ofh_huqfztmf/2022_12_01/Messi_switch.jpg\" style=\"height:506px; width:900px\" /></p>\r\n\r\n<p>Khi c&oacute; b&oacute;ng, Argentina sẽ chủ động giảm nhịp độ lại v&agrave; chuyển tiếp th&agrave;nh sơ đồ 3-4-3. Alvarez sẽ di chuyển v&agrave;o b&ecirc;n trong trở th&agrave;nh tiền đạo, Acuna đẩy l&ecirc;n cao, Messi v&agrave; Mac Allister chơi sau lưng Alvarez.</p>\r\n\r\n<p>Hệ thống n&agrave;y kh&ocirc;ng chỉ gi&uacute;p Messi tự do t&igrave;m kiếm khoảng trống v&agrave; nhận b&oacute;ng trong kh&ocirc;ng gian sở trường, m&agrave; c&ograve;n đặt Acuna v&agrave;o khu vực để Messi tung ra những pha chuyển hướng sở trường.</p>\r\n\r\n<p>Tổng cộng Messi đ&atilde; tung ra 5 đường chuyền theo dạng n&agrave;y cho Acuna. V&agrave; đ&oacute; cũng chỉ l&agrave; một phần để thể hiện rằng Argentina đ&atilde; chơi tốt. Ngo&agrave;i việc tạo ra điều kiện để số 10 chơi tốt, những mắt x&iacute;ch trẻ như Alvarez, Enzo Fernandez, Mac Allister đều đ&atilde; thể hiện được chất lượng của bản th&acirc;n, thậm ch&iacute; tỏa s&aacute;ng bằng những b&agrave;n thắng.</p>\r\n\r\n<p>C&oacute; vẻ như &ocirc;ng Scaloni đ&atilde; t&igrave;m ra lời giải cho kỳ World Cup năm nay.</p>', '1669900415_2022_11_30T213947Z_2043543939_UP1EIBU1MSPRI_RTRMADP_3_SOCCER_WORLDCUP_POL_ARG_REPORT_1.jpg', 1, 0, 7, 1, '2022-12-01 06:13:35', '2022-12-01 06:13:35'),
+(27, 'TikToker kiếm tiền từ nội dung bẩn như thế nào', 'tiktoker-kiem-tien-tu-noi-dung-ban-nhu-the-nao', 'Từ việc sản xuất nội dung \"bẩn\" để lôi kéo lượt xem, lượt tương tác, các TikToker có thể kiếm về thu nhập lớn nhờ tiếp thị liên kết.', '<p style=\"text-align:justify\">Những người s&aacute;ng tạo nội dung tr&ecirc;n nền tảng TikTok, hay c&ograve;n gọi l&agrave; TikToker thường sẽ kiếm được khoản tiền lớn từ c&aacute;c nh&atilde;n h&agrave;ng v&agrave; h&igrave;nh thức tiếp thị li&ecirc;n kết (affiliate). Khoản tiền n&agrave;y được trao đổi dựa v&agrave;o lượt tương t&aacute;c, lượt theo d&otilde;i v&agrave; traffic v&agrave; những TikToker n&agrave;y c&oacute; thể tạo dựng được từ video.</p>\r\n\r\n<p style=\"text-align:justify\">V&igrave; vậy, kh&ocirc;ng &iacute;t TikToker sẵn s&agrave;ng tạo những nội dung phản cảm, đi ngược với đạo đức nhằm thu h&uacute;t tương t&aacute;c, tăng độ nổi tiếng nhằm kiếm th&ecirc;m nhiều thu nhập hơn. Gần đ&acirc;y nhất ch&iacute;nh l&agrave; TikToker c&oacute; t&agrave;i khoản @tuanbrice, hay c&ograve;n được nhiều người biết đến với t&ecirc;n gọi &quot;Nờ &Ocirc; N&ocirc;&quot; với những video g&acirc;y kh&oacute; chịu đến người xem.</p>\r\n\r\n<h3 style=\"text-align:justify\">Thu nhập ch&iacute;nh từ c&aacute;c nh&atilde;n h&agrave;ng</h3>\r\n\r\n<p style=\"text-align:justify\">Chia sẻ với&nbsp;<em>Zing</em>, anh Hạnh Nguyễn - Gi&aacute;m đốc marketing của một doanh nghiệp lớn tại TP.HCM - cho biết, l&yacute; do nhiều TikToker sẵn s&agrave;ng đăng tải những nội dung &quot;bẩn&quot; bởi nguồn thu lớn từ việc hợp t&aacute;c với c&aacute;c nh&atilde;n h&agrave;ng v&agrave; h&igrave;nh thức tiếp thị li&ecirc;n kết (affiliate).</p>\r\n\r\n<p style=\"text-align:justify\">Theo anh Hạnh Nguyễn, ch&iacute;nh những người l&agrave;m marketing, truyền th&ocirc;ng l&agrave; nguồn thu nhập cho c&aacute;c TikToker bởi c&aacute;c nh&atilde;n h&agrave;ng sẽ lựa chọn đối t&aacute;c KOC, KOL (người c&oacute; ảnh hưởng tr&ecirc;n MXH) th&ocirc;ng qua c&aacute;c chỉ số về lượt xem, lượt tương t&aacute;c v&agrave; traffic (lưu lượng truy cập). V&igrave; vậy, nhiều TikToker sẵn s&agrave;ng đ&aacute;nh đổi gi&aacute; trị nội dung để đổi lấy sự nổi tiếng.</p>\r\n\r\n<p style=\"text-align:justify\">Theo anh Hạnh Nguyễn, chất lượng của nền tảng c&oacute; đi l&ecirc;n hay kh&ocirc;ng l&agrave; tr&aacute;ch nhiệm của cả cộng đồng, đặc biệt l&agrave; những người l&agrave;m truyền th&ocirc;ng. Ảnh: NVCC.</p>\r\n\r\n<p style=\"text-align:center\"><img alt=\"No O No anh 1\" src=\"https://znews-photo.zingcdn.me/w1920/Uploaded/bpivptvl/2022_10_18/z3923314168205_d7ce63e2b0041056522f69b6a97bc402.png\" style=\"height:1352px; width:900px\" />​​​​​​​</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>\r\n\r\n<p style=\"text-align:justify\">Ở trường hợp của TikToker Nờ &Ocirc; N&ocirc;, tương t&aacute;c lớn từ những video gi&uacute;p nam thanh ni&ecirc;n n&agrave;y nhận được nhiều sự ch&uacute; &yacute; từ những nh&atilde;n h&agrave;ng đang chạy c&aacute;c chiến dịch truyền th&ocirc;ng quảng c&aacute;o.</p>\r\n\r\n<p style=\"text-align:justify\">&quot;Ch&iacute;nh cộng đồng những người l&agrave;m truyền th&ocirc;ng, marketing l&agrave; nguồn thu nhập, l&agrave; người lựa chọn KOL, KOC cho nh&atilde;n h&agrave;ng chứ nguồn thu nhập của những TikToker thật sự kh&ocirc;ng đến từ nền tảng. Chỉ số lựa chọn KOL, KOC dựa tr&ecirc;n lượt tương t&aacute;c v&agrave; lượt xem, số lượng người theo d&otilde;i v&igrave; vậy mới xảy ra việc nhiều TikToker b&oacute;p m&eacute;o gi&aacute; trị nội dung&quot;, anh Hạnh chia sẻ th&ecirc;m</p>\r\n\r\n<p style=\"text-align:justify\">Theo khảo s&aacute;t của&nbsp;<em>Zing</em>, những TikToker c&oacute; lượt theo d&otilde;i cao như Nờ &Ocirc; N&ocirc; c&oacute; thể được trả khoản tiền khoảng 10-30 triệu đồng/video, b&agrave;i viết quảng c&aacute;o cho nh&atilde;n h&agrave;ng. C&aacute; biệt, nhiều trường hợp TikToker c&ograve;n c&oacute; c&oacute; mức th&ugrave; lao l&ecirc;n đến 50 triệu đồng/video.</p>\r\n\r\n<p style=\"text-align:justify\">&nbsp;</p>', '1669959303_pexels_roman_odintsov_4552130_1.jpg', 1, 0, 11, 6, '2022-12-01 22:35:03', '2022-12-01 22:35:03');
 
 -- --------------------------------------------------------
 
@@ -220,25 +249,53 @@ INSERT INTO `tintuc` (`id`, `tieude`, `tieudekhongdau`, `tomtat`, `noidung`, `hi
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `hoten` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `hoten` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quyen` int(11) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `remember_token` varchar(100) DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `avatar` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `hoten`, `email`, `quyen`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Nguyễn Tuấn Kiệt', 'admin@gmail.com', 1, NULL, '$2y$10$HwBgWgqHzdXZ1YnsuseBDO8s6E9QtUrI63p3USsCf3KZqzMKj86Nm', NULL, '2022-11-15 21:12:08', '2022-11-15 21:12:08'),
-(2, 'Trần Công Quyền', 'quyen@gmail.com', 1, NULL, '$2y$10$GhsZhKAvIHDtnWuIycZCgeUXM5EGHPusfw2bKMZp.TzuZTniWABcq', NULL, '2022-11-15 21:14:07', '2022-11-15 21:14:07'),
-(4, 'Trương NgọcTuấn', 'tuan@gmail.com', 1, NULL, '$2y$10$tOL0bxuE3zcuLEaRbLdzTuepaf6vXpWg6X770IPqGRBuUtG4Fc0kC', NULL, '2022-11-15 21:17:03', '2022-11-17 22:17:56'),
-(5, 'Nguyễn Đức Bình', 'binh@gmail.com', 0, NULL, '$2y$10$tnf5p4tpTpv7R8d8OpqsUunVaokdKE1K8l.SgnP9cTdSljSQA7Z.W', NULL, '2022-11-15 21:18:19', '2022-11-15 21:18:19');
+INSERT INTO `users` (`id`, `hoten`, `email`, `quyen`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `avatar`) VALUES
+(1, 'Nguyễn Tuấn Kiệt', 'kiet61133822@gmail.com', 1, NULL, '$2y$10$HwBgWgqHzdXZ1YnsuseBDO8s6E9QtUrI63p3USsCf3KZqzMKj86Nm', NULL, '2022-11-15 21:12:08', '2022-12-01 22:24:39', '1669958679_avatar_realMadrid.png'),
+(2, 'Trần Công Quyền', 'quyen@gmail.com', 1, NULL, '$2y$10$GhsZhKAvIHDtnWuIycZCgeUXM5EGHPusfw2bKMZp.TzuZTniWABcq', NULL, '2022-11-15 21:14:07', '2022-12-01 22:49:43', '1669960183_avatar_lufy.jpg'),
+(4, 'Trương NgọcTuấn', 'tuan@gmail.com', 0, NULL, '$2y$10$tOL0bxuE3zcuLEaRbLdzTuepaf6vXpWg6X770IPqGRBuUtG4Fc0kC', NULL, '2022-11-15 21:17:03', '2022-12-01 23:23:59', '1669962239_avatar_273284007_1925209224333362_9047736820225673462_n.jpg'),
+(5, 'Nguyễn Đức Bình', 'binh@gmail.com', 0, NULL, '$2y$10$tnf5p4tpTpv7R8d8OpqsUunVaokdKE1K8l.SgnP9cTdSljSQA7Z.W', NULL, '2022-11-15 21:18:19', '2022-12-01 23:36:20', '1669962980_avatar_sanji.jpg'),
+(6, 'Tuấn Kiệt', 'kiet.nt.61cntt@ntu.edu.vn', 2, NULL, '$2y$10$8XQAWwCpZvkWzLS6vNrg0OxoxhD2.JuKsZLZJ3p0B9gcHibq6ioRG', NULL, '2022-12-01 22:30:30', '2022-12-01 23:28:14', '1669962494_avatar_66e2f3104539b267eb28.jpg'),
+(7, 'Nguyễn Huỳnh Thanh Hải', 'hai@gmail.com', 2, NULL, '$2y$10$GyuxsCwqxFuKWdY9D5GJGOyP8Rq/S2.n22Vt69e.RTuegxohRdjfy', NULL, '2022-12-01 22:53:55', '2022-12-01 23:04:06', '1669961046_avatar_291070674_3107058856271391_5513659693943780438_n.jpg'),
+(8, 'Nguyễn Văn Tâm', 'tam@gmail.com', 2, NULL, '$2y$10$r2sl.kMHssvA4nbZ.czzLObj6JjrLWODnAst/rb4iyl/O25UNjjw.', NULL, '2022-12-01 23:05:57', '2022-12-01 23:26:27', '1669962387_avatar_Anh-Zoro-chibi.jpg'),
+(9, 'Nguyễn Xuân Trực', 'truc@gmail.com', 0, NULL, '$2y$10$hci6SBRcrmDnenbF335l3Om14mOlvHJzW.Em5zS3ixrGN0imMj5Pq', NULL, '2022-12-01 23:10:08', '2022-12-01 23:27:30', '1669962450_avatar_avatars-000547016880-us05re-t500x500.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `video`
+--
+
+CREATE TABLE `video` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tieude` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tieudekhongdau` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `video`
+--
+
+INSERT INTO `video` (`id`, `tieude`, `tieudekhongdau`, `link`, `created_at`, `updated_at`) VALUES
+(1, 'Highlights | CROATIA vs BỈ | Lukaku lập hattrick \'giật mình\', Quỷ đỏ về nước | World Cup 2022', 'crotatia', 'https://www.youtube.com/embed/7fqhD6WCsyc', '2022-12-01 18:37:53', '2022-12-01 18:37:53'),
+(2, 'CÁI TẾT CỦA ÔNG NĂM', 'cai-net-cua-ong-nam', 'https://www.youtube.com/embed/fs_2D2VGuHo', '2022-12-01 19:05:49', '2022-12-01 19:05:49');
 
 --
 -- Indexes for dumped tables
@@ -308,6 +365,12 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
+-- Indexes for table `video`
+--
+ALTER TABLE `video`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -315,7 +378,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `binhluan`
 --
 ALTER TABLE `binhluan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -327,13 +390,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `loaitin`
 --
 ALTER TABLE `loaitin`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -351,13 +414,19 @@ ALTER TABLE `theloai`
 -- AUTO_INCREMENT for table `tintuc`
 --
 ALTER TABLE `tintuc`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `video`
+--
+ALTER TABLE `video`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
