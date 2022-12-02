@@ -14,6 +14,8 @@ class Video extends Model
         $list = DB::table('video')->get();
         return $list;
     }
-
+    public function ThemVideo($data){
+        return DB::table('video')->insert($data);  
+     }
     
 }
