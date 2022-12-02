@@ -21,6 +21,9 @@
                         $duonglich = "";
                         $amlich = "";
                         $hinh = "";
+
+                        
+
                         if(isset($_POST['submit'])){
                             $duonglich = $_POST['duonglich'];
                             if (  $duonglich != "") {
@@ -31,14 +34,13 @@
                     
                                 $amlich = $mang_can[$can];
                                 $amlich = $amlich. " " . $mang_chi[$chi];
-                    
+                                
                                 $hinh = $mang_hinh[$chi];
-                                $hinh = "<img src='./img/$hinh' width=\"200px\" height=\"200px\" >";
+                                $duongdan =  asset('uploads/images/') . "/" . $hinh;
+                                $hinh = "<img src='$duongdan' width=\"200px\" height=\"200px\" >";
                             } else {
                                 $duonglich = "Không được rõng";
                             }
-                            
-                           
                         } 
                     ?>
                     <style>
@@ -78,5 +80,6 @@
         </div>
     </div>
     </div>
+     {{-- $hinh = '<img src="public/uploads/images/s_nutifood_nutiIQ.jpg" alt="hinh anh" width="200px" height="200px" >'; --}}
     <!-- News With Sidebar End -->
 @endsection

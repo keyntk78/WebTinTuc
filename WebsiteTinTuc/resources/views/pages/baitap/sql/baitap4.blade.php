@@ -51,7 +51,7 @@
                             $servername = "localhost";
                             $username = "root";
                             $password = "";
-                            $dbname = "qlbansua";
+                            $dbname = "quan_ly_ban_sua";
 
                             $conn=mysqli_connect($servername, $username, $password, $dbname);
                             if(!$conn) echo "Kết nối thất bại";

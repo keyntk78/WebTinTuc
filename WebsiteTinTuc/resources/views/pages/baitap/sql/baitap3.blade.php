@@ -48,22 +48,23 @@
                             $servername = "localhost";
                             $username = "root";
                             $password = "";
-                            $dbname = "qlbansua";
+                            $dbname = "quan_ly_ban_sua";
 
                             $conn=mysqli_connect($servername, $username, $password, $dbname);
                             if(!$conn) echo "Kết nối thất bại";
                             mysqli_set_charset($conn, 'utf8');
                             $query = "SELECT * FROM khach_hang";
                             $result = mysqli_query($conn,$query);
+                            $duongdan =  asset('uploads/images/');
                             if(mysqli_num_rows($result)!= 0){
                                 while($rows=mysqli_fetch_array($result))
                                 {
                                     
                                     if($rows["Phai"] == 1) {
                                         
-                                        $avatar = '<img width="60px" height="60px" src="../../../../../public/uploads/images/female.jpeg" alt="">';
+                                        $avatar = "<img width=\"60px\" height=\"60px\" src='$duongdan/female.jpeg' alt=\"hinh ảnh\">";
                                     } else{
-                                        $avatar = '<img width="60px" height="60px" src="./male.jpeg" alt="">';
+                                        $avatar = "<img width=\"60px\" height=\"60px\" src='$duongdan/male.jpeg' alt=\"hinh ảnh\">";
                                     }
                                     echo '<tr>
                                         <td>'.$rows["Ma_khach_hang"].'</td>

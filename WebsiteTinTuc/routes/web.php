@@ -96,6 +96,7 @@ Route::post('/tintuc/{id}/{tieudekhongdau}', [PageControllers::class, 'postBinhL
 
 Route::get('/theloai/{id}/{tenkhongdau}', [PageControllers::class, 'TheLoai'])->name('thelloai');
 Route::get('/video', [PageControllers::class, 'danhSachVideo'])->name('video');
+Route::get('/tim-kiem', [PageControllers::class, 'TimKiem'])->name('timkiem');
 
 
 

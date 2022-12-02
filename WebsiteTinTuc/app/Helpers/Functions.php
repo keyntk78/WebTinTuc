@@ -9,6 +9,7 @@
     }
 
     function PathImages($hinh_anh){
+		
         $hinh_anh = 'uploads/images/' . $hinh_anh;
         return $hinh_anh;
     }

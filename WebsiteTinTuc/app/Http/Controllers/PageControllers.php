@@ -180,4 +180,19 @@ class PageControllers extends Controller
 
         return view('pages.danhsachvideo', compact('dsVideo'));
     }
+
+     public function TimKiem(Request $request)
+    {
+        $keyword = null;
+        if (!empty($request->tim_kiem)) {
+            $keyword = $request->tim_kiem;
+            $ketqua = $this->tintuc->getAllTimKiem($keyword);
+        } else{
+            return redirect('/');
+        }
+
+
+        return view('pages.timkiem', compact('ketqua', 'keyword'));
+    }
+
 }
