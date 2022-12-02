@@ -92,6 +92,12 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
 Route::get('/', [PageControllers::class, 'index'])->name('trangchu');
 Route::get('/trangchu', [PageControllers::class, 'index'])->name('trangchu');
 Route::get('/tintuc/{id}/{tieudekhongdau}', [PageControllers::class, 'ChiTietTinTuc'])->name('chitiettintuc');
+Route::post('/tintuc/{id}/{tieudekhongdau}', [PageControllers::class, 'postBinhLuan'])->name('binluan');
+
+Route::get('/theloai/{id}/{tenkhongdau}', [PageControllers::class, 'TheLoai'])->name('thelloai');
+Route::get('/video', [PageControllers::class, 'danhSachVideo'])->name('video');
+
+
 
 
 Route::get('/dangnhap', [PageControllers::class, 'dangnhap'])->name('dangnhap');
@@ -192,4 +198,3 @@ Route::prefix('bai-tap')->name('baitap.')->group(function(){
     Route::get('/sql/baitap10', [BaiTapController::class, 'sql_baitap10'])->name('sql_bt10');
 
 });
-

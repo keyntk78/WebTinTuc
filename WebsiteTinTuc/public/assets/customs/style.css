@@ -2,9 +2,33 @@
     padding-right: 20px;
 }
 
+img.img-fluid.w-100 {
+    min-height: 200px;
+}
+
+img.img-fluid.w-100.tc-noibat {
+    min-height: 240px;
+}
+
+img.img-fluid.w-100.theloai {
+    min-height: 260px;
+}
+
 .overlay.position-relative.bg-light {
     min-height: 280px;
     justify-content: flex-start;
+}
+
+.overlay.position-relative.bg-light.theloai {
+    min-height: 305px;
+}
+
+.overlay.position-relative.bg-light.tc-noibat {
+    min-height: 305px;
+}
+
+.overlay.position-relative.bg-light.video {
+    min-height: 490px;
 }
 
 .noidung {
@@ -12,14 +36,13 @@
     /* padding-right: 20px; */
 }
 
-.form{
+.form {
     margin: 20px auto;
 }
-.form table{
-    background-color: #FCDDB0;
+.form table {
+    background-color: #fcddb0;
     border-radius: 10px;
 }
-.form table tr td{
+.form table tr td {
     padding: 5px;
 }
-

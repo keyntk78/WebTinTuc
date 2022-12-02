@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use  App\Models\User;
 use  App\Models\TheLoai;
 use  App\Models\TinTuc;
+use  App\Models\BinhLuan;
+use  App\Models\Video;
+
+
 
 
 class PageControllers extends Controller
@@ -15,6 +19,10 @@ class PageControllers extends Controller
     private $users;
     private $theloai;
     private $tintuc;
+    private $binhluan;
+    private $video;
+
+
 
 
 
@@ -23,6 +31,8 @@ class PageControllers extends Controller
         $this->users = new User();
         $this->theloai = new TheLoai();
         $this->tintuc = new TinTuc();
+        $this->binhluan = new BinhLuan();
+        $this->video = new Video();
 
     }
 
@@ -41,9 +51,52 @@ class PageControllers extends Controller
             $chitiettintuc = $this->tintuc->ChietTietTinTucPage($id);
             if(!empty($chitiettintuc[0])){
                 $chitiettintuc = $chitiettintuc[0];
-                 return view('pages.chitiettintuc', compact('chitiettintuc'));
+                $dsBinhLuan = $this->binhluan->DSBinhLuanTheoTin($id);
+                $soluongbinhluan = $this->binhluan->SoLuongBinhLuan($id);
+
+                 return view('pages.chitiettintuc', compact('chitiettintuc', 'dsBinhLuan', 'soluongbinhluan'));
             } else {
                 return redirect()->route('trangchu')->with('thongbao', 'Tin tức không tồn tại');
+            }
+        } else {
+            return redirect()->route('trangchu')->with('thongbao', 'Liên kết không tồn tại');
+        }
+    }
+
+    public function postBinhLuan(Request $request, $id)
+    {
+
+
+        $request->validate([
+            'binhluan' => 'required',
+        ],[
+            'binhluan.required' => 'Bình luận bắc buộc phải nhập',
+        ]);
+
+        $dataIsert = [
+            'id_user' => Auth::user()->id,
+            'id_tintuc' => $id,
+            'noidung' => $request->binhluan,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' =>date('Y-m-d H:i:s'),
+        ];
+
+
+        $this->binhluan->ThemBinhLuan($dataIsert);
+
+        return back();
+    }
+
+
+    public function TheLoai ($id, $tenkhongdau){
+
+         if(!empty($id)){
+            $dsTinTheoTL = $this->tintuc->DanhSachTinTheoTheLoai($id);
+            if(!empty($dsTinTheoTL[0])){
+                $tenTheLoai = $this->theloai->ChiTietTheLoai($id)[0]->tentheloai;
+                 return view('pages.theloai', compact('dsTinTheoTL', 'tenTheLoai'));
+            } else {
+                return redirect()->route('trangchu')->with('thongbao', 'Thể loại không tồn tại');
             }
         } else {
             return redirect()->route('trangchu')->with('thongbao', 'Liên kết không tồn tại');
@@ -119,5 +172,12 @@ class PageControllers extends Controller
         // dd($dataIsert);
 
         return redirect(route("dangnhap"))->with('thongbao', 'Đăng ký thành công');
+    }
+
+      public function danhSachVideo()
+    {
+        $dsVideo =$this->video->DanhsachVideo();
+
+        return view('pages.danhsachvideo', compact('dsVideo'));
     }
 }

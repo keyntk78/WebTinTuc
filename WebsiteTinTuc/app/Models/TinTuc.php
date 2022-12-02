@@ -80,6 +80,17 @@ class TinTuc extends Model
         return $list;
     }
 
+     public function DanhSachTinTheoTheLoai($id){
+        
+        $list = DB::table('tintuc')
+        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin')
+        ->join('loaitin', 'tintuc.id_loaitin', '=', 'loaitin.id')
+        ->where('loaitin.id_theloai' ,'=', $id)
+        ->orderBy('created_at', 'desc')
+        ->get();
+        return $list;
+    }
+
       public function ChietTietTinTucPage($id){
         
         $chitiet = DB::table('tintuc')

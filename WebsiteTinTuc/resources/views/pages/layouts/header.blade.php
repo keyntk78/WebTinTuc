@@ -31,14 +31,16 @@
             <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
                     <a href="{{ route('trangchu') }}" class="nav-item nav-link active">Trang Chủ</a>
-                    <a href="single.html" class="nav-item nav-link">Video</a>
+                    <a href="{{ route('video') }}" class="nav-item nav-link">Video</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Thể loại</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="#" class="dropdown-item">Xã Hội</a>
-                            <a href="#" class="dropdown-item">Thể thao</a>
-                            <a href="#" class="dropdown-item">Công Nghệ</a>
-                            <a href="#" class="dropdown-item">Giải trí</a>
+                            @if (!empty(getAllTheLoai()))
+                                @foreach (getAllTheLoai() as $item)
+                                    <a href="{{ route('thelloai', ['id'=>$item->id, 'tenkhongdau'=>$item->tenkhongdau]) }}" class="dropdown-item">{{ $item->tentheloai }}</a>
+                                @endforeach  
+                            @endif
+                            
                         </div>
                     </div>
                      <a href="{{ route('baitap.danhsach') }}" class="nav-item nav-link">Bài Tập</a>

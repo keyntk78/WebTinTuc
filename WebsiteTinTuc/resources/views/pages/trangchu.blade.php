@@ -6,35 +6,26 @@
         {{ session('thongbao') }}
     </div>
 @endif
-
     <!-- Main News Slider Start -->
     <div class="container-fluid py-3">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="owl-carousel owl-carousel-2 carousel-item-1 position-relative mb-3 mb-lg-0">
+                        @foreach ($noibat as $item)
                         <div class="position-relative overflow-hidden" style="height: 435px;">
-                            <img class="img-fluid h-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
+                            <img class="img-fluid h-100" src="{{ asset(PathImages($item->hinh)) }}" style="object-fit: cover;">
                             <div class="overlay">
                                 <div class="mb-1">
-                                    <a class="text-white" href="">Technology</a>
+                                    <a class="text-white" href="">{{ $item->tenloaitin }}</a>
                                     <span class="px-2 text-white">/</span>
-                                    <a class="text-white" href="">January 01, 2045</a>
+                                    <a class="text-white" href="">{{ format_date($item->created_at) }}</a>
                                 </div>
-                                <a class="h2 m-0 text-white font-weight-bold" href="">Sanctus amet sed amet ipsum lorem. Dolores et erat et elitr sea sed</a>
+                                <a class="h2 m-0 text-white font-weight-bold" href="{{ route('chitiettintuc', ['id'=>$item->id, 'tieudekhongdau'=>$item->tieudekhongdau]) }}">{{ $item->tieude }}</a>
                             </div>
                         </div>
-                        <div class="position-relative overflow-hidden" style="height: 435px;">
-                            <img class="img-fluid h-100" src="img/news-700x435-2.jpg" style="object-fit: cover;">
-                            <div class="overlay">
-                                <div class="mb-1">
-                                    <a class="text-white" href="">Technology</a>
-                                    <span class="px-2 text-white">/</span>
-                                    <a class="text-white" href="">January 01, 2045</a>
-                                </div>
-                                <a class="h2 m-0 text-white font-weight-bold" href="">Sanctus amet sed amet ipsum lorem. Dolores et erat et elitr sea sed</a>
-                            </div>
-                        </div>
+                        @endforeach
+
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -44,7 +35,7 @@
                     @foreach ($list_4 as $item)
                             <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
                                 <img class="img-fluid w-100 h-100" src="{{ asset(PathImages($item->hinh)) }}" style="object-fit: cover;">
-                                <a href="" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
+                                <a href="{{ route('thelloai', ['id'=>$item->id, 'tenkhongdau'=>$item->tenkhongdau]) }}" class="overlay align-items-center justify-content-center h4 m-0 text-white text-decoration-none">
                                     {{ $item->tentheloai }}
                                 </a>
                             </div>
@@ -76,7 +67,7 @@
                                         <span class="px-1">/</span>
                                         <span>January 01, 2045</span>
                                     </div>
-                                    <a class="h4 m-0" href="">{{ $list->tieude }}</a>
+                                    <a class="h4 m-0" href="{{ route('chitiettintuc', ['id'=>$list->id, 'tieudekhongdau'=>$list->tieudekhongdau]) }}">{{ $list->tieude }}</a>
                                 </div>
                             </div>
                             @endforeach
@@ -102,8 +93,8 @@
                         @foreach ($noibat as $item)
                              <div class="col-lg-6">
                             <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="{{ asset(PathImages($item->hinh)) }}" style="object-fit: cover;">
-                                <div class="overlay position-relative bg-light">
+                                <img class="img-fluid w-100 tc-noibat" src="{{ asset(PathImages($item->hinh)) }}" style="object-fit: cover;">
+                                <div class="overlay position-relative bg-light tc-noibat">
                                     <div class="mb-2" style="font-size: 14px;">
                                         <a href="}">{{ $item->tenloaitin }}</a>
                                         <span class="px-1">/</span>
@@ -116,7 +107,6 @@
                         </div>
                         @endforeach
                     </div>
-
                 </div>
 
                 <div class="col-lg-4 pt-3 pt-lg-0">
@@ -150,6 +140,9 @@
             </div>
         </div>
     </div>
+
+ 
+
     </div>
     <!-- News With Sidebar End -->
 @endsection
