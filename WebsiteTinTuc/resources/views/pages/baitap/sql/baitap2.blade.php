@@ -36,7 +36,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between bg-light">
+                    <div class="d-flex mk align-items-center justify-content-between bg-light">
                         <h1 style="text-align: center;color:#2A7FAA">THÔNG TIN KHÁCH HÀNG</h1>
     <table border="1" align="center">
         <tr>
