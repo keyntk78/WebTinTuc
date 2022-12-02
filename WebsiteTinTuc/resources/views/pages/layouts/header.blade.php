@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row align-items-center py-2 px-lg-5">
             <div class="col-lg-4">
-                <a href="" class="navbar-brand d-none d-lg-block">
+                <a href="{{ route('trangchu') }}" class="navbar-brand d-none d-lg-block">
                     <h1 class="m-0 display-5 text-uppercase"><span class="text-primary">Tin</span>Tức</h1>
                 </a>
             </div>
@@ -46,13 +46,15 @@
                      <a href="{{ route('baitap.danhsach') }}" class="nav-item nav-link">Bài Tập</a>
                     <a href="contact.html" class="nav-item nav-link">Thông tin</a>
                 </div>
-                <div class="input-group ml-auto" style="width: 100%; max-width: 300px;">
-                    <input type="text" class="form-control" placeholder="Tìm kiếm">
-                    <div class="input-group-append">
-                        <button class="input-group-text text-secondary"><i
-                                class="fa fa-search"></i></button>
-                    </div>
+               <form action="{{ route('timkiem') }}" method="GET">
+                 <div class="input-group ml-auto" style="width: 100%; max-width: 300px;">
+                  <input type="text" class="form-control" name="tim_kiem" placeholder="Tìm kiếm">
+                        <div class="input-group-append">
+                            <button type="submit" class="input-group-text text-secondary"><i
+                                    class="fa fa-search"></i></button>
+                        </div>
                 </div>
+               </form>
             </div>
         </nav>
     </div>

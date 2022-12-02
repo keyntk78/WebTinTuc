@@ -101,5 +101,27 @@ class TinTuc extends Model
         return $chitiet;
     }
 
+
+     // tìm kiếm
+      public function getAllTimKiem($keyword)
+    {
+       $deltail = DB::table('tintuc')
+        ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin')
+        ->join('loaitin', 'tintuc.id_loaitin', '=', 'loaitin.id')
+        ->join('theloai', 'loaitin.id_theloai', '=', 'theloai.id')
+        ->orderBy('created_at', 'desc');
+        
+        if (!empty($keyword)) {
+            $deltail = $deltail->where(function($query) use ($keyword) {
+                $query->orwhere('tintuc.tieude', 'like', '%'.$keyword.'%');
+                $query->orwhere('loaitin.tenloaitin', 'like', '%'.$keyword.'%');
+                $query->orwhere('theloai.tentheloai', 'like', '%'.$keyword.'%');
+            });
+        }
+
+        $deltail = $deltail->get();
+       return $deltail;
+    }
+
     
 }

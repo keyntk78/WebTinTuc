@@ -30,7 +30,7 @@
                         $servername="localhost";
                         $username="root";
                         $password="";
-                        $dbname="qlbansua";
+                        $dbname="quan_ly_ban_sua";
                         $conn=mysqli_connect($servername, $username, $password, $dbname);
                         mysqli_set_charset($conn, 'utf8');
                         $query = "SELECT * FROM sua 
@@ -50,6 +50,8 @@
                             {
                                 $socot = 5;
                                 $dem = 0;
+                                $duongdan =  asset('uploads/images/');
+
                                 while($rows=mysqli_fetch_array($result))
                                 {
                                     if($dem == $socot)
@@ -60,7 +62,7 @@
                                         <ul align="center">
                                             <li><a href="chitietsanpham.php?id='.$rows["Ma_sua"].'"><b>'.$rows["Ten_sua"].'</b></a></li>
                                             <li>'.$rows["Trong_luong"].' gr - '.$rows["Don_gia"].' VNĐ</li>
-                                            <li><img style="width: 110px; height: 110px;" src="./Hinh_Sua/'.$rows["Hinh"].'"></li>
+                                             <li><img style="width: 110px; height: 110px;" src="'.$duongdan.''."/".''.$rows["Hinh"].'" ></li>
                                         </ul>
                                     </td>';
                                     if($dem==$socot-1)

@@ -41,7 +41,7 @@
                                 $servername = "localhost";
                                 $username = "root";
                                 $password = "";
-                                $dbname = "qlbansua";
+                                $dbname = "quan_ly_ban_sua";
                     
                                 $conn=mysqli_connect($servername, $username, $password, $dbname);
                                 if(!$conn) echo "Kết nối thất bại";
@@ -52,12 +52,12 @@
                                         JOIN loai_sua ON sua.Ma_loai_sua = loai_sua.Ma_loai_sua';
                                  
                                 $result = mysqli_query($conn,$query);
-                    
+                                $duongdan =  asset('uploads/images/');
                                  if(mysqli_num_rows($result)!= 0){
                                     while($rows=mysqli_fetch_array($result))
                                     {
                                         echo ' <tr>
-                                                    <td><img width="150px" height="120px"  src="../../../../../public/uploads/images/'.$rows["Hinh"].'" alt="Không ảnh"></td>
+                                                    <td><img width="150px" height="120px"  src="'.$duongdan.''."/".''.$rows["Hinh"].'" alt="Không ảnh"></td>
                                                     <td>
                                                         <p style = "font-weight: bold;">'.$rows["Ten_sua"].'</p>
                                                         <p>Nhà sản xuất: '.$rows["Ten_hang_sua"].'</p>
