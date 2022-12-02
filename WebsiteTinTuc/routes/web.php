@@ -10,6 +10,8 @@ use App\Http\Controllers\TinTucController;
 use App\Http\Controllers\BinhLuanController;
 use App\Http\Controllers\PageControllers;
 use App\Http\Controllers\BaiTapController;
+use App\Http\Controllers\VideoController;
+
 
 
 
@@ -56,6 +58,18 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
         Route::post('sua/{id}', [TheLoaiController::class, 'postSuaTheLoai'])->name('post-edit');
 
         Route::get('xoa/{id}', [TheLoaiController::class, 'deleteTheLoai'])->name('xoa');
+    });
+
+    Route::prefix('video')->name('video.')->group(function(){
+        Route::get('/', [VideoController::class, 'index'])->name('index');
+
+        Route::get('them', [VideoController::class, 'getThemVideo'])->name('them');
+        Route::post('them', [VideoController::class, 'postThemVideo'])->name('post-them');;
+
+        Route::get('sua/{id}', [VideoController::class, 'getSuaVideo'])->name('sua');
+        Route::post('sua/{id}', [VideoController::class, 'postSuaVideo'])->name('post-edit');
+
+        Route::get('xoa/{id}', [VideoController::class, 'deleteVideo'])->name('xoa');
     });
 
 
