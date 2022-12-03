@@ -8,8 +8,8 @@
                     <div class="page-header">
                         <div class="header-sub-title">
                             <nav class="breadcrumb breadcrumb-dash">
-                                <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
-                                <a class="breadcrumb-item" href="#">Danh sách</a>
+                                <a href="{{ route('admin') }}" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+                                <a class="breadcrumb-item" href="{{ route('theloai.index') }}">Danh sách</a>
                                 <span class="breadcrumb-item active">Sửa thể loại</span>
                             </nav>
                         </div>
@@ -22,13 +22,23 @@
                     <div class="card">
                         <div class="card-body">
                             <h4>Sửa thể loại</h4>
-                            <form action="" method="POST">
+                            <form action="" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Tên thể loại</label>
                                         <input type="text" class="form-control" name="tentheloai" value="{{ old('tentheloai') ?? $chitiettheloai->tentheloai }}" placeholder="Nhập tên thể loại">
                                            @error('tentheloai')
+                                                <span style="color: red">{{ $message }}</span>
+                                            @enderror
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Hình ảnh</label>
+                                          <p><img width="400px" src="{{ asset(PathImages($chitiettheloai->hinh)) }}"></p>
+                                        <input type="file" class="form-control" name="hinh" value="{{ old('hinh') }}">
+                                           @error('hinh')
                                                 <span style="color: red">{{ $message }}</span>
                                             @enderror
                                     </div>

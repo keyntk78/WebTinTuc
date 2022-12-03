@@ -3,13 +3,13 @@
     Danh sách
 @endsection
 @section('content')
-      < class="main-content">
+      <div class="main-content">
 
           <div class="page-header">
              <div class="header-sub-title">
                  <nav class="breadcrumb breadcrumb-dash">
-                     <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
-                     <a class="breadcrumb-item" href="#">Danh sách</a>
+                     <a href="{{ route('admin') }}" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+                     <span class="breadcrumb-item" href="#">Danh sách</span>
                      {{-- <span class="breadcrumb-item active">Basic Table</span> --}}
                  </nav>
              </div>
@@ -22,6 +22,26 @@
             <div class="card">
                 <div class="card-body">
                         <h4>Danh sách người dùng</h4>
+                        <div class="m-t-25">
+                             <form action="" method="get" class="mb-3" >
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <select name="quyen" class="form-control">
+                                            <option value="">-Chọn quyền-</option>
+                                            <option value="0">Khách hàng</option>
+                                            <option value="1">Admin</option>
+                                            <option value="2">Người viết bài</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <input type="search" name="keywords" class="form-control" placeholder="Từ khóa tìm kiếm..." value="{{ request()->keywords }}">
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                         <div class="m-t-25">
                             <div class="table-responsive">
                                 <table class="table table-hover">

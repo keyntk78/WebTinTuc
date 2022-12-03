@@ -60,7 +60,6 @@
 
                             }
                         ?>
-
                             <form class="form" action="" method="POST">
                                 @csrf
                                 <table  align="center">
@@ -93,22 +92,9 @@
                                     </tr>
                                 </table>
                             </form>
-
-
-<<<<<<< HEAD
-=======
-                            <p><?php
-                                echo "MẢNG: ";
-                                for ($i=0; $i < $n; $i++) {
-                                    echo $arr[$i]. ", ";
-                                }
-                            ?></p>
->>>>>>> 2fc86a7463c68d4d8be435bb1c36f8e9b72af217
-
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     </div>

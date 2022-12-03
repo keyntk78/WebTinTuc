@@ -46,7 +46,7 @@
 	function getAllLoaiTin() {
 		$loaitin = new LoaiTin();
 
-		return $loaitin->DanhSachLoaiTin();
+		return $loaitin->DanhSachAllLoaiTin();
     }
 
 	function danhSachTinTheoTheLoai_4($id) {
@@ -54,6 +54,14 @@
 
 		return $tintuc->DanhSachTinTheoTheLoai_4($id);
     }
+
+	function getAllTinTuc() {
+		$tintuc = new TinTuc();
+
+		return $tintuc->DanhSachTinTuc();
+    }
+
+
 
     
 ?>

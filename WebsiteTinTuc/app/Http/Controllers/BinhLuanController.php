@@ -8,19 +8,31 @@ use App\Models\BinhLuan;
 class BinhLuanController extends Controller
 {
 
-     private $binhluan;
+    private $binhluan;
 
-     public function __construct()
-     {
+    // phương thức khởi tạo
+    public function __construct(){
         $this->binhluan = new BinhLuan();
-     }
+    }
 
-    public function index(){
+     // danh sách bình luận
+    public function index(Request $request){
         
-        $dsBinhLuan = $this->binhluan->DSBinhLuan();
+        $perpage = 10;
+        $filters =[];
+        $keyword = null;
+
+        if (!empty($request->id_tintuc)) {
+            $id_tintuc = $request->id_tintuc;
+            
+            $filters[] = ['binhluan.id_tintuc', '=', $id_tintuc];
+        }
+
+        $dsBinhLuan = $this->binhluan->DSBinhLuan($filters, $keyword,$perpage);
         return view('admin.binhluan.danhsach', compact('dsBinhLuan'));
     }
 
+    // xử lý xóa bình luận
     public function deleteBinhLuan($id){
         
         if(!empty($id)){
@@ -36,4 +48,5 @@ class BinhLuanController extends Controller
         }
 
     }
+
 }

@@ -26,8 +26,7 @@
                             <div class="col-lg-6">
                                 <div class="position-relative mb-3">
                                     <div class="overlay position-relative bg-light video">
-                                           <iframe  width="100%" height="300" src="{{ $item->link }}" frameborder="0" allowfullscreen></iframe>
-                                        </iframe>
+                                        <iframe  width="100%" height="300" src="{{ $item->link }}" frameborder="0" allowfullscreen></iframe>
                                         <div class="mb-2" style="font-size: 14px;">
                                             <span>{{ format_date($item->created_at) }}</span>
                                         </div>

@@ -4,42 +4,41 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\TinTuc;
+use App\Models\Video;
+use App\Models\BinhLuan;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-
-
+    
     private $users;
+    private $binhluan;
+    private $tintuc;
+    private $video;
 
-    public function __construct()
-    {
+    // phương thức khởi tạo
+    public function __construct(){
         $this->users = new User();
+        $this->binhluan = new BinhLuan();
+        $this->tintuc = new TinTuc();
+        $this->video = new Video();
     }
 
-    public function index()
-    {
-        return view('admin.home');
+    // Trang admin
+    public function index(){
+        $soluongnguoidung = $this->users->SoLuongNguoiDung();
+        $soluongbinhluan = $this->binhluan->SLBinhLuan();
+        $soluongtintuc = $this->tintuc->SoLuongTinTuc();
+        $soluongvideo = $this->video->SoLuongVideo();
+        return view('admin.home', compact('soluongnguoidung', 'soluongbinhluan', 'soluongtintuc', 'soluongvideo'));
     }
 
-    public function thongTinNguoiDung()
-    {    
+    // xem thông tin tài khoản người dùng
+    public function thongTinNguoiDung(){    
         $id = Auth::user()->id;
 
         if(!empty($id)){
@@ -56,6 +55,7 @@ class HomeController extends Controller
 
     }
 
+    // Xử lý cập nhật người dùng
     public function post_thongTinNguoiDung(Request $request){
 
         $id = Auth::user()->id;
@@ -66,18 +66,12 @@ class HomeController extends Controller
             'hoten.required' => 'Họ tên bắt buộc phải nhập',
         ]);
 
-        
-
         $dataupdate = [
             'hoten' => $request->hoten,
             'updated_at' =>date('Y-m-d H:i:s'),
         ];
 
-
-        
         $gethinh = '';
-
-        
         if($request->hasFile('hinh')){
             //Hàm kiểm tra dữ liệu
             $this->validate($request,
@@ -99,18 +93,17 @@ class HomeController extends Controller
 
             $dataupdate = $dataupdate + ['avatar' => $gethinh];
         }
-
         $this->users->CapNhatUser($id, $dataupdate);
-
         return back()->with('thongbao','Cập nhật thông tin người dùng thành công');
     }
 
-    public function DoiMatKhau()
-    {
+    // Hiển thị form đổi mật khẩu
+    public function DoiMatKhau(){
         return view('admin.doimatkhau');
     }
-    public function postDoiMatKhau(Request $request)
-    {
+    
+    // xử lý đổi mật khẩu
+    public function postDoiMatKhau(Request $request){
         $user = auth()->user();
         $validated = $request->validate([
             'password' => [

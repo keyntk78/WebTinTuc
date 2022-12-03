@@ -9,26 +9,42 @@ class LoaiTinController extends Controller
 {
 
     private $loaitin;
-    public function __construct()
-    {
+    // Phương thức khởi tạo
+    public function __construct(){
         $this->loaitin = new LoaiTin();
 
     }
-       public function index(){
+
+    // danh sách loại tin
+    public function index(Request $request){
         
-        $loaitin =$this->loaitin->DanhSachLoaiTin();
-        $loaitin =$this->loaitin->DanhSachLoaiTin();
+        $perpage = 10;
+        $filters =[];
+        $keyword = null;
+
+        if (!empty($request->id_theloai)) {
+            $id_theloai = $request->id_theloai;
+            
+            $filters[] = ['loaitin.id_theloai', '=', $id_theloai];
+        }
+
+        if (!empty($request->keywords)) {
+            $keyword = $request->keywords;
+        }
+
+        $loaitin =$this->loaitin->DanhSachLoaiTin($filters, $keyword,$perpage);
 
         return view('admin.loaitin.danhsach',compact('loaitin'));
     }
 
-
+    // Hiển thị form thêm loại tin
     public function getThemLoaiTin(){
         
         return view('admin.loaitin.them');
     }
 
-     public function postThemLoaiTin(Request $request){
+    // xử lý thêm loại tin
+    public function postThemLoaiTin(Request $request){
         $request->validate([
             'tenloaitin' => 'required',
             'id_theloai' => 'required'
@@ -51,6 +67,7 @@ class LoaiTinController extends Controller
         return back()->with('thongbao', 'Thêm thành công');
     }
 
+    // hiển thị form sưa loại tin
     public function getSuaLoaiTin($id = 0){
         if(!empty($id)){
             $chitietloaitin = $this->loaitin->ChiTietLoaitin($id);
@@ -65,6 +82,7 @@ class LoaiTinController extends Controller
         }
     }
 
+    // xử lý sửa loại tin
     public function postSuaLoaiTin(Request $request,$id){
         $request->validate([
             'tenloaitin' => 'required',
@@ -88,7 +106,8 @@ class LoaiTinController extends Controller
         return back()->with('thongbao','Cập nhật loại tin thành công');
     }
 
-     public function deleteLoaiTin($id){
+    // xử lý xóa loại tin
+    public function deleteLoaiTin($id){
         if(!empty($id)){
             $chitietloaitin = $this->loaitin->ChiTietLoaitin($id);
             if(!empty($chitietloaitin[0])){

@@ -9,22 +9,32 @@ use App\Models\Video;
 class VideoController extends Controller
 {
     private $video;
-    public function __construct()
-     {
+    // phương thức khởi tạo
+    public function __construct(){
         $this->video = new Video();
-     }
-     public function index(){
+    }
+    
+    // danh sách video
+    public function index(Request $request){
 
-        $video = $this->video->DanhsachVideo();
+        $perpage = 10;
+        $keyword = null;
+        if (!empty($request->keywords)) {
+            $keyword = $request->keywords;
+        }
+        
+        $video = $this->video->DanhsachVideo( $keyword,$perpage);
         return view('admin.video.danhsach', compact('video'));
     }
 
+    // hiển thị form video
     public function getThemVideo(){
         
         return view('admin.video.them');
     }
 
-     public function postThemVideo(Request $request){
+    // xử lý thêm video
+    public function postThemVideo(Request $request){
 
         $request->validate([
             'tieude' => 'required',
@@ -35,7 +45,6 @@ class VideoController extends Controller
             'link.required' => 'Link không được để trống',
         ]);
 
-    
         $dataIsert = [
             'tieude' => $request->tieude,
             'tieudekhongdau' => convert_Unsigned($request->tieude),
@@ -45,12 +54,11 @@ class VideoController extends Controller
         ];
 
         $this->video->ThemVideo($dataIsert);
-
         return back()->with('thongbao', 'Thêm thành công');
     }
 
+    //hiển thị form sửa video
     public function getSuaVideo($id = 0){
-
        
         if(!empty($id)){
             $chitietvideo = $this->video->ChiTietVideo($id);  
@@ -65,6 +73,7 @@ class VideoController extends Controller
         }
     }
 
+    // xử  lý sửa video
     public function postSuaVideo(Request $request,$id){
         
         $request->validate([
@@ -89,6 +98,7 @@ class VideoController extends Controller
         return back()->with('thongbao','Cập nhật video thành công');
     }
 
+    //  xử xóa video
     public function deleteVideo($id){
 
         if(!empty($id)){
@@ -104,5 +114,5 @@ class VideoController extends Controller
         }
 
     }
-  
+
 }

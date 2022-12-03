@@ -10,33 +10,51 @@ class TinTuc extends Model
 {
     use HasFactory;
 
+    // danh sách tin tức
+    public function DanhSachTinTuc(){
+        return DB::table('tintuc')->get();
+    }
+    // Thêm tin tức
     public function ThemTinTuc($data){
        return DB::table('tintuc')->insert($data);
     }
 
-    
-    public function CapNhatTinTuc($id,$data)
-    {
+    // cập nhật tin tức
+    public function CapNhatTinTuc($id,$data){
     
         return  DB::table('tintuc')->where('id', '=', $id)->update($data);
     }
 
+    // xóa tin tức
     public function XoaTinTuc($id){
         return DB::table('tintuc')->delete($id);
-     }
+    }
 
      // Chi tiết tin tức theo id
-     public function ChiTietTintuc($id){
+    public function ChiTietTintuc($id){
          $chittiet = DB::table('tintuc')->select('*')->where('id', '=', $id)->get();
          return $chittiet;
-     }
+    }
 
      // láy danh sách tin tức theo loại tin
-    public function DanhSachLoaiTin($per_page = null){
+    public function DanhSachLoaiTin($filters = [], $keyword = null,$per_page = null){
         $list = DB::table('tintuc')
         ->select('tintuc.*', 'loaitin.tenloaitin as tenloaitin')
-        ->join('loaitin', 'tintuc.id_loaitin', '=', 'loaitin.id');
+        ->join('loaitin', 'tintuc.id_loaitin', '=', 'loaitin.id')
+        ->orderBy('tintuc.updated_at', 'DESC');
 
+
+        if (!empty($filters)) {
+            $list = $list->where($filters);
+        }
+
+         if (!empty($keyword)) {
+            $list = $list->where(function($query) use ($keyword) {
+                $query->orwhere('tintuc.tieude', 'like', '%'.$keyword.'%');
+                $query->orwhere('loaitin.tenloaitin', 'like', '%'.$keyword.'%');
+            });
+        }
+        
         if (!empty($per_page)) {
             $list = $list->paginate($per_page);
         } else {
@@ -152,4 +170,10 @@ class TinTuc extends Model
                 }
        return $list;
     } 
+
+    //Số lượng bài viết tin tức
+    public function SoLuongTinTuc(){
+        return  DB::table('tintuc')
+        ->select('*')->count();
+    }
 }

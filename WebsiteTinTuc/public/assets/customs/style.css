@@ -58,3 +58,9 @@ img.avatar {
 p.small.text-muted {
     display: none;
 }
+
+.form-chitiet {
+    margin: auto;
+    padding: 50px;
+    background-color: #fcddb0;
+}
