@@ -11,6 +11,7 @@ Thành viên:
 1.	Cài đặt
 -	Cài đặt laravel & composer :https://www.youtube.com/watch?v=-SwzQ7-ipW8&t=315s
 -	Download Project về máy
+- import file sql: đặt tên csdl file  quan_ly_ban_sua.sql là: quan_ly_ban_sua, file tintuc.sql là tintuc
 -	Kiểm tra project đã có file .env chưa. Nếu chưa thì tiến hành cài đặt theo các bước :
 cp .env.example .env
 php artisan key:generate
