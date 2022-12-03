@@ -11,25 +11,40 @@ class TinTucController extends Controller
     private $tintuc;
     const _PER_PAGE = 10;
 
-    public function __construct()
-    {
+    //  phương thức khởi tạo
+    public function __construct(){
         $this->tintuc = new TinTuc();
-
     }
 
-    public function index(){
+    // danh sách tin tức
+    public function index(Request $request){
 
-        $tintuc = $this->tintuc->DanhSachLoaiTin(self:: _PER_PAGE);
+        $filters =[];
+        $keyword = null;
+
+        
+        if (!empty($request->id_loaitin)) {
+            $id_loaitin = $request->id_loaitin;
+            
+            $filters[] = ['tintuc.id_loaitin', '=', $id_loaitin];
+        }
+
+        if (!empty($request->keywords)) {
+            $keyword = $request->keywords;
+        }
+
+        $tintuc = $this->tintuc->DanhSachLoaiTin($filters, $keyword,self:: _PER_PAGE);
         return view('admin.tintuc.danhsach', compact('tintuc'));
     }
 
-
+    // Hiển thị form thêm tin tức
     public function getThemTinTuc(){
 
         return view('admin.tintuc.them');
     }
 
-     public function postThemTinTuc(Request $request){
+    // xử lý thêm tin tức
+    public function postThemTinTuc(Request $request){
 
           $request->validate([
             'tieude' => 'required',
@@ -92,6 +107,7 @@ class TinTucController extends Controller
       return back()->with('thongbao', 'Thêm thành công');
     }
 
+    // hiển thị form sửa tin tức
     public function getSuaTinTuc($id){
 
            if(!empty($id)){
@@ -109,6 +125,7 @@ class TinTucController extends Controller
         return view('admin.tintuc.sua');
     }
 
+    // xử lý sửa tin tức
     public function postSuaTinTuc(Request $request, $id){
 
          $request->validate([
@@ -164,7 +181,8 @@ class TinTucController extends Controller
         return back()->with('thongbao','Cập nhật tin tức thành công');
     }
 
-     public function deleteTinTuc($id){
+    // xử lý xóa tin tức
+    public function deleteTinTuc($id){
 
         if(!empty($id)){
             $chitiettintuc = $this->tintuc->ChiTietTintuc($id);

@@ -14,16 +14,18 @@ class UserController extends Controller
     private $users;
     const _PER_PAGE = 10;
 
-    public function __construct()
-    {
+    // phương thức khởi tạo
+    public function __construct(){
         $this->users = new User();
     }
 
+    // hiển thị form đăng nhập admin
     public function getDangNhapAdmin(){
 
         return view('admin.dangnhapadmin');
     }
 
+    // xử ý đăng nhập admin
     public function postDangNhapAdmin(Request $request){
 
          $this->validate($request, [
@@ -45,26 +47,42 @@ class UserController extends Controller
         }
     }
 
+    // xử lý đăng xuất admin
     public function getDangXuatAdmin(){
         Auth::logout();
         return redirect(route('dangnhapadmin'));
     }
 
 
-    public function index(){
+    // Danh sách users
+    public function index(Request $request){
 
-        $user =  $this->users->DanhSachUser(self:: _PER_PAGE);
+        $filters =[];
+        $keyword = null;
+
+        if (!empty($request->quyen)) {
+            $quyen = $request->quyen;
+            
+            $filters[] = ['users.quyen', '=', $quyen];
+        }
+
+        if (!empty($request->keywords)) {
+            $keyword = $request->keywords;
+        }
+
+        $user =  $this->users->DanhSachUser($filters, $keyword,self:: _PER_PAGE);
 
         return view('admin.users.danhsach', compact('user'));
     }
 
-
+    // hiển thị form thêm
     public function getThemUser(){
 
         return view('admin.users.them');
     }
 
-     public function postThemUser(Request $request){
+    // xử lý thêm user
+    public function postThemUser(Request $request){
 
         $request->validate([
             'hoten' => 'required',
@@ -99,6 +117,7 @@ class UserController extends Controller
         return back()->with('thongbao', 'Đăng ký thành công');
     }
 
+    // hiển thị form sửa user
     public function getSuaUser($id = 0){
 
         if(!empty($id)){
@@ -115,6 +134,7 @@ class UserController extends Controller
 
     }
 
+    // xử lý sử user
     public function postSuaUser(Request $request,$id){
 
         $request->validate([
@@ -163,7 +183,8 @@ class UserController extends Controller
         return back()->with('thongbao','Cập nhật người dùng thành công');
     }
 
-     public function deleteUser($id){
+    // xử lý xóa user
+    public function deleteUser($id){
 
         if(!empty($id)){
             $chitietUser = $this->users->ChiTietUser($id);
@@ -179,6 +200,5 @@ class UserController extends Controller
             return redirect()->route('users.index')->with('thongbao', 'Liên kết không tồn tại');
         }
     }
-
 
 }

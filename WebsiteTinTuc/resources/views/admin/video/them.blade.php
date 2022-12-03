@@ -1,13 +1,18 @@
 @extends('admin.layout.index')
 
+@section('tittle')
+    Thêm video
+@endsection
+
+
 @section('content')
               <!-- Content Wrapper START -->
                 <div class="main-content">
                     <div class="page-header">
                         <div class="header-sub-title">
                             <nav class="breadcrumb breadcrumb-dash">
-                                <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
-                                <a class="breadcrumb-item" href="#">Danh sách</a>
+                                <a href="{{ route('admin') }}" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+                                <a class="breadcrumb-item" href="{{ route('video.index') }}">Danh sách</a>
                                 <span class="breadcrumb-item active">Thêm video</span>
                             </nav>
                         </div>

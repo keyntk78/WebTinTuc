@@ -123,22 +123,6 @@ class PageControllers extends Controller
         }
     }
 
-    // Tin tức theo loại tin
-   public function Loaitin ($id, $tenkhongdau){
-        $perpage = 6;
-         if(!empty($id)){
-            $dsTinTheoLT = $this->tintuc->DanhSachTinTheoLoaiTin($id, $perpage);
-            if(!empty($dsTinTheoLT[0])){
-                $tenLoaiTin = $this->loaitin->ChiTietLoaitin($id)[0]->tenloaitin;
-                 return view('pages.loaitin', compact('dsTinTheoLT', 'tenLoaiTin'));
-            } else {
-                return redirect()->route('trangchu')->with('thongbao', 'Thể loại không tồn tại');
-            }
-        } else {
-            return redirect()->route('trangchu')->with('thongbao', 'Liên kết không tồn tại');
-        }
-    }
-
     // Chức năng tìm kiếm tin tức
      public function TimKiem(Request $request){
         $keyword = null;
@@ -158,7 +142,7 @@ class PageControllers extends Controller
     public function danhSachVideo(){
 
         $perpage = 6;
-        $dsVideo =$this->video->DanhsachVideo($perpage);
+        $dsVideo =$this->video->DanhsachVideoPage($perpage);
 
         return view('pages.danhsachvideo', compact('dsVideo'));
     }
@@ -346,6 +330,22 @@ class PageControllers extends Controller
 
         return back()->with('thongbao', 'Đổi mật khẩu thành công');
     }
-    
+      
+    // Tin tức theo loại tin
+   public function Loaitin ($id, $tenkhongdau){
+        $perpage = 6;
+         if(!empty($id)){
+            $dsTinTheoLT = $this->tintuc->DanhSachTinTheoLoaiTin($id, $perpage);
+            if(!empty($dsTinTheoLT[0])){
+                $tenLoaiTin = $this->loaitin->ChiTietLoaitin($id)[0]->tenloaitin;
+                 return view('pages.loaitin', compact('dsTinTheoLT', 'tenLoaiTin'));
+            } else {
+                return redirect()->route('trangchu')->with('thongbao', 'Thể loại không tồn tại');
+            }
+        } else {
+            return redirect()->route('trangchu')->with('thongbao', 'Liên kết không tồn tại');
+        }
+    }
+
 
 }

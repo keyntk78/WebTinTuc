@@ -1,11 +1,16 @@
 @extends('admin.layout.index')
+
+@section('tittle')
+    Danh sách bình luận
+@endsection
+
 @section('content')
 <div class="main-content">
     <div class="page-header">
         <div class="header-sub-title">
             <nav class="breadcrumb breadcrumb-dash">
-                <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
-                <a class="breadcrumb-item" href="#">Danh sách</a>
+                <a href="{{ route('admin') }}" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+                <span class="breadcrumb-item" href="#">Danh sách</span>
                 {{-- <span class="breadcrumb-item active">Basic Table</span> --}}
             </nav>
         </div>
@@ -18,6 +23,23 @@
     <div class="card">
         <div class="card-body">
             <h4>Danh sách bình luận</h4>
+            <div class="m-t-25">
+            <form action="" method="get" class="mb-3" >
+                   <div class="row">
+                       <div class="col-lg-6">
+                           <select name="id_tintuc" class="form-control">
+                               <option value="">-Chọn tin tức-</option>
+                                @foreach (getAllTinTuc() as $item)
+                                        <option value="{{ $item->id }}" {{ request()->id_tintuc  == $item->id ? 'selected' : false }}>{{ $item->tieude }}</option>
+                                @endforeach
+                           </select>
+                       </div>
+                       <div class="col-lg-2">
+                           <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                       </div>
+                   </div>
+               </form>
+            </div>
             <div class="m-t-25">
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -43,6 +65,11 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="col-lg-12">
+                         <div class="apagination">
+                             {{ $dsBinhLuan->withQueryString()->links() }}
+                         </div>
+                     </div>
                 </div>
             </div>
            

@@ -49,9 +49,20 @@ class User extends Authenticatable
         return DB::table('users')->insert($data);
     }
 
-    public function DanhSachUser($per_page = null)
-    {
-        $list = DB::table('users');
+    // Lấy danh sách user
+    public function DanhSachUser($filters = [], $keyword = null,$per_page = null){
+        $list = DB::table('users')
+        ->orderBy('users.updated_at', 'DESC');
+        
+        if (!empty($filters)) {
+            $list = $list->where($filters);
+        }
+
+        if (!empty($keyword)) {
+            $list = $list->where(function($query) use ($keyword) {
+                $query->orwhere('hoten', 'like', '%'.$keyword.'%');
+            });
+        }
 
         if (!empty($per_page)) {
             $list = $list->paginate($per_page);
@@ -61,29 +72,34 @@ class User extends Authenticatable
         return $list;
     }
 
-    public function ChiTietUser($id)
-    {
+    // Lấy thông tin chi tiết 1 user theo id
+    public function ChiTietUser($id){
         $chittiet = DB::table('users')->select('*')->where('id', '=', $id)->get();
 
         return $chittiet;
     }
 
-    
-    public function CapNhatUser($id,$data)
-    {
+    // cập nhật thông tin user
+    public function CapNhatUser($id,$data){
     
         return  DB::table('users')->where('id', '=', $id)->update($data);
     }
 
-     public function XoaUser($id)
-    {
+    // xóa user
+    public function XoaUser($id){
         return  DB::table('users')->where('id', '=', $id)->delete();
     }
 
     // Lấy thông tin người dùng theo tin
-     public function LayUserTheoTin($id){
+    public function LayUserTheoTin($id){
         return  DB::table('users')
         ->select('*')
         ->where('id', '=', $id)->get();
+    }
+
+    // Đếm số lượng người dùng
+    public function SoLuongNguoiDung(){
+        return  DB::table('users')
+        ->select('*')->count();
     }
 }

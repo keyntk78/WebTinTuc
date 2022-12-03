@@ -46,7 +46,7 @@
                             header('location:baitap6.php');
                         }
                         ?>
-                            <form action="" method="POST">
+                            <form class="form-chitiet" action="" method="POST">
                                 <table align="center">
                                     <tr>
                                         <th colspan="2">
